@@ -1,15 +1,15 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'http://localhost/test/opencart3.0.2.0/upload/');
+define('HTTP_SERVER', 'http://localhost/test/dltj2/');
 
 // HTTPS
-define('HTTPS_SERVER', 'http://localhost/test/opencart3.0.2.0/upload/');
+define('HTTPS_SERVER', 'http://localhost/test/dltj2/');
 
 // DIR
-define('DIR_APPLICATION', '/Users/roshan/www/test/opencart3.0.2.0/upload/catalog/');
-define('DIR_SYSTEM', '/Users/roshan/www/test/opencart3.0.2.0/upload/system/');
-define('DIR_IMAGE', '/Users/roshan/www/test/opencart3.0.2.0/upload/image/');
-define('DIR_STORAGE', '/Users/roshan/www/test/opencart3.0.2.0/upload/storage/');
+define('DIR_APPLICATION', '/Users/roshan/www/test/dltj2/catalog/');
+define('DIR_SYSTEM', '/Users/roshan/www/test/dltj2/system/');
+define('DIR_IMAGE', '/Users/roshan/www/test/dltj2/image/');
+define('DIR_STORAGE', '/Users/roshan/www/test/dltj2/storage/');
 define('DIR_LANGUAGE', DIR_APPLICATION . 'language/');
 define('DIR_TEMPLATE', DIR_APPLICATION . 'view/theme/');
 define('DIR_CONFIG', DIR_SYSTEM . 'config/');
@@ -25,6 +25,6 @@ define('DB_DRIVER', 'mysqli');
 define('DB_HOSTNAME', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', 'root');
-define('DB_DATABASE', 'myopencart');
+define('DB_DATABASE', 'dltj2');
 define('DB_PORT', '3306');
 define('DB_PREFIX', 'oc_');

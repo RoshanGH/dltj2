@@ -4,6 +4,7 @@ class ControllerProductMyproduct extends Controller {
     private $error = array();
 
     public function index() {
+//        $this->logger = new \Log('log.log');
         $this->load->language('product/myproduct');
         if (isset($this->request->get['product_id'])) {
             $product_id = (int)$this->request->get['product_id'];
@@ -45,7 +46,7 @@ class ControllerProductMyproduct extends Controller {
                         'product_option_value_id' => $option_value['product_option_value_id'],
                         'option_value_id' => $option_value['option_value_id'],
                         'name' => $option_value['name'],
-                        'image' => $this->model_tool_image->resize($option_value['image'], 50, 50),
+                        'image' => $this->model_tool_image->resize($option_value['image'],400, 400),
                         'price' => $price,
                         'price_prefix' => $option_value['price_prefix'],
                         'key' => $key
@@ -68,27 +69,15 @@ class ControllerProductMyproduct extends Controller {
         $search_order_url = $this->url->link('product/myproduct/search_order');
         $show_order_url = $this->url->link('product/myproduct/show_order');
 
-        //css
-//        $data['smcss'] =  '/test/opencart3.0.2.0/upload/catalog/view/javascript/my/css/sm.css';
-//        $data['sm_extendcss'] =  '/test/opencart3.0.2.0/upload/catalog/view/javascript/my/css/sm-extend.css';
-//        $data['mycss'] =  '/test/opencart3.0.2.0/upload/catalog/view/javascript/my/css/my.css';
-//
-//        //js
-//        $data['zeptojs'] = '/test/opencart3.0.2.0/upload/catalog/view/javascript/my/js/zepto.js';
-//        $data['smjs'] = '/test/opencart3.0.2.0/upload/catalog/view/javascript/my/js/sm.js';
-//        $data['sm_extendjs'] = '/test/opencart3.0.2.0/upload/catalog/view/javascript/my/js/sm-extend.js';
-
-        $data['smcss'] =  '/catalog/view/javascript/my/css/sm.css';
-        $data['sm_extendcss'] =  '/catalog/view/javascript/my/css/sm-extend.css';
-        $data['mycss'] =  '/catalog/view/javascript/my/css/my.css';
-
-        //js
-        $data['zeptojs'] = '/catalog/view/javascript/my/js/zepto.js';
-        $data['smjs'] = '/catalog/view/javascript/my/js/sm.js';
-        $data['sm_extendjs'] = '/catalog/view/javascript/my/js/sm-extend.js';
+        $data['smcss'] =  HTTP_SERVER . '/catalog/view/javascript/my/css/sm.css';
+        $data['sm_extendcss'] = HTTP_SERVER . '/catalog/view/javascript/my/css/sm-extend.css';
+        $data['mycss'] = HTTP_SERVER . '/catalog/view/javascript/my/css/my.css';
+        $data['zeptojs'] = HTTP_SERVER . '/catalog/view/javascript/my/js/zepto.js';
+        $data['smjs'] = HTTP_SERVER . '/catalog/view/javascript/my/js/sm.js';
+        $data['sm_extendjs'] = HTTP_SERVER . '/catalog/view/javascript/my/js/sm-extend.js';
 
 
-
+        $data['http'] = HTTP_SERVER;
         $data['price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
         $data['origin_price'] = $this->currency->format($this->tax->calculate($product_info['price'] + 100, $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
         $data['price_num'] = $product_info['price'];
@@ -108,7 +97,7 @@ class ControllerProductMyproduct extends Controller {
     }
 
     public function save_order() {
-        $this->logger = new \Log('log.log');
+//        $this->logger = new \Log('log.log');
 //        $this->logger->write($this->request->post);
 
 //        生成订单号
@@ -156,7 +145,7 @@ class ControllerProductMyproduct extends Controller {
             'price' => $post_data['price'],
             'option_str' => $option_str,
         );
-        $this->logger->write($return);
+//        $this->logger->write($return);
         header('Content-Type: text/json;charset=utf8');
         echo json_encode($return, true);
         exit();
@@ -178,7 +167,7 @@ class ControllerProductMyproduct extends Controller {
     public function search_order() {
         $this->load->language('product/myproduct');
 
-        $this->logger = new \Log('log.log');
+//        $this->logger = new \Log('log.log');
 //        $this->logger->write($this->request->post);
         $email = $this->request->post['search_email'];
         $this->load->model('catalog/myproduct');
@@ -188,7 +177,7 @@ class ControllerProductMyproduct extends Controller {
         $this->load->model('account/order');
         $this->load->model('catalog/product');
         $this->load->model('tool/upload');
-        $this->logger->write($order_ids);
+//        $this->logger->write($order_ids);
         foreach ($order_ids as $key => $val){
 
 
@@ -203,7 +192,7 @@ class ControllerProductMyproduct extends Controller {
             $data['products'] = array();
 
             $products = $this->model_account_order->getOrderProducts($order_id);
-            $this->logger->write($products);
+//            $this->logger->write($products);
 
             unset($option_data);
             foreach ($products as $product) {
@@ -259,7 +248,7 @@ class ControllerProductMyproduct extends Controller {
         $text_total = $this->language->get('order_amount');
 
 
-        $this->logger->write($text_order_id);
+//        $this->logger->write($text_order_id);
 
 
         $content = '';
