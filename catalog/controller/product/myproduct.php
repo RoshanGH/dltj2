@@ -1,0 +1,314 @@
+<?php
+
+class ControllerProductMyproduct extends Controller {
+    private $error = array();
+
+    public function index() {
+        $this->load->language('product/myproduct');
+        if (isset($this->request->get['product_id'])) {
+            $product_id = (int)$this->request->get['product_id'];
+        } else {
+            $product_id = 0;
+        }
+        $this->load->model('catalog/product');
+
+        $product_info = $this->model_catalog_product->getProduct($product_id);
+
+        //图片
+        $this->load->model('tool/image');
+
+        $data['popup'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_height'));
+
+
+        $data['images'][]['popup'] = $data['popup'];
+
+        $results = $this->model_catalog_product->getProductImages($this->request->get['product_id']);
+        foreach ($results as $result) {
+            $data['images'][] = array(
+                'popup' => $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_height')),
+//                'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_additional_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_additional_height'))
+            );
+        }
+
+        foreach ($this->model_catalog_product->getProductOptions($this->request->get['product_id']) as $option) {
+            $product_option_value_data = array();
+
+            foreach ($option['product_option_value'] as $key => $option_value) {
+                if (!$option_value['subtract'] || ($option_value['quantity'] > 0)) {
+                    if ((($this->config->get('config_customer_price') && $this->customer->isLogged()) || !$this->config->get('config_customer_price')) && (float)$option_value['price']) {
+                        $price = $this->currency->format($this->tax->calculate($option_value['price'], $product_info['tax_class_id'], $this->config->get('config_tax') ? 'P' : false), $this->session->data['currency']);
+                    } else {
+                        $price = false;
+                    }
+
+                    $product_option_value_data[$key] = array(
+                        'product_option_value_id' => $option_value['product_option_value_id'],
+                        'option_value_id' => $option_value['option_value_id'],
+                        'name' => $option_value['name'],
+                        'image' => $this->model_tool_image->resize($option_value['image'], 50, 50),
+                        'price' => $price,
+                        'price_prefix' => $option_value['price_prefix'],
+                        'key' => $key
+                    );
+                }
+            }
+
+            $data['options'][] = array(
+                'product_option_id' => $option['product_option_id'],
+                'product_option_value' => $product_option_value_data,
+                'option_id' => $option['option_id'],
+                'name' => $option['name'],
+                'type' => $option['type'],
+                'value' => $option['value'],
+                'required' => $option['required']
+            );
+        }
+
+        $order_url = $this->url->link('product/myproduct/save_order');
+        $search_order_url = $this->url->link('product/myproduct/search_order');
+        $show_order_url = $this->url->link('product/myproduct/show_order');
+
+        //css
+//        $data['smcss'] =  '/test/opencart3.0.2.0/upload/catalog/view/javascript/my/css/sm.css';
+//        $data['sm_extendcss'] =  '/test/opencart3.0.2.0/upload/catalog/view/javascript/my/css/sm-extend.css';
+//        $data['mycss'] =  '/test/opencart3.0.2.0/upload/catalog/view/javascript/my/css/my.css';
+//
+//        //js
+//        $data['zeptojs'] = '/test/opencart3.0.2.0/upload/catalog/view/javascript/my/js/zepto.js';
+//        $data['smjs'] = '/test/opencart3.0.2.0/upload/catalog/view/javascript/my/js/sm.js';
+//        $data['sm_extendjs'] = '/test/opencart3.0.2.0/upload/catalog/view/javascript/my/js/sm-extend.js';
+
+        $data['smcss'] =  '/catalog/view/javascript/my/css/sm.css';
+        $data['sm_extendcss'] =  '/catalog/view/javascript/my/css/sm-extend.css';
+        $data['mycss'] =  '/catalog/view/javascript/my/css/my.css';
+
+        //js
+        $data['zeptojs'] = '/catalog/view/javascript/my/js/zepto.js';
+        $data['smjs'] = '/catalog/view/javascript/my/js/sm.js';
+        $data['sm_extendjs'] = '/catalog/view/javascript/my/js/sm-extend.js';
+
+
+
+        $data['price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+        $data['origin_price'] = $this->currency->format($this->tax->calculate($product_info['price'] + 100, $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+        $data['price_num'] = $product_info['price'];
+        $data['title'] = $product_info['meta_title'];
+        $data['name'] = $product_info['name'];
+        $data['product_id'] = (int)$this->request->get['product_id'];
+        $data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+        $data['order_url'] = $order_url;
+        $data['show_order_url'] = $show_order_url;
+        $data['product_id'] = $product_id;
+        $data['search_order_url'] = $search_order_url;
+//        echo '<pre>';
+//        print_r($product_info);
+//        print_r($data);
+//        exit;
+        $this->response->setOutput($this->load->view('product/myproduct', $data));
+    }
+
+    public function save_order() {
+        $this->logger = new \Log('log.log');
+//        $this->logger->write($this->request->post);
+
+//        生成订单号
+//        $order_id = '60'.time().rand(1,9).rand(1.9);
+//        $post_data['order_id'] = $order_id;
+        $post_data = $this->request->post;
+        $post_data['time'] = date('Y-m-d H:i:s', time());
+//        $this->logger->write($post_data['time']);
+        $post_data['store_name'] = 'small_store';
+        $post_data['payment_method'] = '货到付款';
+        $this->load->model('catalog/myproduct');
+        //order表
+//        $this->logger->write($post_data['price']);
+        $order_id = $this->model_catalog_myproduct->save_order($post_data);
+        //order_product
+        $product_info = $this->model_catalog_myproduct->get_product_info($post_data['product_id']);
+        $product_name = $product_info['name'];
+//        $this->logger->write($product_name);
+
+        $order_product_data = array(
+            'order_id' => $order_id,
+            'product_id' => $post_data['product_id'],
+            'product_name' => $product_name,
+            'quantity' => $post_data['number'],
+            'total' => $post_data['price'],
+        );
+        //整理商品属性
+
+        $option_str = '';
+        foreach ($post_data['options'] as $key => $val) {
+            $ops[$key]['name'] = $this->model_catalog_myproduct->get_options_name($val)['name'];
+            $ops[$key]['value'] = $this->model_catalog_myproduct->get_options_value($val)['value'];
+            $option_str .= $ops[$key]['name'] . ":" . $ops[$key]['value'];
+        }
+
+        $order_product_id = $this->model_catalog_myproduct->save_order_product($order_product_data);
+
+        foreach ($ops as $key => $val) {
+            $this->model_catalog_myproduct->save_order_option($val['name'], $val['value'], $order_product_id, $order_id);
+        }
+        $return = array(
+            'status' => 'success',
+            'order_id' => $order_id,
+            'time' => $post_data['time'],
+            'price' => $post_data['price'],
+            'option_str' => $option_str,
+        );
+        $this->logger->write($return);
+        header('Content-Type: text/json;charset=utf8');
+        echo json_encode($return, true);
+        exit();
+    }
+
+
+    public function show_order() {
+//        $this->logger = new \Log('log.log');
+//        $this->logger->write($this->request->post);
+        $order_id = $this->request->post['order_id'];
+        $return = array(
+            'status' => 'success',
+        );
+        header('Content-Type: text/json;charset=utf8');
+        echo json_encode($return, true);
+        exit();
+    }
+
+    public function search_order() {
+        $this->load->language('product/myproduct');
+
+        $this->logger = new \Log('log.log');
+//        $this->logger->write($this->request->post);
+        $email = $this->request->post['search_email'];
+        $this->load->model('catalog/myproduct');
+        $order_ids = $this->model_catalog_myproduct->get_order_by_email($email);
+
+
+        $this->load->model('account/order');
+        $this->load->model('catalog/product');
+        $this->load->model('tool/upload');
+        $this->logger->write($order_ids);
+        foreach ($order_ids as $key => $val){
+
+
+
+
+
+
+            $order_id = $val['order_id'];
+//            $this->logger->write($order_id);
+
+            // Products
+            $data['products'] = array();
+
+            $products = $this->model_account_order->getOrderProducts($order_id);
+            $this->logger->write($products);
+
+            unset($option_data);
+            foreach ($products as $product) {
+                $option_data = array();
+
+                $options = $this->model_account_order->getOrderOptions($order_id, $product['order_product_id']);
+
+                foreach ($options as $option) {
+                    if ($option['type'] != 'file') {
+                        $value = $option['value'];
+                    } else {
+                        $upload_info = $this->model_tool_upload->getUploadByCode($option['value']);
+
+                        if ($upload_info) {
+                            $value = $upload_info['name'];
+                        } else {
+                            $value = '';
+                        }
+                    }
+
+                    $option_data[] = array(
+                        'name'  => $option['name'],
+                        'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
+                    );
+                }
+
+
+                $data[$order_id]['products'][] = array(
+                    'name'     => $product['name'],
+                    'model'    => $product['model'],
+                    'option'   => $option_data,
+                    'quantity' => $product['quantity'],
+//                    'price'    => $this->currency->format($product['price'] + ($this->config->get('config_tax') ? $product['tax'] : 0), $order_info['currency_code'], $order_info['currency_value']),
+//                    'total'    => $this->currency->format($product['total'] + ($this->config->get('config_tax') ? ($product['tax'] * $product['quantity']) : 0), $order_info['currency_code'], $order_info['currency_value']),
+                    'price'    => $product['price'],
+                    'total'    => $product['total'],
+
+                );
+            }
+
+        }
+
+
+        krsort($data);
+
+
+
+        $text_order_id = $this->language->get('order_number');
+        $text_product_name = $this->language->get('product_name');
+        $text_option = $this->language->get('option');
+        $text_price = $this->language->get('price');
+        $text_quantity = $this->language->get('quantity');
+        $text_total = $this->language->get('order_amount');
+
+
+        $this->logger->write($text_order_id);
+
+
+        $content = '';
+        foreach ($data as $key => $val){
+            foreach ($val['products'] as $vkey => $vval){
+
+                $content .="<div style='background-color: white'>";
+                $content .= "<p>{$text_order_id} : $key</p>";
+
+                $content .= "<p>{$text_product_name} : {$vval['name']}</p>";
+
+                $option_str = '';
+                foreach ($vval['option'] as $okey => $oval){
+                    $option_str .= $oval['name'] .":" . $oval['value']  . "  "  ;
+                }
+
+                $content .= "<p>{$text_option} : {$option_str}</p>";
+
+                $content .= "<p>{$text_price} : {$vval['price']}</p>";
+
+                $content .= "<p>{$text_quantity} : {$vval['quantity']}</p>";
+
+                $content .= "<p>{$text_total} : {$vval['total']}</p>" ;
+
+                $content .="</div>";
+
+                $content .="<div style='width: 100%;height: 0.5rem'></div>";
+
+
+            }
+        }
+
+
+
+//        $this->logger->write($data);
+
+
+
+
+//        $content = "<p>123123123</p>";
+        $data = array(
+            'status' => 'success',
+            'content' => $content,
+        );
+        header('Content-Type: text/json;charset=utf8');
+        echo json_encode($data);
+        exit();
+
+
+    }
+}
+
