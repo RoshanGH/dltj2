@@ -1,4 +1,5 @@
 storage/
 .user.ini.bak
+.user.ini
 index.php
 admin/index.php
