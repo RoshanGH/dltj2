@@ -3,3 +3,4 @@ storage/
 .user.ini
 index.php
 admin/index.php
+.idea/workspace.xml
