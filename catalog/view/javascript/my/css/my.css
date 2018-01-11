@@ -3,6 +3,15 @@
     height: 100%;
 }
 
+.gotop{
+    position: fixed;
+    width: 3.9rem;
+    height: 3.9rem;
+    bottom: 3rem;
+    right: 0rem;
+    z-index: 10;
+}
+
 .product_info{
     padding-top: 0.3rem;
     background-color:white;

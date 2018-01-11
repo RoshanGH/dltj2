@@ -58,7 +58,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div class="space"></div>
@@ -348,33 +347,14 @@
             </nav>
             <!--底部菜单 end-->
 
+
+            <div id="gotop" class="gotop" style="">
+                <img class="image" src="http://localhost/template/weizhan5/image/w3.png">
+            </div>
+
         </div>
     </div>
 </div>
-{#立即购买页面 start#}
-{#<div class="page" id='router3'>#}
-    {#<header class="bar bar-nav" style="background-color:#FF464E;">#}
-        {#<a class="button button-link button-nav pull-left back" href="">#}
-            {#<span class="icon icon-left" style="color: white"></span>#}
-        {#</a>#}
-        {#<h1 class='title' style="color:white;font-weight: 200">{{ order_confirm }}</h1>#}
-    {#</header>#}
-    {#<div class="content">#}
-        {#<div style="height: 3rem;background-color: white"></div>#}
-    {#</div>#}
-    {#<!--底部菜单 start-->#}
-    {#<nav class="bar bar-tab" style="position: fixed;z-index: 100">#}
-        {#<a class="tab-item" href="#" style="text-align: left;padding-left: 0.4rem">#}
-            {#{{ total }}:<span id="order_price" style="color:#FF464E ">{{ price_num }}</span>#}
-        {#</a>#}
-        {#<a id="order-commit" class="tab-item" style="background-color:#FF5722;width: 2%">#}
-            {#<span style="color:white;" class="tab-label">{{ subimt_order }}</span>#}
-        {#</a>#}
-    {#</nav>#}
-    {#<!--底部菜单 end-->#}
-
-
-{#</div>#}
 <!--立即购买页面 end-->
 <!--下单成功页 start-->
 <div class="page" id='router4' style="background-color: #F7F7F7">
@@ -728,6 +708,18 @@
         });
     });
 
+    $(function () {
+        $(".content").on('scroll', function () {
+            if ($('.content').scrollTop() != 0) {
+                $('#gotop').show();
+            } else {
+                $('#gotop').hide();
+            }
+        });
+        $("#gotop").click(function (e) {
+            $('.content').scrollTop(0);
+        });
+    });
 
 </script>
 
