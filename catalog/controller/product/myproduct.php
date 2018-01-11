@@ -93,12 +93,12 @@ class ControllerProductMyproduct extends Controller {
 //        print_r($product_info);
 //        print_r($data);
 //        exit;
-        $this->response->setOutput($this->load->view('product/myproduct', $data));
+        $this->response->setOutput($this->load->view('product/myproduct2', $data));
     }
 
     public function save_order() {
-//        $this->logger = new \Log('log.log');
-//        $this->logger->write($this->request->post);
+        $this->logger = new \Log('log.log');
+        $this->logger->write($this->request->post);
 
 //        生成订单号
 //        $order_id = '60'.time().rand(1,9).rand(1.9);
