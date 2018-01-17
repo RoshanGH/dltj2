@@ -93,7 +93,7 @@ class ControllerProductMyproduct extends Controller {
 //        print_r($product_info);
 //        print_r($data);
 //        exit;
-        $this->response->setOutput($this->load->view('product/myproduct2', $data));
+        $this->response->setOutput($this->load->view('product/myproduct', $data));
     }
 
     public function save_order() {
