@@ -4,7 +4,7 @@ class ControllerProductMyproduct extends Controller {
     private $error = array();
 
     public function index() {
-//        $this->logger = new \Log('log.log');
+        $this->logger = new \Log('log.log');
         $this->load->language('product/myproduct');
         if (isset($this->request->get['product_id'])) {
             $product_id = (int)$this->request->get['product_id'];
@@ -46,7 +46,7 @@ class ControllerProductMyproduct extends Controller {
                         'product_option_value_id' => $option_value['product_option_value_id'],
                         'option_value_id' => $option_value['option_value_id'],
                         'name' => $option_value['name'],
-                        'image' => $this->model_tool_image->resize($option_value['image'],400, 400),
+                        'image' => $this->model_tool_image->resize($option_value['image'], 400, 400),
                         'price' => $price,
                         'price_prefix' => $option_value['price_prefix'],
                         'key' => $key
@@ -69,7 +69,7 @@ class ControllerProductMyproduct extends Controller {
         $search_order_url = $this->url->link('product/myproduct/search_order');
         $show_order_url = $this->url->link('product/myproduct/show_order');
 
-        $data['smcss'] =  HTTP_SERVER . '/catalog/view/javascript/my/css/sm.css';
+        $data['smcss'] = HTTP_SERVER . '/catalog/view/javascript/my/css/sm.css';
         $data['sm_extendcss'] = HTTP_SERVER . '/catalog/view/javascript/my/css/sm-extend.css';
         $data['mycss'] = HTTP_SERVER . '/catalog/view/javascript/my/css/my.css';
         $data['zeptojs'] = HTTP_SERVER . '/catalog/view/javascript/my/js/zepto.js';
@@ -93,12 +93,13 @@ class ControllerProductMyproduct extends Controller {
 //        print_r($product_info);
 //        print_r($data);
 //        exit;
+        $this->logger->write($data);
         $this->response->setOutput($this->load->view('product/myproduct', $data));
     }
 
     public function save_order() {
-        $this->logger = new \Log('log.log');
-        $this->logger->write($this->request->post);
+//        $this->logger = new \Log('log.log');
+//        $this->logger->write($this->request->post);
 
 //        生成订单号
 //        $order_id = '60'.time().rand(1,9).rand(1.9);
@@ -178,13 +179,7 @@ class ControllerProductMyproduct extends Controller {
         $this->load->model('catalog/product');
         $this->load->model('tool/upload');
 //        $this->logger->write($order_ids);
-        foreach ($order_ids as $key => $val){
-
-
-
-
-
-
+        foreach ($order_ids as $key => $val) {
             $order_id = $val['order_id'];
 //            $this->logger->write($order_id);
 
@@ -214,31 +209,28 @@ class ControllerProductMyproduct extends Controller {
                     }
 
                     $option_data[] = array(
-                        'name'  => $option['name'],
+                        'name' => $option['name'],
                         'value' => (utf8_strlen($value) > 20 ? utf8_substr($value, 0, 20) . '..' : $value)
                     );
                 }
 
 
                 $data[$order_id]['products'][] = array(
-                    'name'     => $product['name'],
-                    'model'    => $product['model'],
-                    'option'   => $option_data,
+                    'name' => $product['name'],
+                    'model' => $product['model'],
+                    'option' => $option_data,
                     'quantity' => $product['quantity'],
 //                    'price'    => $this->currency->format($product['price'] + ($this->config->get('config_tax') ? $product['tax'] : 0), $order_info['currency_code'], $order_info['currency_value']),
 //                    'total'    => $this->currency->format($product['total'] + ($this->config->get('config_tax') ? ($product['tax'] * $product['quantity']) : 0), $order_info['currency_code'], $order_info['currency_value']),
-                    'price'    => $product['price'],
-                    'total'    => $product['total'],
+                    'price' => $product['price'],
+                    'total' => $product['total'],
 
                 );
             }
 
         }
 
-
         krsort($data);
-
-
 
         $text_order_id = $this->language->get('order_number');
         $text_product_name = $this->language->get('product_name');
@@ -252,17 +244,17 @@ class ControllerProductMyproduct extends Controller {
 
 
         $content = '';
-        foreach ($data as $key => $val){
-            foreach ($val['products'] as $vkey => $vval){
+        foreach ($data as $key => $val) {
+            foreach ($val['products'] as $vkey => $vval) {
 
-                $content .="<div style='background-color: white'>";
+                $content .= "<div style='background-color: white'>";
                 $content .= "<p>{$text_order_id} : $key</p>";
 
                 $content .= "<p>{$text_product_name} : {$vval['name']}</p>";
 
                 $option_str = '';
-                foreach ($vval['option'] as $okey => $oval){
-                    $option_str .= $oval['name'] .":" . $oval['value']  . "  "  ;
+                foreach ($vval['option'] as $okey => $oval) {
+                    $option_str .= $oval['name'] . ":" . $oval['value'] . "  ";
                 }
 
                 $content .= "<p>{$text_option} : {$option_str}</p>";
@@ -271,21 +263,18 @@ class ControllerProductMyproduct extends Controller {
 
                 $content .= "<p>{$text_quantity} : {$vval['quantity']}</p>";
 
-                $content .= "<p>{$text_total} : {$vval['total']}</p>" ;
+                $content .= "<p>{$text_total} : {$vval['total']}</p>";
 
-                $content .="</div>";
+                $content .= "</div>";
 
-                $content .="<div style='width: 100%;height: 0.5rem'></div>";
+                $content .= "<div style='width: 100%;height: 0.5rem'></div>";
 
 
             }
         }
 
 
-
 //        $this->logger->write($data);
-
-
 
 
 //        $content = "<p>123123123</p>";
