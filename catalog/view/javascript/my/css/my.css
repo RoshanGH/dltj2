@@ -205,13 +205,13 @@
 
  .order-product-info-title{
      position: relative;
-     height: 5.5rem;
+     /*height: 5.5rem;*/
      border-bottom: solid 1px #eeeeee;
  }
 
  .order-product-info-title-image{
      width: 30%;
-     height: 5.2rem;
+     /*height: 5.2rem;*/
      float: left;
  }
 
