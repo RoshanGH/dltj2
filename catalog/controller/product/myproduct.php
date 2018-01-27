@@ -14,6 +14,7 @@ class ControllerProductMyproduct extends Controller {
         $this->load->model('catalog/product');
 
         $product_info = $this->model_catalog_product->getProduct($product_id);
+        $fb_pixel = $product_info['upc'];
 
         //图片
         $this->load->model('tool/image');
@@ -86,6 +87,7 @@ class ControllerProductMyproduct extends Controller {
 //        $data['product_id'] = (int)$this->request->get['product_id'];
         $data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
         $data['order_url'] = $order_url;
+        $data['pixel'] = $fb_pixel;
         $data['show_order_url'] = $show_order_url;
         $data['product_id'] = $product_id;
         $data['search_order_url'] = $search_order_url;
