@@ -4,7 +4,7 @@ class ControllerProductMyproduct extends Controller {
     private $error = array();
 
     public function index() {
-        $this->logger = new \Log('log.log');
+//        $this->logger = new \Log('log.log');
         $this->load->language('product/myproduct');
         if (isset($this->request->get['product_id'])) {
             $product_id = (int)$this->request->get['product_id'];
@@ -93,7 +93,7 @@ class ControllerProductMyproduct extends Controller {
 //        print_r($product_info);
 //        print_r($data);
 //        exit;
-        $this->logger->write($data);
+//        $this->logger->write($data);
         $this->response->setOutput($this->load->view('product/myproduct', $data));
     }
 
