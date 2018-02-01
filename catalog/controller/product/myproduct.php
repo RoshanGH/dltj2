@@ -2,9 +2,10 @@
 
 class ControllerProductMyproduct extends Controller {
     private $error = array();
+    private $myCurrency ='' ;
 
     public function index() {
-//        $this->logger = new \Log('log.log');
+        $this->logger = new \Log('log.log');
         $this->load->language('product/myproduct');
         if (isset($this->request->get['product_id'])) {
             $product_id = (int)$this->request->get['product_id'];
@@ -15,6 +16,7 @@ class ControllerProductMyproduct extends Controller {
 
         $product_info = $this->model_catalog_product->getProduct($product_id);
         $fb_pixel = $product_info['upc'];
+        $this->myCurrency = $product_info['ean'];
 
         //图片
         $this->load->model('tool/image');
@@ -79,8 +81,12 @@ class ControllerProductMyproduct extends Controller {
 
 
         $data['http'] = HTTP_SERVER;
-        $data['price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
-        $data['origin_price'] = $this->currency->format($this->tax->calculate($product_info['price'] + 100, $product_info['tax_class_id'], $this->config->get('config_tax')), $this->session->data['currency']);
+        $data['price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->myCurrency);
+        $this->logger->write($product_info['price']);
+        $this->logger->write($product_info['tax_class_id']);
+        $this->logger->write($this->config->get('config_tax'));
+        $this->logger->write($this->session->data['currency']);
+        $data['origin_price'] = $this->currency->format($this->tax->calculate($product_info['price'] + 100, $product_info['tax_class_id'], $this->config->get('config_tax')), $this->myCurrency);
         $data['price_num'] = $product_info['price'];
         $data['title'] = $product_info['meta_title'];
         $data['name'] = $product_info['name'];
