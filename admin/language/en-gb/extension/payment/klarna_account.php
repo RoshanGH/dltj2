@@ -1,9 +1,17 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:23
+ */
+
 // Heading
 $_['heading_title']			= 'Klarna Account';
 
 // Text
-$_['text_extension']		= 'Extensions';
+$_['text_extension']		= '扩展';
 $_['text_success']			= 'Success: You have modified Klarna Payment module!';
 $_['text_edit']             = 'Edit Klarna Account';
 $_['text_klarna_account']	= '<a href="https://merchants.klarna.com/signup?locale=en&partner_id=d5c87110cebc383a826364769047042e777da5e8&utm_campaign=Platform&utm_medium=Partners&utm_source=Opencart" target="_blank"><img src="https://cdn.klarna.com/public/images/global/logos/v1/basic/global_basic_logo_std_blue-black.png?width=60&eid=opencart" alt="Klarna Account" title="Klarna Account" style="border: 1px solid #EEEEEE;" /></a>';

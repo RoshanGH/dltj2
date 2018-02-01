@@ -1,9 +1,17 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:23
+ */
+
 // Heading
 $_['heading_title']		 = 'Paymate';
 
 // Text
-$_['text_extension']	 = 'Extensions';
+$_['text_extension']	 = '扩展';
 $_['text_success']		 = 'Success: You have modified Paymate account details!';
 $_['text_edit']          = 'Edit Paymate';
 $_['text_paymate']		 = '<img src="view/image/payment/paymate.png" alt="Paymate" title="Paymate" style="border: 1px solid #EEEEEE;" />';

@@ -1,48 +1,56 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:22
+ */
+
 // Heading
 $_['heading_title']              = 'FraudLabs Pro';
 
 // Text
-$_['text_extension']             = 'Extensions';
-$_['text_success']               = 'Success: You have modified FraudLabs Pro Settings!';
-$_['text_edit']                  = 'Settings';
-$_['text_signup']                = 'FraudLabs Pro is a fraud detection service. You can <a href="http://www.fraudlabspro.com/plan?ref=1730" target="_blank"><u>sign up here</u></a> for a free API Key.';
-$_['text_id']                    = 'FraudLabs Pro ID';
-$_['text_ip_address']            = 'IP Address';
-$_['text_ip_net_speed']          = 'IP Net Speed';
-$_['text_ip_isp_name']           = 'IP ISP Name';
-$_['text_ip_usage_type']         = 'IP Usage Type';
-$_['text_ip_domain']             = 'IP Domain';
-$_['text_ip_time_zone']          = 'IP Time Zone';
-$_['text_ip_location']           = 'IP Location';
-$_['text_ip_distance']           = 'IP Distance';
-$_['text_ip_latitude']           = 'IP Latitude';
-$_['text_ip_longitude']          = 'IP Longitude';
-$_['text_risk_country']          = 'High Risk Country';
-$_['text_free_email']            = 'Free Email';
+$_['text_extension']             = '扩展';
+$_['text_success']               = '成功：您已经修改了欺诈实验室的设置！';
+$_['text_edit']                  = '设置';
+$_['text_signup']                = '欺诈是一项检查服务，请通过此链接 <a href="http://www.fraudlabspro.com/plan?ref=1730" target="_blank"><u>注册</u></a> 并获取免费的API key。';
+$_['text_id']                    = '欺诈实验 ID';
+$_['text_ip_address']            = 'IP 地址';
+$_['text_ip_net_speed']          = 'IP 网速';
+$_['text_ip_isp_name']           = 'IP ISP 名称';
+$_['text_ip_usage_type']         = 'IP 使用类型';
+$_['text_ip_domain']             = 'IP 域名';
+$_['text_ip_time_zone']          = 'IP 时区';
+$_['text_ip_location']           = 'IP 位置';
+$_['text_ip_distance']           = 'IP 距离';
+$_['text_ip_latitude']           = 'IP 维度';
+$_['text_ip_longitude']          = 'IP 经度';
+$_['text_risk_country']          = '高危国家';
+$_['text_free_email']            = '免费 Email';
 $_['text_ship_forward']          = 'Ship Forward';
-$_['text_using_proxy']           = 'Using Proxy';
+$_['text_using_proxy']           = '使用代理';
 $_['text_bin_found']             = 'BIN Found';
-$_['text_email_blacklist']       = 'Email Blacklist';
-$_['text_credit_card_blacklist'] = 'Credit Card Blacklist';
-$_['text_score']                 = 'FraudLabs Pro Score';
-$_['text_status']                = 'FraudLabs Pro Status';
-$_['text_message']               = 'Message';
-$_['text_transaction_id']        = 'Transaction ID';
-$_['text_credits']               = 'Balance';
-$_['text_error']                 = 'Error:';
-$_['text_flp_upgrade']           = '<a href="http://www.fraudlabspro.com/plan" target="_blank">[Upgrade]</a>';
-$_['text_flp_merchant_area']     = 'Please login to <a href="http://www.fraudlabspro.com/merchant/login" target="_blank">FraudLabs Pro Merchant Area</a> for more information about this order.';
+$_['text_email_blacklist']       = '电子邮件黑名单';
+$_['text_credit_card_blacklist'] = '信用卡黑名单';
+$_['text_score']                 = '实验室分数';
+$_['text_status']                = '实验室状态';
+$_['text_message']               = '信息';
+$_['text_transaction_id']        = '交易 ID';
+$_['text_credits']               = '余额';
+$_['text_error']                 = '错误';
+$_['text_flp_upgrade']           = '<a href="http://www.fraudlabspro.com/plan" target="_blank">[升级]</a>';
+$_['text_flp_merchant_area']     = '请登录 <a href="http://www.fraudlabspro.com/login" target="_blank">FraudLabs Pro Merchant Area</a> 了解订单详情。';
 
 // Entry
-$_['entry_status']               = 'Status';
+$_['entry_status']               = '状态';
 $_['entry_key']                  = 'API Key';
-$_['entry_score']                = 'Risk Score';
-$_['entry_order_status']         = 'Order Status';
-$_['entry_review_status']        = 'Review Status';
-$_['entry_approve_status']       = 'Approve Status';
-$_['entry_reject_status']        = 'Reject Status';
-$_['entry_simulate_ip']          = 'Simulate IP';
+$_['entry_score']                = '风险分数';
+$_['entry_order_status']         = '订单状态';
+$_['entry_review_status']        = '评论状态';
+$_['entry_approve_status']       = '审核状态';
+$_['entry_reject_status']        = '拒绝状态';
+$_['entry_simulate_ip']          = '模拟 IP';
 
 // Help
 $_['help_order_status']          = 'Orders that have a score over your set risk score will be assigned this order status.';

@@ -1,9 +1,17 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:23
+ */
+
 // Heading
 $_['heading_title']					 = 'First Data EMEA Connect (3DSecure enabled)';
 
 // Text
-$_['text_extension']				 = 'Extensions';
+$_['text_extension']				 = '扩展';
 $_['text_success']					 = 'Success: You have modified First Data account details!';
 $_['text_edit']                      = 'Edit First Data EMEA Connect (3DSecure enabled)';
 $_['text_notification_url']			 = 'Notification URL';
@@ -57,7 +65,7 @@ $_['entry_enable_card_store']		 = 'Enable card storage tokens';
 $_['help_total']					 = 'The checkout total the order must reach before this payment method becomes active';
 $_['help_notification']				 = 'You need to supply this URL to First Data to get payment notifications';
 $_['help_debug']					 = 'Enabling debug will write sensitive data to a log file. You should always disable unless instructed otherwise';
-$_['help_settle']					 = 'If you use pre-auth you must complete a post-auth action within 3-5 days otherwise your transaction will be dropped'; 
+$_['help_settle']					 = 'If you use pre-auth you must complete a post-auth action within 3-5 days otherwise your transaction will be dropped';
 
 // Tab
 $_['tab_account']					 = 'API info';

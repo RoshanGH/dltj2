@@ -1,9 +1,17 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:23
+ */
+
 // Heading
 $_['heading_title']			 = 'BluePay Redirect (Requires SSL)';
 
 // Text
-$_['text_extension']		 = 'Extensions';
+$_['text_extension']		 = '扩展';
 $_['text_success']			 = 'Success: You have modified BluePay Redirect account details!';
 $_['text_edit']              = 'Edit BluePay Redirect (Requires SSL)';
 $_['text_bluepay_redirect']	 = '<a href="http://www.bluepay.com/preferred-partner/opencart" target="_blank"><img src="view/image/payment/bluepay.jpg" alt="BluePay Redirect" title="BluePay Redirect" style="border: 1px solid #EEEEEE;" /></a>';

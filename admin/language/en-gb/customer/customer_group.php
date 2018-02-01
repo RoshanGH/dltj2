@@ -1,30 +1,38 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2017-10-05 09:40:20
+ * @modified         2017-10-07 11:45:05
+ */
+
 // Heading
-$_['heading_title']     = 'Customer Groups';
+$_['heading_title']     = '客户群组';
 
 // Text
-$_['text_success']      = 'Success: You have modified customer groups!';
-$_['text_list']         = 'Customer Group List';
-$_['text_add']          = 'Add Customer Group';
-$_['text_edit']         = 'Edit Customer Group';
+$_['text_success']      = '成功: 客户群组已修改！';
+$_['text_list']         = '客户群组列表';
+$_['text_add']          = '添加客户群组';
+$_['text_edit']         = '编辑客户群组';
 
 // Column
-$_['column_name']       = 'Customer Group Name';
-$_['column_sort_order'] = 'Sort Order';
-$_['column_action']     = 'Action';
+$_['column_name']       = '客户群组名称';
+$_['column_sort_order'] = '排序';
+$_['column_action']     = '操作';
 
 // Entry
-$_['entry_name']        = 'Customer Group Name';
-$_['entry_description'] = 'Description';
-$_['entry_approval']    = 'Approve New Customers';
-$_['entry_sort_order']  = 'Sort Order';
+$_['entry_name']        = '客户群组名称';
+$_['entry_description'] = '描述';
+$_['entry_approval']    = '审核新客户';
+$_['entry_sort_order']  = '排序';
 
 // Help
-$_['help_approval']     = 'Customers must be approved by an administrator before they can login.';
+$_['help_approval']     = '登录前必须经管理员审核通过。';
 
 // Error
-$_['error_permission']  = 'Warning: You do not have permission to modify customer groups!';
-$_['error_name']        = 'Customer Group Name must be between 3 and 32 characters!';
-$_['error_default']     = 'Warning: This customer group cannot be deleted as it is currently assigned as the default store customer group!';
-$_['error_store']       = 'Warning: This customer group cannot be deleted as it is currently assigned to %s stores!';
-$_['error_customer']    = 'Warning: This customer group cannot be deleted as it is currently assigned to %s customers!';
+$_['error_permission']   = '警告: 无权限修改客户群组！';
+$_['error_name']         = '客户群组名称必须为 3 至 32 字符！';
+$_['error_default']      = '警告: 不能删除此客户群组，该客户群组已被关联为商店默认客户群组！';
+$_['error_store']        = '警告: 不能删除此客户群组，该客户群组已被关联到 %s 个商店！';
+$_['error_customer']     = '警告: 不能删除此客户群组，该客户群组已被关联 %s 个客户！';

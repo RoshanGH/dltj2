@@ -1,9 +1,17 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:23
+ */
+
 // Heading
 $_['heading_title']						 = 'Klarna Checkout';
 
 // Text
-$_['text_extension']					 = 'Extensions';
+$_['text_extension']					 = '扩展';
 $_['text_success']						 = 'Success: You have modified Klarna Checkout account details!';
 $_['text_edit']							 = 'Edit Klarna Checkout';
 $_['text_live']							 = 'Live';
@@ -33,7 +41,7 @@ $_['text_downloading_settlement']		 = 'Downloading settlement files...';
 $_['text_processing_orders']			 = 'Processing orders...';
 $_['text_processing_order']				 = 'Processing order';
 $_['text_no_files']						 = 'No files to download.';
-$_['text_version']						 = '1.2';
+$_['text_version']						 = '1.1';
 
 // Column
 $_['column_order_id']					 = 'Order ID';
@@ -96,7 +104,6 @@ $_['entry_separate_shipping_address']	 = 'Allow Separate Shipping Address';
 $_['entry_dob_mandatory']				 = 'Date Of Birth Mandatory (UK stores only)';
 $_['entry_title_mandatory']				 = 'Title Mandatory (UK stores only)';
 $_['entry_additional_text_box']			 = 'Allow Newsletter Signup';
-
 $_['entry_total']						 = 'Total';
 $_['entry_order_status']				 = 'Order Status';
 $_['entry_order_status_authorised']		 = 'Authorized';
@@ -142,7 +149,7 @@ $_['help_api']							 = 'For Europe users, Klarna Checkout doesn\'t provide the 
 $_['help_sftp_username']				 = 'SFTP username provided by your account manager';
 $_['help_sftp_password']				 = 'SFTP password provided by your account manager';
 $_['help_settlement_order_status']		 = 'Order status that processed settlement orders will change to.';
-$_['help_shipping']						 = 'All countries within this geo zone will be available to select in the Klarna iFrame.';
+$_['help_shipping']                      = 'All countries within this geo zone will be available to select in the Klarna iFrame.';
 
 // Button
 $_['button_account_remove']				 = 'Remove Account';

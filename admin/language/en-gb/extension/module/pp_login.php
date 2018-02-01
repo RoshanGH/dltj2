@@ -1,35 +1,43 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:22
+ */
+
 // Heading
-$_['heading_title']        = 'Log In with PayPal';
+$_['heading_title']        = ' Paypal 登录';
 
 // Text
-$_['text_extension']       = 'Extensions';
-$_['text_success']         = 'Success: You have modified Log In with PayPal module!';
-$_['text_edit']            = 'Edit Log In with PayPal Module';
-$_['text_button_grey']     = 'Grey';
-$_['text_button_blue']     = 'Blue (Recommended)';
+$_['text_extension']       = '扩展';
+$_['text_success']         = '成功：Paypal 登录模块已修改！';
+$_['text_edit']            = '编辑 Paypal 登录模块';
+$_['text_button_grey']     = '灰色';
+$_['text_button_blue']     = '蓝色 (推荐)';
 
-// Entry
-$_['entry_client_id']      = 'Client ID';
-$_['entry_secret']         = 'Secret';
-$_['entry_sandbox']        = 'Sandbox Mode';
-$_['entry_debug']          = 'Debug Logging';
-$_['entry_customer_group'] = 'Customer Group';
-$_['entry_button']         = 'Button Colour';
-$_['entry_seamless']       = 'Allow "Seamless Checkout"';
-$_['entry_locale']         = 'Locale';
-$_['entry_return_url']     = 'Return URL';
-$_['entry_status']         = 'Status';
+//Entry
+$_['entry_client_id']      = '客户端 ID';
+$_['entry_secret']         = '密钥';
+$_['entry_sandbox']        = '测试模式';
+$_['entry_debug']          = '调试日志记录';
+$_['entry_customer_group'] = '客户组';
+$_['entry_button']         = '按钮的颜色';
+$_['entry_seamless']       = '允许"无缝结账"';
+$_['entry_locale']         = '区域设置';
+$_['entry_return_url']     = '返回 URL';
+$_['entry_status']         = '状态';
 
-// Help
-$_['help_sandbox']         = 'Use sandbox (testing) environment?';
-$_['help_customer_group']  = 'For new customers, which Customer Group should they get created as?';
-$_['help_debug_logging']   = 'Enabling this will allow data to be added to your error log to help debug any problems.';
-$_['help_seamless']        = 'Allows auto-login when customers choose PayPal Express Checkout. To use this, the option must be enabled in your Log in With PayPal account. You must also use the same account as the one used in Express Checkout.';
-$_['help_locale']          = 'This is the PayPal locale setting for your store languages';
-$_['help_return_url']      = 'This needs to be added in the PayPal app configuration under app redirect URLs.';
+//Help
+$_['help_sandbox']         = '是否使用沙盒（测试）环境？';
+$_['help_customer_group']  = '设置新客户的默认群组';
+$_['help_debug_logging']   = '启动此选项会将调试错误信息写到错误日志中。';
+$_['help_seamless']        = '允许客户选择 PayPal Express 结账时自动登录。要使用此功能，请启用此选项。结账账户和登录到 PayPal 的账户必须为同一账户。';
+$_['help_locale']          = '设置商店 Paypal 地区设定';
+$_['help_return_url']      = '请将此跳转链接添加到 PayPal 配置的 app redirect URL 中。';
 
-// Error
-$_['error_permission']     = 'Warning: You do not have permission to modify Log In with PayPal module!';
-$_['error_client_id']      = 'Client ID required!';
-$_['error_secret']         = 'Secret required!';
+//Error
+$_['error_permission']     = '错误：您没有权限修改 PayPal 登录模块！';
+$_['error_client_id']      = '客户端 ID 必填！';
+$_['error_secret']         = '密钥必填 ！';

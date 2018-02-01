@@ -1,18 +1,26 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2017-10-05 09:40:20
+ * @modified         2017-10-07 11:45:05
+ */
+
 // Text
-$_['text_success']     = 'Success: You have modified extensions!';
-$_['text_unzip']       = 'Extracting files!';
-$_['text_move']        = 'Copying files!';
-$_['text_xml']         = 'Applying modifications!';
-$_['text_remove']      = 'Removing temporary files!';
+$_['text_success']     = '成功：扩展已修改！';
+$_['text_unzip']       = '正在解压扩展！';
+$_['text_move']        = '正在复制文件！';
+$_['text_xml']         = '正在运用修改！';
+$_['text_clear']       = '正在清除临时文件！';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify extensions!';
-$_['error_install']    = 'Extension installation taking place please wait a few seconds before trying to install!';
-$_['error_unzip']      = 'Zip file could not be opened!';
-$_['error_file']       = 'Install file could not be found!';
-$_['error_directory']  = 'Install directory could not be found!';
-$_['error_code']       = 'Unique code is required for modification XML!';
-$_['error_xml']        = 'Modification %s is already being used!';
-$_['error_exists']     = 'The file %s already exists!';
-$_['error_allowed']    = 'The directory %s is not allowed to be written to!';
+$_['error_permission'] = '错误：您没有权限操作扩展！';
+$_['error_install']    = '扩展安装正在进行中，请稍候再试！';
+$_['error_unzip']      = '压缩文件无法打开！';
+$_['error_file']       = '无法找到安装文件！';
+$_['error_directory']  = '无法找到安装文件夹！';
+$_['error_code']       = 'OCMod XML 文件中的 code 已存在！';
+$_['error_xml']        = 'OCMod %s 已存在！';
+$_['error_exists']     = '文件 %s 已存在！';
+$_['error_allowed']    = '文件夹：%s 不可写！';

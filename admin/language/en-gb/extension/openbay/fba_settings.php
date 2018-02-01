@@ -1,4 +1,12 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:23
+ */
+
 // Headings
 $_['heading_title']        	   = 'Settings';
 $_['text_openbay']             = 'OpenBay Pro';
@@ -23,7 +31,7 @@ $_['text_validate_success']    = 'Your API details are working correctly! You mu
 $_['text_register_banner']     = 'Click here if you need to register for an account';
 
 // Entry
-$_['entry_api_key']            = 'API token';
+$_['entry_api_key']            = 'API key';
 $_['entry_encryption_key']     = 'Encryption key 1';
 $_['entry_encryption_iv']      = 'Encryption key 2';
 $_['entry_account_id']         = 'Account ID';
@@ -36,7 +44,7 @@ $_['entry_order_id_prefix']    = 'Order ID Prefix';
 $_['entry_only_fill_complete'] = 'All items must be FBA';
 
 // Help
-$_['help_api_key']             = 'This is your API token, obtain this from your OpenBay Pro account area';
+$_['help_api_key']             = 'This is your API key, obtain this from your OpenBay Pro account area';
 $_['help_encryption_key']      = 'This is your Encryption key #1, obtain this from your OpenBay Pro account area';
 $_['help_encryption_iv']       = 'This is your Encryption key #2, obtain this from your OpenBay Pro account area';
 $_['help_account_id']          = 'This is the account ID that matches the registered Amazon account for OpenBay Pro, obtain this from your OpenBay Pro account area';

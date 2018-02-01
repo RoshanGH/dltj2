@@ -1,9 +1,17 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:24
+ */
+
 // Heading
 $_['heading_title']				= 'Web Payment Software';
 
 // Text
-$_['text_extension']			= 'Extensions';
+$_['text_extension']			= '扩展';
 $_['text_success']				= 'Success: You have modified Web Payment Software account details!';
 $_['text_edit']                 = 'Edit AWeb Payment Software';
 $_['text_web_payment_software']	= '<a href="http://www.web-payment-software.com/" target="_blank"><img src="view/image/payment/wps-logo.jpg" alt="Web Payment Software" title="Web Payment Software" style="border: 1px solid #EEEEEE;" /></a>';

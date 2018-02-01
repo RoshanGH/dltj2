@@ -1,11 +1,19 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:23
+ */
+
 // Heading
 $_['heading_title']                    = 'Divido';
 
 // Text
 $_['text_divido']                      = '<a href="http://divido.com" target="_blank"><img src="view/image/payment/divido.png"></a>';
 $_['text_edit']                        = 'Edit Divido';
-$_['text_extension']                   = 'Extensions';
+$_['text_extension']                   = '扩展';
 $_['text_order_info']                  = 'Divido info';
 $_['text_success']                     = 'Success: You have modified the Divido module';
 $_['text_proposal_id']                 = 'Proposal ID';

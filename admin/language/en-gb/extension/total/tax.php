@@ -1,15 +1,23 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:24
+ */
+
 // Heading
-$_['heading_title']    = 'Taxes';
+$_['heading_title']    = '税费';
 
 // Text
-$_['text_extension']   = 'Extensions';
-$_['text_success']     = 'Success: You have modified taxes total!';
-$_['text_edit']        = 'Edit Tax Total';
+$_['text_extension']   = '扩展';
+$_['text_success']     = '成功：税费已修改！';
+$_['text_edit']        = '编辑税费';
 
 // Entry
-$_['entry_status']     = 'Status';
-$_['entry_sort_order'] = 'Sort Order';
+$_['entry_status']     = '状态';
+$_['entry_sort_order'] = '排序';
 
 // Error
-$_['error_permission'] = 'Warning: You do not have permission to modify taxes total!';
+$_['error_permission'] = '错误：您没有权限修改税费！';

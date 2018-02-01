@@ -1,110 +1,118 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-26 21:31:36
+ */
+
 // Heading
-$_['heading_title']          = 'Products';
+$_['heading_title']              = '商品管理';
 
 // Text
-$_['text_success']           = 'Success: You have modified products!';
-$_['text_list']              = 'Product List';
-$_['text_add']               = 'Add Product';
-$_['text_edit']              = 'Edit Product';
-$_['text_filter']            = 'Filter';
-$_['text_plus']              = '+';
-$_['text_minus']             = '-';
-$_['text_default']           = 'Default';
-$_['text_option']            = 'Option';
-$_['text_option_value']      = 'Option Value';
-$_['text_percent']           = 'Percentage';
-$_['text_amount']            = 'Fixed Amount';
-$_['text_keyword']           = 'Do not use spaces, instead replace spaces with - and make sure the SEO URL is globally unique.';
+$_['text_success']               = '成功：商品已修改！';
+$_['text_list']                  = '商品列表';
+$_['text_add']                   = '新增商品';
+$_['text_edit']                  = '编辑商品';
+$_['text_filter']                = '筛选';
+$_['text_plus']                  = '+';
+$_['text_minus']                 = '-';
+$_['text_default']               = '默认';
+$_['text_option']                = '选项';
+$_['text_option_value']          = '选项值';
+$_['text_percent']               = '百分比';
+$_['text_amount']                = '固定金额';
+$_['text_keyword']               = '不要输入空格，可用 -（中横线）代替空格。并确保全站唯一。';
 
 // Column
-$_['column_name']            = 'Product Name';
-$_['column_model']           = 'Model';
-$_['column_image']           = 'Image';
-$_['column_price']           = 'Price';
-$_['column_quantity']        = 'Quantity';
-$_['column_status']          = 'Status';
-$_['column_action']          = 'Action';
+$_['column_name']                = '商品名称';
+$_['column_model']               = '商品型号';
+$_['column_image']               = '图片';
+$_['column_price']               = '价格';
+$_['column_quantity']            = '数量';
+$_['column_status']              = '状态';
+$_['column_action']              = '管理';
 
 // Entry
-$_['entry_name']             = 'Product Name';
-$_['entry_description']      = 'Description';
-$_['entry_meta_title']       = 'Meta Tag Title';
-$_['entry_meta_keyword']     = 'Meta Tag Keywords';
-$_['entry_meta_description'] = 'Meta Tag Description';
-$_['entry_store']            = 'Stores';
-$_['entry_keyword']          = 'Keyword';
-$_['entry_model']            = 'Model';
-$_['entry_sku']              = 'SKU';
-$_['entry_upc']              = 'UPC';
-$_['entry_ean']              = 'EAN';
-$_['entry_jan']              = 'JAN';
-$_['entry_isbn']             = 'ISBN';
-$_['entry_mpn']              = 'MPN';
-$_['entry_location']         = 'Location';
-$_['entry_shipping']         = 'Requires Shipping';
-$_['entry_manufacturer']     = 'Manufacturer';
-$_['entry_date_available']   = 'Date Available';
-$_['entry_quantity']         = 'Quantity';
-$_['entry_minimum']          = 'Minimum Quantity';
-$_['entry_stock_status']     = 'Out Of Stock Status';
-$_['entry_price']            = 'Price';
-$_['entry_tax_class']        = 'Tax Class';
-$_['entry_points']           = 'Points';
-$_['entry_option_points']    = 'Points';
-$_['entry_subtract']         = 'Subtract Stock';
-$_['entry_weight_class']     = 'Weight Class';
-$_['entry_weight']           = 'Weight';
-$_['entry_dimension']        = 'Dimensions (L x W x H)';
-$_['entry_length_class']     = 'Length Class';
-$_['entry_length']           = 'Length';
-$_['entry_width']            = 'Width';
-$_['entry_height']           = 'Height';
-$_['entry_image']            = 'Image';
-$_['entry_additional_image'] = 'Additional Images';
-$_['entry_customer_group']   = 'Customer Group';
-$_['entry_date_start']       = 'Date Start';
-$_['entry_date_end']         = 'Date End';
-$_['entry_priority']         = 'Priority';
-$_['entry_attribute']        = 'Attribute';
-$_['entry_attribute_group']  = 'Attribute Group';
-$_['entry_text']             = 'Text';
-$_['entry_option']           = 'Option';
-$_['entry_option_value']     = 'Option Value';
-$_['entry_required']         = 'Required';
-$_['entry_status']           = 'Status';
-$_['entry_sort_order']       = 'Sort Order';
-$_['entry_category']         = 'Categories';
-$_['entry_filter']           = 'Filters';
-$_['entry_download']         = 'Downloads';
-$_['entry_related']          = 'Related Products';
-$_['entry_tag']              = 'Product Tags';
-$_['entry_reward']           = 'Reward Points';
-$_['entry_layout']           = 'Layout Override';
-$_['entry_recurring']        = 'Recurring Profile';
+$_['entry_name']                 = '商品名称';
+$_['entry_description']          = '商品描述';
+$_['entry_meta_title']           = 'Meta Tag 标题';
+$_['entry_meta_keyword']         = 'Meta Tag 关键字';
+$_['entry_meta_description']     = 'Meta Tag 描述';
+$_['entry_store']                = '商店';
+$_['entry_keyword']              = 'SEO URL';
+$_['entry_model']                = '商品型号';
+$_['entry_sku']                  = 'SKU';
+$_['entry_upc']                  = 'UPC';
+$_['entry_ean']                  = 'EAN';
+$_['entry_jan']                  = 'JAN';
+$_['entry_isbn']                 = 'ISBN';
+$_['entry_mpn']                  = 'MPN';
+$_['entry_location']             = '商品位置';
+$_['entry_shipping']             = '需要配送';
+$_['entry_manufacturer']         = '商品品牌';
+$_['entry_date_available']       = '供货日期';
+$_['entry_quantity']             = '商品数量';
+$_['entry_minimum']              = '最小起订数量';
+$_['entry_stock_status']         = '缺货状态';
+$_['entry_price']                = '销售价格';
+$_['entry_tax_class']            = '商品税别';
+$_['entry_points']               = '购买积分';
+$_['entry_option_points']        = '选项积分';
+$_['entry_subtract']             = '扣减库存';
+$_['entry_weight_class']         = '重量单位';
+$_['entry_weight']               = '重量';
+$_['entry_dimension']            = '尺寸 (长 x 宽 x 高)';
+$_['entry_length_class']         = '长度单位';
+$_['entry_length']               = '长';
+$_['entry_width']                = '宽';
+$_['entry_height']               = '高';
+$_['entry_image']                = '图片';
+$_['entry_additional_image']     = '附加图片';
+$_['entry_customer_group']       = '客户组';
+$_['entry_date_start']           = '开始日期';
+$_['entry_date_end']             = '结束日期';
+$_['entry_priority']             = '优先级';
+$_['entry_attribute']            = '属性';
+$_['entry_attribute_group']      = '属性组';
+$_['entry_text']                 = '内容';
+$_['entry_option']               = '选项';
+$_['entry_option_value']         = '选项值';
+$_['entry_required']             = '必填';
+$_['entry_status']               = '状态';
+$_['entry_sort_order']           = '排序';
+$_['entry_category']             = '商品分类';
+$_['entry_filter']               = '筛选';
+$_['entry_download']             = '下载';
+$_['entry_related']              = '相关商品';
+$_['entry_tag']                  = '商品标签';
+$_['entry_reward']               = '积分';
+$_['entry_layout']               = '布局覆盖';
+$_['entry_recurring']            = '分期付款';
 
 // Help
-$_['help_sku']               = 'Stock Keeping Unit';
-$_['help_upc']               = 'Universal Product Code';
-$_['help_ean']               = 'European Article Number';
-$_['help_jan']               = 'Japanese Article Number';
-$_['help_isbn']              = 'International Standard Book Number';
-$_['help_mpn']               = 'Manufacturer Part Number';
-$_['help_manufacturer']      = '(Autocomplete)';
-$_['help_minimum']           = 'Force a minimum ordered amount';
-$_['help_stock_status']      = 'Status shown when a product is out of stock';
-$_['help_points']            = 'Number of points needed to buy this item. If you don\'t want this product to be purchased with points leave as 0.';
-$_['help_category']          = '(Autocomplete)';
-$_['help_filter']            = '(Autocomplete)';
-$_['help_download']          = '(Autocomplete)';
-$_['help_related']           = '(Autocomplete)';
-$_['help_tag']               = 'Comma separated';
+$_['help_sku']                   = '库存单位';
+$_['help_upc']                   = '通用商品代码(UPC)';
+$_['help_ean']                   = '欧洲商品编号(EAN)';
+$_['help_jan']                   = '日本商品编号(JAN)';
+$_['help_isbn']                  = '国际标准图书编号(ISBN)';
+$_['help_mpn']                   = '生产商编号(MPN)';
+$_['help_manufacturer']          = '(自动完成)';
+$_['help_minimum']               = '最小购买数量';
+$_['help_stock_status']          = '商品缺货时，显示的缺货状态。';
+$_['help_points']                = '购买此商品需要的积分，如不需要积分请输入 0';
+$_['help_category']              = '自动完成';
+$_['help_filter']                = '自动完成';
+$_['help_download']              = '自动完成';
+$_['help_related']               = '自动完成';
+$_['help_tag']                   = '使用逗号（半角）分隔';
 
 // Error
-$_['error_warning']          = 'Warning: Please check the form carefully for errors!';
-$_['error_permission']       = 'Warning: You do not have permission to modify products!';
-$_['error_name']             = 'Product Name must be greater than 1 and less than 255 characters!';
-$_['error_meta_title']       = 'Meta Title must be greater than 1 and less than 255 characters!';
-$_['error_model']            = 'Product Model must be greater than 1 and less than 64 characters!';
-$_['error_keyword']          = 'SEO URL already in use!';
-$_['error_unique']           = 'SEO URL must be unique!';
+$_['error_warning']              = '错误：相关数据未填写！';
+$_['error_permission']           = '错误：您没有权限修改商品！';
+$_['error_name']                 = '商品名称长度必须在 1 至 255 个字符之间！';
+$_['error_meta_title']           = 'Meta 标题必须在 1 至 255 字符之间！';
+$_['error_model']                = '商品型号必须在 1 至 64 个字符之间！';
+$_['error_keyword']              = 'SEO URL 已被使用！';
+$_['error_unique']               = 'SEO URL 已被使用！';

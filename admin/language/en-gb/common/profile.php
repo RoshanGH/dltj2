@@ -1,33 +1,41 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2017-10-05 09:40:20
+ * @modified         2017-10-07 11:45:05
+ */
+
 // Heading
-$_['heading_title']         = 'Profile';
+$_['heading_title']         = '账号信息';
 
 // Text
-$_['text_success']          = 'Success: You have modified your profile!';
-$_['text_edit']             = 'Edit Your Profile';
+$_['text_success']          = '成功：账号信息已修改！';
+$_['text_edit']             = '编辑账号信息';
 
 // Column
-$_['column_username']       = 'Username';
-$_['column_status']         = 'Status';
-$_['column_date_added']     = 'Date Added';
-$_['column_action']         = 'Action';
+$_['column_username']       = '用户名';
+$_['column_status']         = '状态';
+$_['column_date_added']     = '添加日期';
+$_['column_action']         = '管理';
 
 // Entry
-$_['entry_username']        = 'Username';
-$_['entry_password']        = 'Password';
-$_['entry_confirm']         = 'Confirm';
-$_['entry_firstname']       = 'First Name';
-$_['entry_lastname']        = 'Last Name';
+$_['entry_username']        = '用户名';
+$_['entry_password']        = '密码';
+$_['entry_confirm']         = '确认密码';
+$_['entry_firstname']       = '名字';
+$_['entry_lastname']        = '姓氏';
 $_['entry_email']           = 'E-Mail';
-$_['entry_image']           = 'Image';
+$_['entry_image']           = '头像';
 
 // Error
-$_['error_permission']      = 'Warning: You do not have permission to modify your profile!';
-$_['error_exists_username'] = 'Warning: Username is already in use!';
-$_['error_username']        = 'Username must be between 3 and 20 characters!';
-$_['error_password']        = 'Password must be between 4 and 20 characters!';
-$_['error_confirm']         = 'Password and password confirmation do not match!';
-$_['error_firstname']       = 'First Name must be between 1 and 32 characters!';
-$_['error_lastname']        = 'Last Name must be between 1 and 32 characters!';
-$_['error_email']           = 'E-Mail Address does not appear to be valid!';
-$_['error_exists_email']    = 'Warning: E-Mail Address is already registered!';
+$_['error_permission']      = '错误：您没有权限修改账号信息！';
+$_['error_username_exists'] = '错误：用户名已被使用！';
+$_['error_username']        = '用户名必须在 3 至 20 个字符之间！';
+$_['error_password']        = '密码必须在 4 至 20 个字符之间！';
+$_['error_confirm']         = '两次输入密码不一致！';
+$_['error_firstname']       = '名字必须在 1 至 32 个字符之间！';
+$_['error_lastname']        = '姓氏必须在 1 至 32 个字符之间！';
+$_['error_email']           = 'E-Mail 地址无效！';
+$_['error_email_exists']    = 'E-mail 地址已被使用！';

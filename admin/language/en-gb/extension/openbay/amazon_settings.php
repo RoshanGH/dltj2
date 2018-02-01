@@ -1,9 +1,16 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:22
+ */
+
 // Heading
 $_['heading_title']        			 = 'Marketplace settings';
 $_['text_openbay']					 = 'OpenBay Pro';
 $_['text_amazon']					 = 'Amazon EU';
-$_['text_edit']				         = 'Edit Amazon EU settings';
 
 // Text
 $_['text_api_status']                = 'API connection status';
@@ -41,9 +48,9 @@ $_['error_permission']         		 = 'You do not have access to this module';
 
 // Entry
 $_['entry_status']                 	 = 'Status';
-$_['entry_token']                    = 'API token';
-$_['entry_encryption_key']           = 'Encryption key 1';
-$_['entry_encryption_iv']            = 'Encryption key 2';
+$_['entry_token']                    = 'Token';
+$_['entry_string1']              	 = 'Encryption String 1';
+$_['entry_string2']              	 = 'Encryption String 2';
 $_['entry_import_tax']               = 'Tax for imported items';
 $_['entry_customer_group']           = 'Customer Group';
 $_['entry_tax_percentage']           = 'Modify price';

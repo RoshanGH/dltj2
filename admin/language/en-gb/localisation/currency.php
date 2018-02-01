@@ -1,38 +1,46 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:24
+ */
+
 // Heading
-$_['heading_title']        = 'Currencies';
+$_['heading_title']        = '货币设置';
 
 // Text
-$_['text_success']         = 'Success: You have modified currencies!';
-$_['text_list']            = 'Currency List';
-$_['text_add']             = 'Add Currency';
-$_['text_edit']            = 'Edit Currency';
-$_['text_iso']             = 'You can find a full list of ISO currency codes and settings <a href="http://www.xe.com/iso4217.php" target="_blank" class="alert-link">here</a>.';
+$_['text_success']         = '成功：货币设置已修改！';
+$_['text_list']            = '货币列表';
+$_['text_add']             = '添加货币';
+$_['text_edit']            = '编辑货币';
+$_['text_iso']             = '查看完整货币 ISO 代码列表，请点击 <a href="http://www.xe.com/iso4217.php" target="_blank">链接</a>.';
 
 // Column
-$_['column_title']         = 'Currency Title';
-$_['column_code']          = 'Code';
-$_['column_value']         = 'Value';
-$_['column_date_modified'] = 'Last Updated';
-$_['column_action']        = 'Action';
+$_['column_title']         = '货币名称';
+$_['column_code']          = '代码';
+$_['column_value']         = '汇率';
+$_['column_date_modified'] = '最近更新';
+$_['column_action']        = '管理';
 
 // Entry
-$_['entry_title']          = 'Currency Title';
-$_['entry_code']           = 'Code';
-$_['entry_value']          = 'Value';
-$_['entry_symbol_left']    = 'Symbol Left';
-$_['entry_symbol_right']   = 'Symbol Right';
-$_['entry_decimal_place']  = 'Decimal Places';
-$_['entry_status']         = 'Status';
+$_['entry_title']          = '货币名称';
+$_['entry_code']           = '货币代码';
+$_['entry_value']          = '汇率';
+$_['entry_symbol_left']    = '左符号';
+$_['entry_symbol_right']   = '右符号';
+$_['entry_decimal_place']  = '小数位';
+$_['entry_status']         = '状态';
 
 // Help
-$_['help_code']            = 'Do not change if this is your default currency.';
-$_['help_value']           = 'Set to 1.00000 if this is your default currency.';
+$_['help_code']            = '如果此货币为默认货币时，请不要改变。';
+$_['help_value']           = '默认货币请输入 1.00000';
 
 // Error
-$_['error_permission']     = 'Warning: You do not have permission to modify currencies!';
-$_['error_title']          = 'Currency Title must be between 3 and 32 characters!';
-$_['error_code']           = 'Currency Code must contain 3 characters!';
-$_['error_default']        = 'Warning: This currency cannot be deleted as it is currently assigned as the default store currency!';
-$_['error_store']          = 'Warning: This currency cannot be deleted as it is currently assigned to %s stores!';
-$_['error_order']          = 'Warning: This currency cannot be deleted as it is currently assigned to %s orders!';
+$_['error_permission']     = '警告：您没有权限修改货币设置';
+$_['error_title']          = '货币名称必须在 2 至 32 个字符之间！';
+$_['error_code']           = '货币代码必须是3个字符！';
+$_['error_default']        = '错误：该货币为商店的默认货币，无法删除！';
+$_['error_store']          = '错误：该货币不能删除，%s 商店正在使用！';
+$_['error_order']          = '错误：该货币不能删除，%s 订单正在使用！';

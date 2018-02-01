@@ -1,4 +1,12 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:23
+ */
+
 // Heading
 $_['heading_title']                 = 'Lay-Buy';
 $_['heading_transaction_title']     = 'Transaction';
@@ -12,7 +20,7 @@ $_['tab_payment']                   = 'Payment Plan';
 $_['tab_modify']                    = 'Modify Plan';
 
 // Text
-$_['text_extension']                = 'Extensions';
+$_['text_extension']                = '扩展';
 $_['text_success']                  = 'Success: You have modified Lay-Buy payment module!';
 $_['text_edit']                     = 'Edit Lay-Buy';
 $_['text_laybuy']                   = '<a href="https://www.lay-buys.com" target="_blank"><img src="view/image/payment/laybuys.png" style="width:94px;height:25px" alt="Lay-Buys" title="Lay-Buys"></a>';

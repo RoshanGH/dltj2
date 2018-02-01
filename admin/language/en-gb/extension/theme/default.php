@@ -1,48 +1,56 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-08 16:11:56
+ */
+
 // Heading
-$_['heading_title']                    = 'Default Store Theme';
+$_['heading_title']                    = '默认主题';
 
 // Text
-$_['text_extension']                   = 'Extensions';
-$_['text_success']                     = 'Success: You have modified the default store theme!';
-$_['text_edit']                        = 'Edit Default Store Theme';
-$_['text_general']                     = 'General';
-$_['text_product']                     = 'Products';
-$_['text_image']                       = 'Images';
+$_['text_extension']                   = '扩展';
+$_['text_success']                     = '成功：默认主题已修改！';
+$_['text_edit']                        = '编辑默认主题';
+$_['text_general']                     = '常规';
+$_['text_product']                     = '产品';
+$_['text_image']                       = '图片';
 
 // Entry
-$_['entry_directory']                  = 'Theme Directory';
-$_['entry_status']                     = 'Status';
-$_['entry_product_limit']              = 'Default Items Per Page';
-$_['entry_product_description_length'] = 'List Description Limit';
-$_['entry_image_category']             = 'Category Image Size (W x H)';
-$_['entry_image_thumb']                = 'Product Image Thumb Size (W x H)';
-$_['entry_image_popup']                = 'Product Image Popup Size (W x H)';
-$_['entry_image_product']              = 'Product Image List Size (W x H)';
-$_['entry_image_additional']           = 'Additional Product Image Size (W x H)';
-$_['entry_image_related']              = 'Related Product Image Size (W x H)';
-$_['entry_image_compare']              = 'Compare Image Size (W x H)';
-$_['entry_image_wishlist']             = 'Wish List Image Size (W x H)';
-$_['entry_image_cart']                 = 'Cart Image Size (W x H)';
-$_['entry_image_location']             = 'Store Image Size (W x H)';
-$_['entry_width']                      = 'Width';
-$_['entry_height']                     = 'Height';
+$_['entry_directory']                  = '模板目录';
+$_['entry_status']                     = '状态';
+$_['entry_product_limit']              = '每页显示商品个数';
+$_['entry_product_description_length'] = '商品列表描述长度';
+$_['entry_image_category']             = '分类图片尺寸 (宽 x 高)';
+$_['entry_image_thumb']                = '商品详情页缩略图尺寸 (宽 x 高)';
+$_['entry_image_popup']                = '商品详情页大图尺寸 (宽 x 高)';
+$_['entry_image_product']              = '列表页商品图片尺寸 (宽 x 高)';
+$_['entry_image_additional']           = '商品详情页附加图片尺寸 (宽 x 高)';
+$_['entry_image_related']              = '商品详情页相关商品图片尺寸 (宽 x 高)';
+$_['entry_image_compare']              = '商品对比页图片尺寸 (宽 x 高)';
+$_['entry_image_wishlist']             = '收藏列表页图片尺寸 (宽 x 高)';
+$_['entry_image_cart']                 = '购物车图片尺寸 (宽 x 高)';
+$_['entry_image_location']             = '店铺图片尺寸 (宽 x 高)';
+$_['entry_width']                      = '宽';
+$_['entry_height']                     = '高';
 
 // Help
-$_['help_directory']                   = 'This field is only to enable older themes to be compatible with the new theme system. You can set the theme directory to use on the image size settings defined here.';
-$_['help_product_limit']               = 'Determines how many catalog items are shown per page (products, categories, etc)';
-$_['help_product_description_length']  = 'In the list view, short description character limit (categories, special etc)';
+$_['help_directory']                   = '此选项用于旧模板兼容新模板系统使用此页面配置的各种图片尺寸';
+$_['help_product_limit']               = '设置列表页（商品、分类等）显示商品个数。';
+$_['help_product_description_length']  = '设置商品列表页（分类、特价商品列表页等）列表显示模式下，商品文字描述长度。';
 
 // Error
-$_['error_permission']                 = 'Warning: You do not have permission to modify the default store theme!';
-$_['error_limit']                      = 'Product Limit required!';
-$_['error_image_thumb']                = 'Product Image Thumb Size dimensions required!';
-$_['error_image_popup']                = 'Product Image Popup Size dimensions required!';
-$_['error_image_product']              = 'Product List Size dimensions required!';
-$_['error_image_category']             = 'Category List Size dimensions required!';
-$_['error_image_additional']           = 'Additional Product Image Size dimensions required!';
-$_['error_image_related']              = 'Related Product Image Size dimensions required!';
-$_['error_image_compare']              = 'Compare Image Size dimensions required!';
-$_['error_image_wishlist']             = 'Wish List Image Size dimensions required!';
-$_['error_image_cart']                 = 'Cart Image Size dimensions required!';
-$_['error_image_location']             = 'Store Image Size dimensions required!';
+$_['error_permission']                 = '错误：您没有权限修改默认主题！';
+$_['error_limit']                      = '请输入每页显示商品个数';
+$_['error_image_thumb']                = '请输入尺寸！';
+$_['error_image_popup']                = '请输入尺寸！';
+$_['error_image_product']              = '请输入尺寸！';
+$_['error_image_category']             = '请输入尺寸！';
+$_['error_image_additional']           = '请输入尺寸！';
+$_['error_image_related']              = '请输入尺寸！';
+$_['error_image_compare']              = '请输入尺寸！';
+$_['error_image_wishlist']             = '请输入尺寸！';
+$_['error_image_cart']                 = '请输入尺寸！';
+$_['error_image_location']             = '请输入尺寸！';

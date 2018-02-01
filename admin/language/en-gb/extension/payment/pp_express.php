@@ -1,9 +1,17 @@
 <?php
+/**
+ *
+ * @copyright        2017 www.guangdawangluo.com - All Rights Reserved
+ * @author           opencart.cn <support@opencart.cn>
+ * @created          2016-10-22 09:12:56
+ * @modified         2016-11-05 17:35:23
+ */
+
 // Heading
 $_['heading_title']					 = 'PayPal Express Checkout';
 
 // Text
-$_['text_extension']				 = 'Extensions';
+$_['text_extension']				 = '扩展';
 $_['text_success']				 	 = 'Success: You have modified PayPal Express Checkout account details!';
 $_['text_edit']                      = 'Edit PayPal Express Checkout';
 $_['text_pp_express']				 = '<a target="_BLANK" href="https://www.paypal.com/uk/mrb/pal=V4T754QB63XXL"><img src="view/image/payment/paypal.png" alt="PayPal Website Payment Pro" title="PayPal Website Payment Pro iFrame" style="border: 1px solid #EEEEEE;" /></a>';
@@ -40,8 +48,8 @@ $_['entry_ipn']						 = 'IPN URL';
 $_['entry_test']					 = 'Test (Sandbox) Mode';
 $_['entry_debug']					 = 'Debug logging';
 $_['entry_currency']				 = 'Default currency';
-$_['entry_recurring_cancel']	     = 'Allow customers to cancel recurring payments from account area';
-$_['entry_transaction']		         = 'Settlement Type';
+$_['entry_recurring_cancel']	     = 'Allow customers to cancel recurring payments';
+$_['entry_transaction']		         = 'Transaction Method';
 $_['entry_total']					 = 'Total';
 $_['entry_geo_zone']				 = 'Geo Zone';
 $_['entry_status']					 = 'Status';
@@ -56,8 +64,8 @@ $_['entry_processed_status']		 = 'Processed Status';
 $_['entry_refunded_status']			 = 'Refunded Status';
 $_['entry_reversed_status']			 = 'Reversed Status';
 $_['entry_voided_status']			 = 'Voided Status';
-$_['entry_allow_notes']				 = 'Allow Notes';
-$_['entry_colour']	      			 = 'Page Background Colour';
+$_['entry_allow_notes']				 = 'Allow notes';
+$_['entry_colour']	      			 = 'Page background colour';
 $_['entry_logo']					 = 'Logo';
 $_['entry_incontext']				 = 'Disable In-Context Checkout';
 
