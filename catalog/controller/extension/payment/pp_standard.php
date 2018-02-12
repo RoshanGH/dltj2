@@ -204,6 +204,8 @@ class ControllerExtensionPaymentPPStandard extends Controller {
 
     public function paymentcallback() {
         $this->logger = new \Log('pay.log');
+        $this->logger->write('支付回调开始');
+        $this->logger->write($_POST);
         $this->logger->write($this->request->post['custom']);
         if (isset($this->request->post['custom'])) {
             $order_id = $this->request->post['custom'];
