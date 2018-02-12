@@ -203,6 +203,8 @@ class ControllerExtensionPaymentPPStandard extends Controller {
 
 
     public function paymentcallback() {
+        $this->logger = new \Log('pay.log');
+        $this->logger->write($this->request->post['custom']);
         if (isset($this->request->post['custom'])) {
             $order_id = $this->request->post['custom'];
         } else {
@@ -212,7 +214,7 @@ class ControllerExtensionPaymentPPStandard extends Controller {
         $this->load->model('checkout/order');
 
         $order_info = $this->model_checkout_order->getOrder($order_id);
-
+        $this->logger->write($order_info);
         if ($order_info) {
             $request = 'cmd=_notify-validate';
 
@@ -244,21 +246,12 @@ class ControllerExtensionPaymentPPStandard extends Controller {
 
                 switch($this->request->post['payment_status']) {
                     case 'Completed':
-                        $receiver_match = (strtolower($this->request->post['receiver_email']) == strtolower($this->config->get('payment_pp_standard_email')));
 
-                        $total_paid_match = ((float)$this->request->post['mc_gross'] == $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false));
 
-                        if ($receiver_match && $total_paid_match) {
-                            $order_status_id = $this->config->get('payment_pp_standard_completed_status_id');
-                        }
+        $this->logger->write("TO DO  !");
 
-                        if (!$receiver_match) {
-                            $this->log->write('PP_STANDARD :: RECEIVER EMAIL MISMATCH! ' . strtolower($this->request->post['receiver_email']));
-                        }
 
-                        if (!$total_paid_match) {
-                            $this->log->write('PP_STANDARD :: TOTAL PAID MISMATCH! ' . $this->request->post['mc_gross']);
-                        }
+
                         break;
                 }
 
