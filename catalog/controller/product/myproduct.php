@@ -72,6 +72,12 @@ class ControllerProductMyproduct extends Controller {
         $search_order_url = $this->url->link('product/myproduct/search_order');
         $show_order_url = $this->url->link('product/myproduct/show_order');
 
+
+
+        $data['pay_return_url'] = $this->url->link('product/myproduct','product_id='.$product_id.'#success',true);
+        $data['pay_cancel_return_url'] = $this->url->link('product/myproduct','product_id='.$product_id,true);
+        $data['pay_notify_url'] = $this->url->link('extension/payment/pp_standard/paymentcallback', '', true);
+
         $data['smcss'] = HTTP_SERVER . '/catalog/view/javascript/my/css/sm.css';
         $data['sm_extendcss'] = HTTP_SERVER . '/catalog/view/javascript/my/css/sm-extend.css';
         $data['mycss'] = HTTP_SERVER . '/catalog/view/javascript/my/css/my.css';
@@ -116,7 +122,11 @@ class ControllerProductMyproduct extends Controller {
         $post_data['time'] = date('Y-m-d H:i:s', time());
 //        $this->logger->write($post_data['time']);
         $post_data['store_name'] = 'small_store';
-        $post_data['payment_method'] = '货到付款';
+        if ($post_data['payment']='paypal'){
+            $post_data['payment_method'] = 'paypal在线支付';
+        }else{
+            $post_data['payment_method'] = '货到付款';
+        }
         $this->load->model('catalog/myproduct');
         //order表
 //        $this->logger->write($post_data['price']);

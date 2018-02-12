@@ -200,4 +200,73 @@ class ControllerExtensionPaymentPPStandard extends Controller {
 			curl_close($curl);
 		}
 	}
+
+
+    public function paymentcallback() {
+        if (isset($this->request->post['custom'])) {
+            $order_id = $this->request->post['custom'];
+        } else {
+            $order_id = 0;
+        }
+
+        $this->load->model('checkout/order');
+
+        $order_info = $this->model_checkout_order->getOrder($order_id);
+
+        if ($order_info) {
+            $request = 'cmd=_notify-validate';
+
+            foreach ($this->request->post as $key => $value) {
+                $request .= '&' . $key . '=' . urlencode(html_entity_decode($value, ENT_QUOTES, 'UTF-8'));
+            }
+
+//                $curl = curl_init('https://www.paypal.com/cgi-bin/webscr');
+                $curl = curl_init('https://www.sandbox.paypal.com/cgi-bin/webscr');
+
+            curl_setopt($curl, CURLOPT_POST, true);
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $request);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_HEADER, false);
+            curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+            $response = curl_exec($curl);
+
+            if (!$response) {
+                $this->log->write('PP_STANDARD :: CURL failed ' . curl_error($curl) . '(' . curl_errno($curl) . ')');
+            }
+
+                $this->log->write('PP_STANDARD :: IPN REQUEST: ' . $request);
+                $this->log->write('PP_STANDARD :: IPN RESPONSE: ' . $response);
+
+            if ((strcmp($response, 'VERIFIED') == 0 || strcmp($response, 'UNVERIFIED') == 0) && isset($this->request->post['payment_status'])) {
+                $order_status_id = 5; //已支付  订单完成
+
+                switch($this->request->post['payment_status']) {
+                    case 'Completed':
+                        $receiver_match = (strtolower($this->request->post['receiver_email']) == strtolower($this->config->get('payment_pp_standard_email')));
+
+                        $total_paid_match = ((float)$this->request->post['mc_gross'] == $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false));
+
+                        if ($receiver_match && $total_paid_match) {
+                            $order_status_id = $this->config->get('payment_pp_standard_completed_status_id');
+                        }
+
+                        if (!$receiver_match) {
+                            $this->log->write('PP_STANDARD :: RECEIVER EMAIL MISMATCH! ' . strtolower($this->request->post['receiver_email']));
+                        }
+
+                        if (!$total_paid_match) {
+                            $this->log->write('PP_STANDARD :: TOTAL PAID MISMATCH! ' . $this->request->post['mc_gross']);
+                        }
+                        break;
+                }
+
+                $this->model_checkout_order->addOrderHistory($order_id, $order_status_id);
+            }
+
+
+            curl_close($curl);
+        }
+    }
 }

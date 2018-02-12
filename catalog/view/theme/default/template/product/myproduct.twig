@@ -12,11 +12,24 @@
     <link rel="stylesheet" href="{{ smcss }}">
     <!-- Facebook Pixel Code -->
     <script>
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-                n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-            n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-                document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq)return;
+            n = f.fbq = function () {
+                n.callMethod ?
+                        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq)f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window,
+                document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '{{ pixel }}'); // Insert your pixel ID here.
         fbq('track', 'PageView');
     </script>
@@ -192,142 +205,169 @@
 
         </div>
         <div class="space"></div>
-        <div id="info" class="list-block" style="margin: 0rem">
-            <ul>
-                <!-- Text inputs -->
-                <li>
-                    <div class="item-content" style="padding-left:0;margin-left: 0">
-                        <div class="item-media"><i class="icon icon-form-name"></i></div>
-                        <div class="item-inner" style="margin-left: 0.4rem">
-                            <div class="item-title label">{{ user_name }}</div>
-                            <div class="item-input">
-                                <input id="user_name" type="text" placeholder="Your name">
-                                <input id="product_id" type="hidden" value="{{ product_id }}">
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="item-content" style="padding-left:0;margin-left: 0;">
-                        <div class="item-media"><i class="icon icon-form-email"></i></div>
-                        <div class="item-inner" style="margin-left: 0.4rem;border-bottom: 1px solid #eeeeee;">
-                            <div class="item-title label">{{ user_email }}</div>
-                            <div class="item-input">
-                                <input id="user_email" type="email" placeholder="E-mail">
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="item-content" style="padding-left:0;margin-left: 0">
-                        <div class="item-media"><i class="icon icon-form-telephone"></i></div>
-                        <div class="item-inner" style="margin-left: 0.4rem">
-                            <div class="item-title label">{{ user_telephone }}</div>
-                            <div class="item-input">
-                                <input id="user_phone" type="text" placeholder="Telephone" class="">
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="item-content" style="padding-left:0;margin-left: 0">
-                        <div class="item-media"><i class="icon icon-form-code"></i></div>
-                        <div class="item-inner" style="margin-left: 0.4rem">
-                            <div class="item-title label">{{ user_code }}</div>
-                            <div class="item-input">
-                                <input id="user_code" type="text" placeholder="Code" class="">
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="item-content" style="padding-left:0;margin-left: 0">
-                        <div class="item-media"><i class="icon icon-form-addrase"></i></div>
-                        <div class="item-inner" style="margin-left: 0.4rem">
-                            <div class="item-title label">{{ user_address }}</div>
-                            <div class="item-input">
-                                <input id="user_address" type="text" placeholder="Address" class="">
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                </li>
-            </ul>
-        </div>
-        <div class="space"></div>
-        <div class="order-product-info">
-            <div class="order-product-info-title" style="zoom: 1">
-                <div class="order-product-info-title-image">
-                    <img class="image" src="{{ popup }}">
-                </div>
-
-                <div class="order-product-info-title-image-side">
-                    <div class="order-product-info-title-image-side-name">
-                        {{ name }}
-                    </div>
-
-                    <div class="order-product-info-title-image-side-price">
-                        <div class="order-product-info-title-image-side-total-price">
-                            <span id="title-price">{{ price_num }}</span>
-                        </div>
-                        <div class="order-product-info-title-image-side-number">
-                            x<span id="ssl">1</span>
-                        </div>
-                    </div>
-                </div>
-                <div style="clear: both"></div>
-            </div>
-            <div class="list-block" style="margin: 0rem">
+        {#<form id="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post">#}
+        <form id="paypal-form" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_cart">
+            <input type="hidden" name="upload" value="1">
+            {#<input type="hidden" name="business" value="sophia.yip77@gmail.com">#}
+            <input type="hidden" name="business" value="1417502518business@qq.com">
+            <input type="hidden" name="item_name_1" value="{{ name }}">
+            {#<input type="hidden" name="item_number_1" value="Product 16asdfasdf">#}
+            {#<input type="hidden" name="amount_1" value="0.01">#}
+            <input type="hidden" name="amount_1" value="{{ price_num }}">
+            {#<input type="hidden" name="quantity_1" value="2">#}
+            <input type="hidden" name="currency_code" value="USD">
+            {#<input type="hidden" name="first_name" value="">#}
+            {#<input type="hidden" name="last_name" value="">#}
+            {#<input type="hidden" name="address1" value="123">#}
+            {#<input type="hidden" name="country" value="DXB">#}
+            {#<input type="hidden" name="email" value="123@qq.com">#}
+            {#<input type="hidden" name="lc" value="en-gb">#}
+            {#<input type="hidden" name="no_note" value="1">#}
+            {#<input type="hidden" name="no_shipping" value="1">#}
+            <input type="hidden" name="charset" value="utf-8">
+            <input type="hidden" name="return" value="{{ pay_return_url }}">
+            <input type="hidden" name="notify_url" value="{{ pay_notify_url }}">
+            <input type="hidden" name="cancel_return" value="{{ pay_cancel_return_url }}">
+            {#<input type="hidden" name="paymentaction" value="authorization">#}
+            <input id='paypal-form-orderId' type="hidden" name="custom" value="">
+            <div id="info" class="list-block" style="margin: 0rem">
                 <ul>
+                    <!-- Text inputs -->
                     <li>
                         <div class="item-content" style="padding-left:0;margin-left: 0">
-                            <div class="item-media"><i class="icon icon-form-password"></i></div>
-                            <div class="item-inner" style="margin-left: 0">
-                                <div class="item-title label">{{ quantity }}</div>
+                            <div class="item-media"><i class="icon icon-form-name"></i></div>
+                            <div class="item-inner" style="margin-left: 0.4rem">
+                                <div class="item-title label">{{ user_name }}</div>
                                 <div class="item-input">
-                                    <div class="quantity">
-                                        <div class="down">
-                                            <img class="down1" id="down1" src="{{ http }}/catalog/view/javascript/my/image/reduce_operating_button.png">
-                                            <img class="down2" id="down2" src="{{ http }}/catalog/view/javascript/my/image/reduce_forbid_button.png">
-                                        </div>
-                                        <!--<div class="number">-->
-                                        <!--1-->
-                                        <!--</div>-->
-                                        <input id="sl" class="quantity-input" style="" value="1">
-                                        <div class="up">
-                                            <img class="up1" src="{{ http }}/catalog/view/javascript/my/image/plus_button.png">
+                                    <input id="user_name" type="text" placeholder="Your name">
+                                    <input name="item_number_1" id="product_id" type="hidden" value="{{ product_id }}">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content" style="padding-left:0;margin-left: 0;">
+                            <div class="item-media"><i class="icon icon-form-email"></i></div>
+                            <div class="item-inner" style="margin-left: 0.4rem;border-bottom: 1px solid #eeeeee;">
+                                <div class="item-title label">{{ user_email }}</div>
+                                <div class="item-input">
+                                    <input name="email" id="user_email" type="email" placeholder="E-mail">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content" style="padding-left:0;margin-left: 0">
+                            <div class="item-media"><i class="icon icon-form-telephone"></i></div>
+                            <div class="item-inner" style="margin-left: 0.4rem">
+                                <div class="item-title label">{{ user_telephone }}</div>
+                                <div class="item-input">
+                                    <input id="user_phone" type="text" placeholder="Telephone" class="">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content" style="padding-left:0;margin-left: 0">
+                            <div class="item-media"><i class="icon icon-form-code"></i></div>
+                            <div class="item-inner" style="margin-left: 0.4rem">
+                                <div class="item-title label">{{ user_code }}</div>
+                                <div class="item-input">
+                                    <input id="user_code" type="text" placeholder="Code" class="">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content" style="padding-left:0;margin-left: 0">
+                            <div class="item-media"><i class="icon icon-form-addrase"></i></div>
+                            <div class="item-inner" style="margin-left: 0.4rem">
+                                <div class="item-title label">{{ user_address }}</div>
+                                <div class="item-input">
+                                    <input name="address1" id="user_address" type="text" placeholder="Address" class="">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                    </li>
+                </ul>
+            </div>
+            <div class="space"></div>
+            <div class="order-product-info">
+                <div class="order-product-info-title" style="zoom: 1">
+                    <div class="order-product-info-title-image">
+                        <img class="image" src="{{ popup }}">
+                    </div>
+
+                    <div class="order-product-info-title-image-side">
+                        <div class="order-product-info-title-image-side-name">
+                            {{ name }}
+                        </div>
+
+                        <div class="order-product-info-title-image-side-price">
+                            <div class="order-product-info-title-image-side-total-price">
+                                <span id="title-price">{{ price_num }}</span>
+                            </div>
+                            <div class="order-product-info-title-image-side-number">
+                                x<span id="ssl">1</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+                <div class="list-block" style="margin: 0rem">
+                    <ul>
+                        <li>
+                            <div class="item-content" style="padding-left:0;margin-left: 0">
+                                <div class="item-media"><i class="icon icon-form-password"></i></div>
+                                <div class="item-inner" style="margin-left: 0">
+                                    <div class="item-title label">{{ quantity }}</div>
+                                    <div class="item-input">
+                                        <div class="quantity">
+                                            <div class="down">
+                                                <img class="down1" id="down1" src="{{ http }}/catalog/view/javascript/my/image/reduce_operating_button.png">
+                                                <img class="down2" id="down2" src="{{ http }}/catalog/view/javascript/my/image/reduce_forbid_button.png">
+                                            </div>
+                                            <!--<div class="number">-->
+                                            <!--1-->
+                                            <!--</div>-->
+                                            <input id="sl" name="quantity_1" class="quantity-input" style="" value="1">
+                                            <div class="up">
+                                                <img class="up1" src="{{ http }}/catalog/view/javascript/my/image/plus_button.png">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content" style="padding-left:0;margin-left: 0">
-                            <div class="item-media"><i class="icon icon-form-password"></i></div>
-                            <div class="item-inner" style="margin-left: 0">
-                                <div class="item-title label">{{ the_freight }}</div>
-                                <div class="item-input">
-                                    <input style="text-align: right" type="text" value="00.00" disabled="disabled"/>
+                        </li>
+                        <li>
+                            <div class="item-content" style="padding-left:0;margin-left: 0">
+                                <div class="item-media"><i class="icon icon-form-password"></i></div>
+                                <div class="item-inner" style="margin-left: 0">
+                                    <div class="item-title label">{{ the_freight }}</div>
+                                    <div class="item-input">
+                                        <input style="text-align: right" type="text" value="00.00" disabled="disabled"/>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content" style="padding-left:0;margin-left: 0">
-                            <div class="item-media"><i class="icon icon-form-password"></i></div>
-                            <div class="item-inner" style="margin-left: 0">
-                                <div class="item-title label">{{ total }}</div>
-                                <div class="item-input">
-                                    <input id="sum" style="text-align: right" type="text" value="{{ price_num }}" disabled="disabled"/>
+                        </li>
+                        <li>
+                            <div class="item-content" style="padding-left:0;margin-left: 0">
+                                <div class="item-media"><i class="icon icon-form-password"></i></div>
+                                <div class="item-inner" style="margin-left: 0">
+                                    <div class="item-title label">{{ total }}</div>
+                                    <div class="item-input">
+                                        <input id="sum" style="text-align: right" type="text" value="{{ price_num }}" disabled="disabled"/>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </form>
         <div style="height: 3rem;background-color: white"></div>
     </div>
     <!--底部菜单 start-->
@@ -485,7 +525,26 @@
         </div>
     </div>
 </div>
-
+<div class="page" id='success' style="background-color: #F7F7F7">
+    <div class="content">
+        <div class="back-icon">
+            <a href="#router">
+                <img class="image" src="{{ http }}/catalog/view/javascript/my/image/cross37.png">
+            </a>
+        </div>
+        <div class="" style="width: 100%;text-align: center;margin-top: 1rem">
+            <span style="font-size: 1.3rem;font-weight: 200;color: #FF9800">SUCCESS</span>
+        </div>
+        <div class="" style="width: 100%;text-align: center;margin-top: 0.5rem">
+            <span style="font-size: 0.7rem;font-weight: 200;color: #BFBFBF">{{ text_checkout_success }}</span>
+        </div>
+        <div class="" style="width:100%;margin-top: 2rem">
+            <div style="margin: 0 auto;width: 40%">
+                <img class="image" src="{{ http }}/catalog/view/javascript/my/image/decoration01.png">
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--下单成功页 end-->
 <!--订单查询页 start-->
@@ -609,54 +668,122 @@
 //                info.push($(this).val());
             });
 
+
             if (to_4 == true) {
-                $.showPreloader();
-                fbq('track', 'Purchase', {
-                    content_ids: [product_id],
-                    content_type: 'product',
-                    value: price,
-                    currency: 'USD'
-                });
 
-                $.post("{{ order_url }}", {
-                            product_id: product_id,
-                            options: options,
-                            price: price,
-                            number: number,
-                            user_name: user_name,
-                            user_email: user_email,
-                            user_phone: user_phone,
-                            user_code: user_code,
-                            user_address: user_address,
-                            //               user_zone: user_zone,
-                        },
-                        function (date) {
-                            date = $.parseJSON(date);
-                            if (date.status == 'success') {
-                                $("#end-order-id").text(date.order_id);
-                                $("#end-order-price").text(date.price);
-                                $("#end-order-time").text(date.time);
 
-                                //show-order
-                                $("#show-order-id").text(date.order_id);
-                                $("#show-order-name").text(user_name + " " + user_phone);
-                                $("#show-order-price").text("{{ price }}");
-                                $("#show-order-address").text(user_address);
-                                $("#show-order-code").text(user_code);
-                                $("#show-order-meail").text(user_email);
-                                $("#show-order-time").text($("#end-order-time").text());
-                                $("#show-order-total").val(price);
-                                {#$("#show-order-prouctname").text({{ name }});#}
-                                $("#show-order-quantity").text(number);
-                                $("#show-order-options").text(date.option_str);
-                                console.log(date);
 
-                                $.hidePreloader();
-                                $.router.load("#router4");
-                            } else {
-                                $.toast("Your order failed, please order again");
-                            }
-                        });
+
+                //            choose payment
+                var buttons1 = [
+                    {
+                        text: '请选择',
+                        label: true
+                    },
+                    {
+                        text: 'Cash on delivery',
+                        bold: true,
+//                        color: 'danger',
+                        onClick: function () {
+                            $.showPreloader();
+                            fbq('track', 'Purchase', {
+                                content_ids: [product_id],
+                                content_type: 'product',
+                                value: price,
+                                currency: 'USD'
+                            });
+
+                            $.post("{{ order_url }}", {
+                                        product_id: product_id,
+                                        options: options,
+                                        price: price,
+                                        number: number,
+                                        user_name: user_name,
+                                        user_email: user_email,
+                                        user_phone: user_phone,
+                                        user_code: user_code,
+                                        user_address: user_address,
+                                        //               user_zone: user_zone,
+                                    },
+                                    function (date) {
+                                        date = $.parseJSON(date);
+                                        if (date.status == 'success') {
+                                            $("#end-order-id").text(date.order_id);
+                                            $("#end-order-price").text(date.price);
+                                            $("#end-order-time").text(date.time);
+
+                                            //show-order
+                                            $("#show-order-id").text(date.order_id);
+                                            $("#show-order-name").text(user_name + " " + user_phone);
+                                            $("#show-order-price").text("{{ price }}");
+                                            $("#show-order-address").text(user_address);
+                                            $("#show-order-code").text(user_code);
+                                            $("#show-order-meail").text(user_email);
+                                            $("#show-order-time").text($("#end-order-time").text());
+                                            $("#show-order-total").val(price);
+                                            {#$("#show-order-prouctname").text({{ name }});#}
+                                            $("#show-order-quantity").text(number);
+                                            $("#show-order-options").text(date.option_str);
+//                                            console.log(date);
+
+                                            $.hidePreloader();
+                                            $.router.load("#router4");
+                                        } else {
+                                            $.toast("Your order failed, please order again");
+                                        }
+                                    });
+                        }
+                    },
+                    {
+                        text: 'PayPal',
+                        onClick: function () {
+
+                            $.showPreloader();
+                            fbq('track', 'Purchase', {
+                                content_ids: [product_id],
+                                content_type: 'product',
+                                value: price,
+                                currency: 'USD'
+                            });
+
+                            $.post("{{ order_url }}", {
+                                        product_id: product_id,
+                                        options: options,
+                                        price: price,
+                                        number: number,
+                                        user_name: user_name,
+                                        user_email: user_email,
+                                        user_phone: user_phone,
+                                        user_code: user_code,
+                                        user_address: user_address,
+                                        payment : 'paypal',
+                                        //               user_zone: user_zone,
+                                    },
+                                    function (date) {
+                                        date = $.parseJSON(date);
+                                        if (date.status == 'success') {
+                                            $("#paypal-form-orderId").val(date.order_id);
+//                                            console.log($("#paypal-form-orderId").val());
+                                            $.hidePreloader();
+                                        } else {
+                                            $.toast("Your order failed, please order again");
+                                            return;
+                                        }
+                                    });
+                            document.getElementById('paypal-form').submit();
+                        }
+                    }
+                ];
+                var buttons2 = [
+                    {
+                        text: '取消',
+                        bg: 'danger'
+                    }
+                ];
+                var groups = [buttons1, buttons2];
+                $.actions(groups);
+
+
             } else {
 //                $.toast("填写完整的订单信息");
                 $.toast("Fill in the complete order information");
