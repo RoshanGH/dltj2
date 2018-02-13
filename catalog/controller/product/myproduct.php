@@ -96,6 +96,7 @@ class ControllerProductMyproduct extends Controller {
         $data['price_num'] = $product_info['price'];
         $data['title'] = $product_info['meta_title'];
         $data['name'] = $product_info['name'];
+        $data['paylal_name'] = substr($product_info['name'],0,20);
 //        $data['product_id'] = (int)$this->request->get['product_id'];
         $data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
         $data['order_url'] = $order_url;
