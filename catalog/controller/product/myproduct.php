@@ -113,15 +113,15 @@ class ControllerProductMyproduct extends Controller {
     }
 
     public function save_order() {
-//        $this->logger = new \Log('log.log');
-//        $this->logger->write($this->request->post);
+        $this->logger = new \Log('log.log');
+        $this->logger->write($this->request->post);
 
 //        生成订单号
 //        $order_id = '60'.time().rand(1,9).rand(1.9);
 //        $post_data['order_id'] = $order_id;
         $post_data = $this->request->post;
         $post_data['time'] = date('Y-m-d H:i:s', time());
-//        $this->logger->write($post_data['time']);
+        $this->logger->write($post_data['time']);
         $post_data['store_name'] = 'small_store';
         if ($post_data['payment']='paypal'){
             $post_data['payment_method'] = 'paypal在线支付';
@@ -130,12 +130,12 @@ class ControllerProductMyproduct extends Controller {
         }
         $this->load->model('catalog/myproduct');
         //order表
-//        $this->logger->write($post_data['price']);
+        $this->logger->write($post_data['price']);
         $order_id = $this->model_catalog_myproduct->save_order($post_data);
         //order_product
         $product_info = $this->model_catalog_myproduct->get_product_info($post_data['product_id']);
         $product_name = $product_info['name'];
-//        $this->logger->write($product_name);
+        $this->logger->write($product_name);
 
         $order_product_data = array(
             'order_id' => $order_id,
@@ -165,7 +165,7 @@ class ControllerProductMyproduct extends Controller {
             'price' => $post_data['price'],
             'option_str' => $option_str,
         );
-//        $this->logger->write($return);
+        $this->logger->write($return);
         header('Content-Type: text/json;charset=utf8');
         echo json_encode($return, true);
         exit();
