@@ -235,14 +235,13 @@ class ControllerExtensionPaymentPPStandard extends Controller {
             curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 
             $response = curl_exec($curl);
-            $this->logger->write($request);
 
             if (!$response) {
                 $this->log->write('PP_STANDARD :: CURL failed ' . curl_error($curl) . '(' . curl_errno($curl) . ')');
             }
 
-            $this->log->write('PP_STANDARD :: IPN REQUEST: ' . $request);
-            $this->log->write('PP_STANDARD :: IPN RESPONSE: ' . $response);
+            $this->logger->write('PP_STANDARD :: IPN REQUEST: ' . $request);
+            $this->logger->write('PP_STANDARD :: IPN RESPONSE: ' . $response);
 
             if ((strcmp($response, 'VERIFIED') == 0 || strcmp($response, 'UNVERIFIED') == 0) && isset($this->request->post['payment_status'])) {
                 $order_status_id = 5; //已支付  订单完成
