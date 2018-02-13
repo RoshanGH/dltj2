@@ -145,16 +145,16 @@ class ControllerProductMyproduct extends Controller {
             'total' => $post_data['price'],
         );
         //整理商品属性
-
+        $this->logger->write($order_product_data);
         $option_str = '';
         foreach ($post_data['options'] as $key => $val) {
             $ops[$key]['name'] = $this->model_catalog_myproduct->get_options_name($val)['name'];
             $ops[$key]['value'] = $this->model_catalog_myproduct->get_options_value($val)['value'];
             $option_str .= $ops[$key]['name'] . ":" . $ops[$key]['value'];
         }
-
+        $this->logger->write($option_str);
         $order_product_id = $this->model_catalog_myproduct->save_order_product($order_product_data);
-
+        $this->logger->write($order_product_id);
         foreach ($ops as $key => $val) {
             $this->model_catalog_myproduct->save_order_option($val['name'], $val['value'], $order_product_id, $order_id);
         }
