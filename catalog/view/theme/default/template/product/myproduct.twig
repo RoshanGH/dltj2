@@ -230,7 +230,7 @@
             <input type="hidden" name="notify_url" value="{{ pay_notify_url }}">
             <input type="hidden" name="cancel_return" value="{{ pay_cancel_return_url }}">
             {#<input type="hidden" name="paymentaction" value="authorization">#}
-            <input id='paypal-form-orderId' type="hidden" name="custom" value="test123">
+            <input id='paypal-form-orderId' type="hidden" name="custom" value="">
             <div id="info" class="list-block" style="margin: 0rem">
                 <ul>
                     <!-- Text inputs -->
@@ -765,12 +765,13 @@
                                             $("#paypal-form-orderId").val(date.order_id);
 //                                            console.log($("#paypal-form-orderId").val());
                                             $.hidePreloader();
+                                            document.getElementById('paypal-form').submit();
                                         } else {
                                             $.toast("Your order failed, please order again");
                                             return;
                                         }
                                     });
-                            document.getElementById('paypal-form').submit();
+//                            document.getElementById('paypal-form').submit();
                         }
                     }
                 ];
