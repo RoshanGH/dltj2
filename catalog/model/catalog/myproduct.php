@@ -7,7 +7,8 @@ class ModelCatalogMyproduct extends Model {
     }
 
     public function save_order_product($data){
-        $this->db->query("INSERT INTO " . DB_PREFIX . "order_product SET order_id = '" . $data['order_id'] . "',product_id = '".$data['product_id']."', name = '".$data['product_name']."',quantity='".$data['quantity']."',total ='".$data['total']."' , price = '" . $data['price'] . "'" );
+//        error_log(print_r("INSERT INTO " . DB_PREFIX . "order_product SET order_id = '" . $data['order_id'] . "',product_id = '".$data['product_id']."', name = '".$data['product_name']."',quantity='".$data['quantity']."',total ='".$data['total']."' , price = '" . $data['price'] . "'",1),3,'/tmp/log.log');
+        $this->db->query("INSERT INTO " . DB_PREFIX . "order_product SET order_id = '" . $data['order_id'] . "',product_id = '".$data['product_id']."', name = '".$this->db->escape($data['product_name'])."',quantity='".$data['quantity']."',total ='".$data['total']."' , price = '" . $data['price'] . "'" );
         return $this->db->getLastId();
     }
 
@@ -27,7 +28,7 @@ class ModelCatalogMyproduct extends Model {
     }
 
     public function save_order_option($name,$value,$order_product_id,$order_id){
-        $this->db->query("INSERT INTO " . DB_PREFIX . "order_option SET name = '" . $name . "' , value ='" . $value . "' , order_product_id = '" . $order_product_id ."' , order_id = '" . $order_id . "'");
+        $this->db->query("INSERT INTO " . DB_PREFIX . "order_option SET name = '" .$this->db->escape($name)  . "' , value ='" . $value . "' , order_product_id = '" . $order_product_id ."' , order_id = '" . $order_id . "'");
     }
 
     public function get_order_by_email($email){

@@ -211,7 +211,7 @@
             <input type="hidden" name="upload" value="1">
             {#<input type="hidden" name="business" value="sophia.yip77@gmail.com">#}
             <input type="hidden" name="business" value="1417502518business@qq.com">
-            <input type="hidden" name="item_name_1" value="{{ paylal_name }}">
+            <input type="hidden" name="item_name_1" value="{{ name }}">
             {#<input type="hidden" name="item_number_1" value="Product 16asdfasdf">#}
             {#<input type="hidden" name="amount_1" value="0.01">#}
             <input type="hidden" name="amount_1" value="{{ price_num }}">
@@ -644,6 +644,7 @@
             var info = new Array;
             var to_4 = true;
             var price;
+            var total_price;
             var number;
             var user_name = $("#user_name").val();
             var user_email = $("#user_email").val();
@@ -653,7 +654,9 @@
             //var user_zone = $("#city-picker").val();
             var product_id = $("#product_id").val();
 
-            price = $("#order_price").text();
+
+            price = {{ price_num }};
+//            total_price = $("#order_price").text();
             number = $("#sl").val();
 
 

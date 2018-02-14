@@ -96,7 +96,6 @@ class ControllerProductMyproduct extends Controller {
         $data['price_num'] = $product_info['price'];
         $data['title'] = $product_info['meta_title'];
         $data['name'] = $product_info['name'];
-        $data['paylal_name'] = substr($product_info['name'],0,20);
 //        $data['product_id'] = (int)$this->request->get['product_id'];
         $data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
         $data['order_url'] = $order_url;
@@ -121,7 +120,7 @@ class ControllerProductMyproduct extends Controller {
 //        $post_data['order_id'] = $order_id;
         $post_data = $this->request->post;
         $post_data['time'] = date('Y-m-d H:i:s', time());
-        $this->logger->write($post_data['time']);
+//        $this->logger->write($post_data['time']);
         $post_data['store_name'] = 'small_store';
         if ($post_data['payment']='paypal'){
             $post_data['payment_method'] = 'paypal在线支付';
@@ -130,19 +129,22 @@ class ControllerProductMyproduct extends Controller {
         }
         $this->load->model('catalog/myproduct');
         //order表
-        $this->logger->write($post_data['price']);
+//        $this->logger->write($post_data['price']);
         $order_id = $this->model_catalog_myproduct->save_order($post_data);
         //order_product
         $product_info = $this->model_catalog_myproduct->get_product_info($post_data['product_id']);
         $product_name = $product_info['name'];
-        $this->logger->write($product_name);
+//        $this->logger->write($product_name);
 
+        $total_price = $post_data['price'] * $post_data['number'];
+        $this->logger->write($total_price);
         $order_product_data = array(
             'order_id' => $order_id,
             'product_id' => $post_data['product_id'],
             'product_name' => $product_name,
             'quantity' => $post_data['number'],
-            'total' => $post_data['price'],
+            'total' => $total_price,
+            'price' => $post_data['price'],
         );
         //整理商品属性
         $this->logger->write($order_product_data);
@@ -162,7 +164,7 @@ class ControllerProductMyproduct extends Controller {
             'status' => 'success',
             'order_id' => $order_id,
             'time' => $post_data['time'],
-            'price' => $post_data['price'],
+            'price' => $total_price,
             'option_str' => $option_str,
         );
         $this->logger->write($return);
