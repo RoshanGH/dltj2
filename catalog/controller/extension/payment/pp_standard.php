@@ -205,8 +205,8 @@ class ControllerExtensionPaymentPPStandard extends Controller {
 
     public function paymentcallback() {
         $this->logger = new \Log('pay.log');
-        $this->logger->write($_POST);
         $this->logger->write($this->request->post['custom']);
+        $this->logger->write($_POST);
         if (isset($this->request->post['custom'])) {
             $order_id = $this->request->post['custom'];
         } else {
