@@ -122,7 +122,7 @@ class ControllerProductMyproduct extends Controller {
         $post_data['time'] = date('Y-m-d H:i:s', time());
 //        $this->logger->write($post_data['time']);
         $post_data['store_name'] = 'small_store';
-        if ($post_data['payment']='paypal'){
+        if ($post_data['payment'] == 'paypal'){
             $post_data['payment_method'] = 'paypal在线支付';
         }else{
             $post_data['payment_method'] = '货到付款';
