@@ -2,7 +2,7 @@
 class ModelCatalogMyproduct extends Model {
 
     public function save_order($data) {
-        $this->db->query("INSERT INTO " . DB_PREFIX . "order SET firstname = '" . $data['user_name'] . "' , email ='" . $data['user_email'] . "' , telephone = '" . $data['user_phone'] ."' , payment_postcode = '" . $data['user_code'] . "', payment_zone ='" . $data['user_address'] ."',payment_city ='".$data['user_zone']."',order_status_id = 1 ,total = '" .$data['price']."',store_name = '".$data['store_name']."',payment_method ='".$data['payment_method']."', date_added = '".$data['time']."'");
+        $this->db->query("INSERT INTO " . DB_PREFIX . "order SET firstname = '" . $data['user_name'] . "' , email ='" . $data['user_email'] . "' , telephone = '" . $data['user_phone'] ."' , payment_postcode = '" . $data['user_code'] . "', payment_zone ='" . $data['user_address'] ."',payment_city ='".$data['user_zone']."',order_status_id = 1 ,total = '" .$data['total_price']."',store_name = '".$data['store_name']."',payment_method ='".$data['payment_method']."', date_added = '".$data['time']."'");
         return $this->db->getLastId();
     }
 
