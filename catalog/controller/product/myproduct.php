@@ -131,7 +131,7 @@ class ControllerProductMyproduct extends Controller {
         //order表
 //        $this->logger->write($post_data['price']);
         $total_price = $post_data['price'] * $post_data['number'];
-        $post_data['total_price '] = $total_price;
+        $post_data['total_price'] = $total_price;
         $this->logger->write($total_price);
         $order_id = $this->model_catalog_myproduct->save_order($post_data);
         //order_product
