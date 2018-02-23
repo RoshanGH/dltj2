@@ -505,7 +505,7 @@
                                 <div class="item-inner" style="margin-left: 0">
                                     <div class="item-title label">{{ total }}</div>
                                     <div class="item-input">
-                                        <input id="show-order-total" style="text-align: right" type="text" value="$177.76" disabled="disabled"/>
+                                        <input id="show-order-total" style="text-align: right" type="text" value="" disabled="disabled"/>
                                     </div>
                                 </div>
                             </div>
@@ -723,7 +723,7 @@
                                             $("#show-order-code").text(user_code);
                                             $("#show-order-meail").text(user_email);
                                             $("#show-order-time").text($("#end-order-time").text());
-                                            $("#show-order-total").val(price);
+                                            $("#show-order-total").val(date.price);
                                             {#$("#show-order-prouctname").text({{ name }});#}
                                             $("#show-order-quantity").text(number);
                                             $("#show-order-options").text(date.option_str);
