@@ -220,7 +220,8 @@ class ControllerExtensionPaymentPPStandard extends Controller {
         if ($order_info) {
             $request = 'cmd=_notify-validate';
 
-            foreach ($this->request->post as $key => $value) {
+            foreach ($_POST as $key => $value) {
+                $this->logger->write($key." : ".$value);
                 $request .= '&' . $key . '=' . urlencode(html_entity_decode($value, ENT_QUOTES, 'UTF-8'));
             }
 
@@ -250,7 +251,7 @@ class ControllerExtensionPaymentPPStandard extends Controller {
                     case 'Completed':
 
 
-                        $this->logger->write("TO DO  !");
+                        $this->logger->write(" OK! ");
 
 
                         break;
