@@ -225,8 +225,8 @@ class ControllerExtensionPaymentPPStandard extends Controller {
                 $request .= '&' . $key . '=' . urlencode(html_entity_decode($value, ENT_QUOTES, 'UTF-8'));
             }
 
-//                $curl = curl_init('https://www.paypal.com/cgi-bin/webscr');
-            $curl = curl_init('https://www.sandbox.paypal.com/cgi-bin/webscr');
+                $curl = curl_init('https://www.paypal.com/cgi-bin/webscr');
+//            $curl = curl_init('https://www.sandbox.paypal.com/cgi-bin/webscr');
 
             curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $request);
