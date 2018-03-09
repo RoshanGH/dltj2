@@ -21,7 +21,7 @@ class ControllerProductMyproduct extends Controller {
         //图片
         $this->load->model('tool/image');
 
-        $data['popup'] = $this->model_tool_image->resize($product_info['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_height'));
+        $data['popup'] ='http://dltjstore.com/image/' . $product_info['image'];
 
 
         $data['images'][]['popup'] = $data['popup'];
@@ -29,7 +29,7 @@ class ControllerProductMyproduct extends Controller {
         $results = $this->model_catalog_product->getProductImages($this->request->get['product_id']);
         foreach ($results as $result) {
             $data['images'][] = array(
-                'popup' => $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_popup_height')),
+                'popup' =>'http://dltjstore.com/image/'. $result['image'],
 //                'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_additional_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_additional_height'))
             );
         }
@@ -69,6 +69,8 @@ class ControllerProductMyproduct extends Controller {
         }
 
         $order_url = $this->url->link('product/myproduct/save_order');
+        $this->logger->write(HTTP_SERVER);
+        $this->logger->write($order_url);
         $search_order_url = $this->url->link('product/myproduct/search_order');
         $show_order_url = $this->url->link('product/myproduct/show_order');
 

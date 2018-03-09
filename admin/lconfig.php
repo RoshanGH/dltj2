@@ -1,11 +1,11 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'http://dltjstore.com/admin/');
-define('HTTP_CATALOG', 'http://dltjstore.com/');
+define('HTTP_SERVER', 'http://'.$_SERVER['SERVER_NAME'].'/admin/');
+define('HTTP_CATALOG', 'http://'.$_SERVER['SERVER_NAME'].'/');
 
 // HTTPS
-define('HTTPS_SERVER', 'http://dltjstore.com//admin/');
-define('HTTPS_CATALOG', 'http://dltjstore.com/');
+define('HTTPS_SERVER', 'http://'.$_SERVER['SERVER_NAME'].'/admin/');
+define('HTTPS_CATALOG', 'http://'.$_SERVER['SERVER_NAME'].'/');
 
 // DIR
 define('DIR_APPLICATION', '/home/wwwroot/dltjstore.com/admin/');
