@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ title }}</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
-    <link rel="shortcut icon" href="/favicon.ico">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <link rel="stylesheet" href="{{ mycss }}">
@@ -13,21 +12,35 @@
     <link rel="stylesheet" href="{{ smcss }}">
     <!-- Facebook Pixel Code -->
     <script>
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-                n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-            n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-                document,'script','https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1437166609744910'); // Insert your pixel ID here.
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq)return;
+            n = f.fbq = function () {
+                n.callMethod ?
+                        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq)f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window,
+                document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '{{ pixel }}'); // Insert your pixel ID here.
         fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-                   src="https://www.facebook.com/tr?id=1437166609744910&ev=PageView&noscript=1"
+                   src="https://www.facebook.com/tr?id={{ pixel }}&ev=PageView&noscript=1"
         /></noscript>
     <!-- DO NOT MODIFY -->
     <!-- End Facebook Pixel Code -->
+
 </head>
-<body style="max-width: 640px;margin: 0 auto">
+<body style="max-width: 750px;margin: 0 auto;width: 100%">
 
 
 <div class="page-group">
@@ -52,12 +65,12 @@
                 <div class="row">
                     <div class="col-80">
                         <div class="row">
-                            <div class="col-40 product_info_price">{{ price }}</div>
-                            <div class="col-25 product_info_original_price"><s>{{ origin_price }}</s></div>
-                            <div class="col-35 product_info_tag">{{ text_limitedtime_sales }}</div>
+                            <div class="col-60 product_info_price">{{ price }}</div>
+                            <div class="col-40 product_info_original_price"><s>{{ origin_price }}</s></div>
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="space"></div>
@@ -66,20 +79,20 @@
             <div class="middle_message">
                 <div class="middle_message_one">
                     <div class="row">
-                        <div class="col-35 active" style="margin-top: 0.8rem">{{ text_sales_promotion }}</div>
+                        <div class="col-35 active" style="margin-top: 0.8rem">促銷</div>
 
-                        <div class="col-60 middle_message_font">{{ text_sales_promotion_content }}</div>
+                        <div class="col-60 middle_message_font">直降100</div>
                     </div>
                 </div>
                 <div class="middle_message_two" style="">
                     <div class="row">
                         <div class="col-50 middle_message_two_font">
                             <div class="middle_message_two_tag"><img class="image" src="{{ http }}/catalog/view/javascript/my/image/qietu-02-1.png"></div>
-                            {{ small_title_1 }}
+                            正版行貨
                         </div>
                         <div class="col-50 middle_message_two_font">
                             <div class="middle_message_two_tag"><img class="image" src="{{ http }}/catalog/view/javascript/my/image/qietu-02-1.png"></div>
-                            {{ small_title_2 }}
+                            貨到付款
                         </div>
                     </div>
                 </div>
@@ -87,7 +100,6 @@
 
             <div class="space"></div>
             <!--活动描述   标识 end-->
-
             <!--商品详情瀑布流图片区 start-->
             <div class="product-images" style="background-color: white">
                 <div style="width: 100%">
@@ -95,78 +107,129 @@
                 </div>
             </div>
             <!--商品详情瀑布流图片区 end-->
-            {#购买部分#}
-            <div>
-                <div class="parameters">
 
-
-                    {% for option in options %}
-                        <div class="parameter">
-                            <div class="parameter-title"> {{ option.name }} </div>
-                            <div id="combo-choose-{{ option.product_option_id }}">
-
-
-                                {% for option_sub in option.product_option_value %}
-
-
-                                    {% if option_sub.key == '0' %}
-
-                                        {% if option_sub.image  %}
-
-                                            <div class="parameter-style choosed">
-                                                <i style="display: block;width: 6.5rem;height: 6.5rem">
-                                                    <img style="width: 100%;height: 100%" src="{{ option_sub.image }}">
-                                                </i>
-                                                <i style="display: block;width: 6.5rem;overflow: hidden;height: 0.9rem">
-                                                    {{ option_sub.name }}
-                                                    <input type="hidden" value="{{ option_sub.option_value_id }}">
-                                                </i>
-                                            </div>
-                                        {% else %}
-                                            <div class="parameter-style choosed">
-                                                <i style="display: block;">
-                                                    {{ option_sub.name }}
-                                                    <input type="hidden" value="{{ option_sub.option_value_id }}">
-                                                </i>
-                                            </div>
-
-                                        {% endif %}
-
-                                    {% else %}
-
-                                        {% if option_sub.image  %}
-
-                                            <div class="parameter-style no-choosed">
-                                                <i style="display: block;width: 6.5rem;height: 6.5rem">
-                                                    <img style="width: 100%;height: 100%" src="{{ option_sub.image }}">
-                                                </i>
-                                                <i style="display: block;width: 6.5rem;overflow: hidden;height: 0.9rem">
-                                                    {{ option_sub.name }}
-                                                    <input type="hidden" value="{{ option_sub.option_value_id }}">
-                                                </i>
-                                            </div>
-                                        {% else %}
-                                            <div class="parameter-style no-choosed">
-                                                <i style="display: block;">
-                                                    {{ option_sub.name }}
-                                                    <input type="hidden" value="{{ option_sub.option_value_id }}">
-                                                </i>
-                                            </div>
-
-                                        {% endif %}
-                                    {% endif %}
-                                {% endfor %}
-
-
-                            </div>
-                            <div style="clear: both"></div>
-                        </div>
-                    {% endfor %}
-
-
+            <div class="" style="background-color: white;">
+                <div style="margin: 0 0.5rem;text-align: center;font-size: 1.2rem;color: white;background-color: #FF464E;margin-top: 1rem">購買指南及保障</div>
+                <div style="font-size: 0.6rem;margin: 0 0.5rem;color:#FF464E;border: 2px solid #FF464E ">
+                    --- 購買保障---
+                    <br>
+                    •免運費+貨到付款
+                    <br>
+                    •所購買的商品依法享有七天內無條件退貨的權利.
+                    <br>
+                    •若收到商品后有任何疑問，請聯繫在線客服或發郵件至 : william62875333@outlook.com
+                    <br>
+                    •同時請告知您的姓名、聯繫方式及訂單編號，我們的客服人員會快速給您處理，祝您購物愉快：.
+                    <br>
+                    --- 聯繫我們 ---
+                    {#<br>#}
+                    {#•24 hours online customer service.#}
+                    <br>
+                    •郵箱：william62875333@outlook.com.
+                    <br>
+                    •如有任何問題，可通過FB留言私信客服，謝謝您的配合
+                    <br>
+                    --- 品質保證 ---
+                    <br>
+                    •我們秉承一貫的嚴謹態度，深入世界各地，嚴格把關所有商品的產地、工藝、原材料.
+                    <br>
+                    •甄選服飾、鞋包、家居、廚房、運動等各類商品，力求給您最優質的商品.
                 </div>
             </div>
-            <div class="space"></div>
+            <!--底部菜单 start-->
+            <div style="height: 4rem;background-color: white"></div>
+        </div>
+        <div style="position: fixed;z-index: 10000000;max-width: 750px;margin: 0 auto;overflow: auto;bottom: 0;width: 100%">
+            <a href="#router1">
+                <div style="height: 3rem;line-height:3rem;float:left;width: 40%;text-align: center;background-color: #eeeeee;font-size: 1rem;color: #333333">訂單查詢</div>
+            </a>
+            <a href="#router3">
+                <div style="height: 3rem;line-height:3rem;float:left;width: 60%;text-align: center;background-color: #FF464E;font-size: 1.4rem;color: white">購買</div>
+            </a>
+        </div>
+    </div>
+</div>
+{#立即购买页面 start#}
+<div class="page" id='router3'>
+    <header class="bar bar-nav" style="background-color:#FF464E;">
+        <a class="button button-link button-nav pull-left back" href="">
+            <span class="icon icon-left" style="color: white"></span>
+        </a>
+        <h1 class='title' style="color:white;font-weight: 200">訂單確認</h1>
+    </header>
+    <div class="content">
+        <div class="parameters">
+
+
+            {% for option in options %}
+                <div class="parameter">
+                    <div class="parameter-title"> {{ option.name }} </div>
+                    <div id="combo-choose-{{ option.product_option_id }}">
+
+
+                        {% for option_sub in option.product_option_value %}
+
+
+                            {% if option_sub.key == '0' %}
+
+                                <div class="parameter-style choosed">
+                                    <i style="display: block;width: 6.5rem;height: 6.5rem">
+                                        <img style="width: 100%;height: 100%" src="{{ option_sub.image }}">
+                                    </i>
+                                    <i style="display: block;width: 6.5rem;overflow: hidden;height: 0.9rem">
+                                        {{ option_sub.name }}
+                                        <input type="hidden" value="{{ option_sub.option_value_id }}">
+                                    </i>
+                                </div>
+
+                            {% else %}
+                                <div class="parameter-style no-choosed">
+                                    <i style="display: block;width: 6.5rem;height: 6.5rem">
+                                        <img style="width: 100%;height: 100%" src="{{ option_sub.image }}">
+                                    </i>
+                                    <i style="display: block;width: 6.5rem;overflow: hidden;height: 0.9rem">
+                                        {{ option_sub.name }}
+                                        <input type="hidden" value="{{ option_sub.option_value_id }}">
+                                    </i>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+
+
+                    </div>
+                    <div style="clear: both"></div>
+                </div>
+            {% endfor %}
+
+
+        </div>
+        <div class="space"></div>
+        <form id="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            {#<form id="paypal-form" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">#}
+            <input type="hidden" name="cmd" value="_cart">
+            <input type="hidden" name="upload" value="1">
+            <input type="hidden" name="business" value="sophia.yip77@gmail.com">
+            {#<input type="hidden" name="business" value="1417502518business@qq.com">#}
+            <input type="hidden" name="item_name_1" value="{{ name }}">
+            {#<input type="hidden" name="item_number_1" value="Product 16asdfasdf">#}
+            {#<input type="hidden" name="amount_1" value="0.01">#}
+            <input type="hidden" name="amount_1" value="{{ price_num }}">
+            {#<input type="hidden" name="quantity_1" value="2">#}
+            <input type="hidden" name="currency_code" value="TWD">
+            {#<input type="hidden" name="first_name" value="">#}
+            {#<input type="hidden" name="last_name" value="">#}
+            {#<input type="hidden" name="address1" value="123">#}
+            {#<input type="hidden" name="country" value="DXB">#}
+            {#<input type="hidden" name="email" value="123@qq.com">#}
+            {#<input type="hidden" name="lc" value="en-gb">#}
+            {#<input type="hidden" name="no_note" value="1">#}
+            {#<input type="hidden" name="no_shipping" value="1">#}
+            <input type="hidden" name="charset" value="utf-8">
+            <input type="hidden" name="return" value="{{ pay_return_url }}">
+            <input type="hidden" name="notify_url" value="{{ pay_notify_url }}">
+            <input type="hidden" name="cancel_return" value="{{ pay_cancel_return_url }}">
+            {#<input type="hidden" name="paymentaction" value="authorization">#}
+            <input id='paypal-form-orderId' type="hidden" name="custom" value="">
             <div id="info" class="list-block" style="margin: 0rem">
                 <ul>
                     <!-- Text inputs -->
@@ -174,21 +237,21 @@
                         <div class="item-content" style="padding-left:0;margin-left: 0">
                             <div class="item-media"><i class="icon icon-form-name"></i></div>
                             <div class="item-inner" style="margin-left: 0.4rem">
-                                <div class="item-title label">{{ user_name }}</div>
+                                <div class="item-title label">姓名</div>
                                 <div class="item-input">
-                                    <input id="user_name" type="text" placeholder="Your name">
-                                    <input id="product_id" type="hidden" value="{{ product_id }}">
+                                    <input id="user_name" type="text" placeholder="請填寫您的姓名">
+                                    <input name="item_number_1" id="product_id" type="hidden" value="{{ product_id }}">
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li>
-                        <div class="item-content" style="padding-left:0;margin-left: 0">
+                        <div class="item-content" style="padding-left:0;margin-left: 0;">
                             <div class="item-media"><i class="icon icon-form-email"></i></div>
-                            <div class="item-inner" style="margin-left: 0.4rem">
-                                <div class="item-title label">{{ user_email }}</div>
+                            <div class="item-inner" style="margin-left: 0.4rem;border-bottom: 1px solid #eeeeee;">
+                                <div class="item-title label">郵箱</div>
                                 <div class="item-input">
-                                    <input id="user_email" type="email" placeholder="E-mail">
+                                    <input name="email" id="user_email" type="email" placeholder="請填寫您的郵箱">
                                 </div>
                             </div>
                         </div>
@@ -197,9 +260,9 @@
                         <div class="item-content" style="padding-left:0;margin-left: 0">
                             <div class="item-media"><i class="icon icon-form-telephone"></i></div>
                             <div class="item-inner" style="margin-left: 0.4rem">
-                                <div class="item-title label">{{ user_telephone }}</div>
+                                <div class="item-title label">手機號碼</div>
                                 <div class="item-input">
-                                    <input id="user_phone" type="text" placeholder="Telephone" class="">
+                                    <input id="user_phone" type="text" placeholder="請填寫您的手機號碼" class="">
                                 </div>
                             </div>
                         </div>
@@ -208,9 +271,9 @@
                         <div class="item-content" style="padding-left:0;margin-left: 0">
                             <div class="item-media"><i class="icon icon-form-code"></i></div>
                             <div class="item-inner" style="margin-left: 0.4rem">
-                                <div class="item-title label">{{ user_code }}</div>
+                                <div class="item-title label">郵政編碼</div>
                                 <div class="item-input">
-                                    <input id="user_code" type="text" placeholder="Code" class="">
+                                    <input id="user_code" type="text" placeholder="請填寫您的郵政編碼" class="">
                                 </div>
                             </div>
                         </div>
@@ -219,9 +282,9 @@
                         <div class="item-content" style="padding-left:0;margin-left: 0">
                             <div class="item-media"><i class="icon icon-form-addrase"></i></div>
                             <div class="item-inner" style="margin-left: 0.4rem">
-                                <div class="item-title label">{{ user_address }}</div>
+                                <div class="item-title label">詳細地址</div>
                                 <div class="item-input">
-                                    <input id="user_address" type="text" placeholder="Address" class="">
+                                    <input name="address1" id="user_address" type="text" placeholder="請填寫您的詳細地址" class="">
                                 </div>
                             </div>
                         </div>
@@ -241,9 +304,7 @@
                         <div class="order-product-info-title-image-side-name">
                             {{ name }}
                         </div>
-                        {#<div class="order-product-info-title-image-side-parameter">#}
-                        {#已选: 时尚猫 1.2米床#}
-                        {#</div>#}
+
                         <div class="order-product-info-title-image-side-price">
                             <div class="order-product-info-title-image-side-total-price">
                                 <span id="title-price">{{ price_num }}</span>
@@ -261,7 +322,7 @@
                             <div class="item-content" style="padding-left:0;margin-left: 0">
                                 <div class="item-media"><i class="icon icon-form-password"></i></div>
                                 <div class="item-inner" style="margin-left: 0">
-                                    <div class="item-title label">{{ quantity }}</div>
+                                    <div class="item-title label">數量</div>
                                     <div class="item-input">
                                         <div class="quantity">
                                             <div class="down">
@@ -271,7 +332,7 @@
                                             <!--<div class="number">-->
                                             <!--1-->
                                             <!--</div>-->
-                                            <input id="sl" class="quantity-input" style="" value="1">
+                                            <input id="sl" name="quantity_1" class="quantity-input" style="" value="1">
                                             <div class="up">
                                                 <img class="up1" src="{{ http }}/catalog/view/javascript/my/image/plus_button.png">
                                             </div>
@@ -284,7 +345,7 @@
                             <div class="item-content" style="padding-left:0;margin-left: 0">
                                 <div class="item-media"><i class="icon icon-form-password"></i></div>
                                 <div class="item-inner" style="margin-left: 0">
-                                    <div class="item-title label">{{ the_freight }}</div>
+                                    <div class="item-title label">運費</div>
                                     <div class="item-input">
                                         <input style="text-align: right" type="text" value="00.00" disabled="disabled"/>
                                     </div>
@@ -295,7 +356,7 @@
                             <div class="item-content" style="padding-left:0;margin-left: 0">
                                 <div class="item-media"><i class="icon icon-form-password"></i></div>
                                 <div class="item-inner" style="margin-left: 0">
-                                    <div class="item-title label">{{ total }}</div>
+                                    <div class="item-title label">合計</div>
                                     <div class="item-input">
                                         <input id="sum" style="text-align: right" type="text" value="{{ price_num }}" disabled="disabled"/>
                                     </div>
@@ -305,55 +366,21 @@
                     </ul>
                 </div>
             </div>
-
-            <div class="" style="background-color: white;">
-                <div style="margin: 0 0.5rem;text-align: center;font-size: 1.2rem;color: white;background-color: #FF464E;margin-top: 1rem">Buying guide& Security</div>
-                <div style="font-size: 0.6rem;margin: 0 0.5rem;color:#FF464E;border: 2px solid #FF464E ">
-                    --- Security ---
-                    <br>
-                    •Free shipping& Cash on delivery
-                    <br>
-                    •The goods purchased are entitled to the right of unconditional return within 7 days.
-                    <br>
-                    •If you have any questions after receiving the product, please contact online customer service or send emai to : william62875333@outlook.com
-                    <br>
-                    •Meanwhile, please let us know your name, contact information and order number. Our customer service staff will deal with you quickly. Wish you have a happy shopping.
-                    <br>
-                    --- Contact us ---
-                    <br>
-                    •24 hours online customer service.
-                    <br>
-                    •Email：william62875333@outlook.com.
-                    <br>
-                    •If you have any questions, please contact us via FB.Thanks for your cooperation.
-                    <br>
-                    --- Quality Assurance ---
-                    <br>
-                    •We go deep into the world and strictly control the origin, process and raw materials of all goods.
-                    <br>
-                    •Strictly choose clothing, shoes, household, kitchen, sports and other products, strive to give you the best quality products.
-                </div>
-            </div>
-            <!--底部菜单 start-->
-            <div style="height: 4rem;background-color: white"></div>
-            <nav class="bar bar-tab" style="position: fixed;z-index: 1000">
-                <a class="tab-item " href="#router1">
-                    <span class="icon icon-search"></span>
-                    <span class="tab-label">{{ check_order }}</span>
-                </a>
-                <a id="order-commit" class="tab-item"  style="background-color:#FF464E;width: 2%">
-                    <span style="color:white;" class="tab-label">{{ buy_now }}</span>
-                </a>
-            </nav>
-            <!--底部菜单 end-->
-
-
-            <div id="gotop" class="gotop" style="">
-                <img class="image" src="{{ http }}/catalog/view/javascript/my/image/w3.png">
-            </div>
-
-        </div>
+        </form>
+        <div style="height: 3rem;background-color: white"></div>
     </div>
+    <!--底部菜单 start-->
+    <nav class="bar bar-tab" style="position: fixed;z-index: 100;margin: 0 auto;max-width: 750px">
+        <a class="tab-item" href="#" style="text-align: left;padding-left: 0.4rem">
+            總計<span id="order_price" style="color:#FF464E ">{{ price_num }}</span>
+        </a>
+        <a id="order-commit" class="tab-item" style="background-color:#FF5722;width: 2%">
+            <span style="color:white;" class="tab-label">提交訂單</span>
+        </a>
+    </nav>
+    <!--底部菜单 end-->
+
+
 </div>
 <!--立即购买页面 end-->
 <!--下单成功页 start-->
@@ -365,10 +392,10 @@
             </a>
         </div>
         <div class="" style="width: 100%;text-align: center;margin-top: 1rem">
-            <span style="font-size: 1.3rem;font-weight: 200;color: #FF9800">{{ checkout_success }}</span>
+            <span style="font-size: 1.3rem;font-weight: 200;color: #FF9800">下單成功</span>
         </div>
         <div class="" style="width: 100%;text-align: center;margin-top: 0.5rem">
-            <span style="font-size: 0.7rem;font-weight: 200;color: #BFBFBF">{{ text_checkout_success }}</span>
+            <span style="font-size: 0.7rem;font-weight: 200;color: #BFBFBF">我們會盡快為您發貨</span>
         </div>
         <div class="" style="width:100%;margin-top: 2rem">
             <div style="margin: 0 auto;width: 40%">
@@ -377,22 +404,22 @@
         </div>
         <div class="" style="margin: 0 2rem;font-size: 0.7rem; color: #656565;font-weight: 330">
             <div class="row" style="margin-top: 0.6rem">
-                <div class="col-50">{{ order_amount }}</div>
+                <div class="col-50">訂單金額</div>
                 <div id="end-order-price" class="col-50" style="text-align: right"></div>
             </div>
             <div class="row" style="margin-top: 0.6rem">
-                <div class="col-50"> {{ order_number }} </div>
+                <div class="col-50"> 訂單號 </div>
                 <div id="end-order-id" class="col-50" style="text-align: right"></div>
             </div>
             <div class="row" style="margin-top: 0.6rem">
-                <div class="col-50">{{ time }}</div>
+                <div class="col-50">下單時間</div>
                 <div id="end-order-time" class="col-50" style="text-align: right"></div>
             </div>
         </div>
         <div class="" style="width: 100%;margin: 3rem 0">
             <a href="#router2">
                 <div id="show-order" style="margin: 0 auto;width: 80%;text-align: center;background-color: #FF9800;padding: 0.3rem 0;border-radius: 100px;color: white;font-weight: 200;font-size: 0.8rem">
-                    {{ check_order }}
+                    查看訂單
                 </div>
             </a>
         </div>
@@ -404,7 +431,7 @@
         <a class="button button-link button-nav pull-left back" style="color: white" href="">
             <span class="icon icon-left"></span>
         </a>
-        <h1 class='title' style="color: white;font-weight: 200">{{ check_order }}</h1>
+        <h1 class='title' style="color: white;font-weight: 200">查看訂單</h1>
     </header>
     <div class="content">
         <div class="order-image">
@@ -464,7 +491,7 @@
                             <div class="item-content" style="padding-left:0;margin-left: 0">
                                 <div class="item-media"><i class="icon icon-form-password"></i></div>
                                 <div class="item-inner" style="margin-left: 0">
-                                    <div class="item-title label">{{ the_freight }}</div>
+                                    <div class="item-title label">運費</div>
                                     <div class="item-input">
                                         <input style="text-align: right" type="text" value="00.00" disabled="disabled"/>
                                     </div>
@@ -475,9 +502,9 @@
                             <div class="item-content" style="padding-left:0;margin-left: 0">
                                 <div class="item-media"><i class="icon icon-form-password"></i></div>
                                 <div class="item-inner" style="margin-left: 0">
-                                    <div class="item-title label">{{ total }}</div>
+                                    <div class="item-title label">合計</div>
                                     <div class="item-input">
-                                        <input id="show-order-total" style="text-align: right" type="text" value="$177.76" disabled="disabled"/>
+                                        <input id="show-order-total" style="text-align: right" type="text" value="" disabled="disabled"/>
                                     </div>
                                 </div>
                             </div>
@@ -488,16 +515,35 @@
             <div class="space"></div>
             <div class="end-font">
                 <div>
-                    {{ order_number }}: <font id="show-order-id"></font>
+                    訂單價格 <font id="show-order-id"></font>
                 </div>
                 <div>
-                    {{ time }}: <font id="show-order-time"></font>
+                    下單時間: <font id="show-order-time"></font>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<div class="page" id='success' style="background-color: #F7F7F7">
+    <div class="content">
+        <div class="back-icon">
+            <a href="#router">
+                <img class="image" src="{{ http }}/catalog/view/javascript/my/image/cross37.png">
+            </a>
+        </div>
+        <div class="" style="width: 100%;text-align: center;margin-top: 1rem">
+            <span style="font-size: 1.3rem;font-weight: 200;color: #FF9800">下單成功</span>
+        </div>
+        <div class="" style="width: 100%;text-align: center;margin-top: 0.5rem">
+            <span style="font-size: 0.7rem;font-weight: 200;color: #BFBFBF">我們會盡快給您發貨</span>
+        </div>
+        <div class="" style="width:100%;margin-top: 2rem">
+            <div style="margin: 0 auto;width: 40%">
+                <img class="image" src="{{ http }}/catalog/view/javascript/my/image/decoration01.png">
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--下单成功页 end-->
 <!--订单查询页 start-->
@@ -506,7 +552,7 @@
         <a class="button button-link button-nav pull-left back" href="">
             <span class="icon icon-left" style="color: white"></span>
         </a>
-        <h1 class='title' style="color:white;font-weight: 200">{{ check_order }}</h1>
+        <h1 class='title' style="color:white;font-weight: 200">查詢訂單</h1>
     </header>
 
     <div class="content">
@@ -521,7 +567,7 @@
         </div>
         <div id="search_order" class="" style="width: 100%;padding: 0.5rem 0;background-color: white">
             <div style="margin: 0 auto;width: 80%;text-align: center;background-color: #FF464E;padding: 0.3rem 0;border-radius: 100px;color: white;font-weight: 200;font-size: 0.8rem">
-                {{ check_order }}
+                查詢訂單
             </div>
         </div>
         <div id="search_order_content">
@@ -597,6 +643,7 @@
             var info = new Array;
             var to_4 = true;
             var price;
+            var total_price;
             var number;
             var user_name = $("#user_name").val();
             var user_email = $("#user_email").val();
@@ -606,7 +653,9 @@
             //var user_zone = $("#city-picker").val();
             var product_id = $("#product_id").val();
 
-            price = $("#sum").val();
+
+            price = {{ price_num }};
+//            total_price = $("#order_price").text();
             number = $("#sl").val();
 
 
@@ -621,54 +670,127 @@
 //                info.push($(this).val());
             });
 
+
             if (to_4 == true) {
-                $.showPreloader();
-                fbq('track', 'Purchase', {
-                    content_ids: [product_id],
-                    content_type: 'product',
-                    value: price,
-                    currency: 'USD'
-                });
 
-                $.post("{{ order_url }}", {
-                            product_id: product_id,
-                            options: options,
-                            price: price,
-                            number: number,
-                            user_name: user_name,
-                            user_email: user_email,
-                            user_phone: user_phone,
-                            user_code: user_code,
-                            user_address: user_address,
-                            //               user_zone: user_zone,
-                        },
-                        function (date) {
-                            date = $.parseJSON(date);
-                            if (date.status == 'success') {
-                                $("#end-order-id").text(date.order_id);
-                                $("#end-order-price").text(date.price);
-                                $("#end-order-time").text(date.time);
-                                $("#show-order-id").text(date.order_id);
-                                $("#show-order-name").text(user_name + " " + user_phone);
-                                $("#show-order-price").text("{{ price }}");
-                                $("#show-order-address").text(user_address);
-                                $("#show-order-code").text(user_code);
-                                $("#show-order-meail").text(user_email);
-                                $("#show-order-time").text($("#end-order-time").text());
-                                $("#show-order-total").val(price);
-                                $("#show-order-quantity").text(number);
-                                $("#show-order-options").text(date.option_str);
-                                console.log(date);
 
-                                $.hidePreloader();
-                                $.router.load("#router4");
-                            } else {
-                                $.toast("Your order failed, please order again");
-                            }
-                        });
+
+
+                //            choose payment
+                var buttons1 = [
+                    {
+                        text: '請選擇',
+                        label: true
+                    },
+                    {
+                        text: '貨到付款',
+                        bold: true,
+//                        color: 'danger',
+                        onClick: function () {
+                            $.showPreloader();
+                            fbq('track', 'Purchase', {
+                                content_ids: [product_id],
+                                content_type: 'product',
+                                value: price,
+                                currency: 'USD'
+                            });
+
+                            $.post("{{ order_url }}", {
+                                        product_id: product_id,
+                                        options: options,
+                                        price: price,
+                                        number: number,
+                                        user_name: user_name,
+                                        user_email: user_email,
+                                        user_phone: user_phone,
+                                        user_code: user_code,
+                                        user_address: user_address,
+                                        //               user_zone: user_zone,
+                                    },
+                                    function (date) {
+                                        date = $.parseJSON(date);
+                                        if (date.status == 'success') {
+                                            $("#end-order-id").text(date.order_id);
+                                            $("#end-order-price").text(date.price);
+                                            $("#end-order-time").text(date.time);
+
+                                            //show-order
+                                            $("#show-order-id").text(date.order_id);
+                                            $("#show-order-name").text(user_name + " " + user_phone);
+                                            $("#show-order-price").text("{{ price }}");
+                                            $("#show-order-address").text(user_address);
+                                            $("#show-order-code").text(user_code);
+                                            $("#show-order-meail").text(user_email);
+                                            $("#show-order-time").text($("#end-order-time").text());
+                                            $("#show-order-total").val(date.price);
+                                            {#$("#show-order-prouctname").text({{ name }});#}
+                                            $("#show-order-quantity").text(number);
+                                            $("#show-order-options").text(date.option_str);
+//                                            console.log(date);
+
+                                            $.hidePreloader();
+                                            $.router.load("#router4");
+                                        } else {
+                                            $.toast("提交失敗,請重試");
+                                        }
+                                    });
+                        }
+                    },
+                    {
+                        text: 'PayPal',
+                        onClick: function () {
+
+                            $.showPreloader();
+                            fbq('track', 'Purchase', {
+                                content_ids: [product_id],
+                                content_type: 'product',
+                                value: price,
+                                currency: 'USD'
+                            });
+
+                            $.post("{{ order_url }}", {
+                                        product_id: product_id,
+                                        options: options,
+                                        price: price,
+                                        number: number,
+                                        user_name: user_name,
+                                        user_email: user_email,
+                                        user_phone: user_phone,
+                                        user_code: user_code,
+                                        user_address: user_address,
+                                        payment : 'paypal',
+                                        //               user_zone: user_zone,
+                                    },
+                                    function (date) {
+                                        date = $.parseJSON(date);
+                                        if (date.status == 'success') {
+                                            $("#paypal-form-orderId").val(date.order_id);
+//                                            console.log($("#paypal-form-orderId").val());
+
+                                            document.getElementById('paypal-form').submit();
+//                                            $.hidePreloader();
+                                        } else {
+                                            $.toast("Your order failed, please order again");
+                                            return;
+                                        }
+                                    });
+//                            document.getElementById('paypal-form').submit();
+                        }
+                    }
+                ];
+                var buttons2 = [
+                    {
+                        text: '取消',
+                        bg: 'danger'
+                    }
+                ];
+                var groups = [buttons1, buttons2];
+                $.actions(groups);
+
+
             } else {
-//                $.toast("填写完整的订单信息");
-                $.toast("Fill in the complete order information");
+                $.toast("請填寫完整訂單信息");
+//                $.toast("Fill in the complete order information");
             }
 
         });
@@ -703,25 +825,14 @@
                         });
             } else {
 //                $.toast("请填写正确的邮箱地址");
-                $.toast("Please fill in the correct email address");
+                $.toast("請填寫正確的郵箱地址");
             }
         });
     });
 
-    $(function () {
-        $(".content").on('scroll', function () {
-            if ($('.content').scrollTop() != 0) {
-                $('#gotop').show();
-            } else {
-                $('#gotop').hide();
-            }
-        });
-        $("#gotop").click(function (e) {
-            $('.content').scrollTop(0);
-        });
-    });
 
 </script>
+
 
 </body>
 </html>

@@ -90,10 +90,6 @@ class ControllerProductMyproduct extends Controller {
 
         $data['http'] = HTTP_SERVER;
         $data['price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->myCurrency);
-//        $this->logger->write($product_info['price']);
-//        $this->logger->write($product_info['tax_class_id']);
-//        $this->logger->write($this->config->get('config_tax'));
-//        $this->logger->write($this->session->data['currency']);
         $data['origin_price'] = $this->currency->format($this->tax->calculate($product_info['price'] + 100, $product_info['tax_class_id'], $this->config->get('config_tax')), $this->myCurrency);
         $data['price_num'] = $product_info['price'];
         $data['title'] = $product_info['meta_title'];
@@ -110,7 +106,13 @@ class ControllerProductMyproduct extends Controller {
 //        print_r($data);
 //        exit;
 //        $this->logger->write($data);
-        $this->response->setOutput($this->load->view('product/myproduct', $data));
+        if ($product_info['ean']=='TWD')
+        {
+            $myproduct = 'myproduct2';
+        }else{
+            $myproduct = 'myproduct';
+        }
+        $this->response->setOutput($this->load->view('product/'.$myproduct, $data));
     }
 
     public function save_order() {
