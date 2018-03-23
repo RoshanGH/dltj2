@@ -289,7 +289,17 @@
                             </div>
                         </div>
                     </li>
+
                     <li>
+                        <div class="item-content" style="padding-left:0;margin-left: 0">
+                            <div class="item-media"><i class="icon icon-form-addrase"></i></div>
+                            <div class="item-inner" style="margin-left: 0.4rem">
+                                <div class="item-title label">備註</div>
+                                <div class="item-input">
+                                    <input name="comment" id="user_comment" type="text" placeholder="請填寫您的備註" class="">
+                                </div>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -650,6 +660,8 @@
             var user_phone = $("#user_phone").val();
             var user_code = $("#user_code").val();
             var user_address = $("#user_address").val();
+            var user_comment = $("#user_comment").val();
+
             //var user_zone = $("#city-picker").val();
             var product_id = $("#product_id").val();
 
@@ -705,6 +717,8 @@
                                         user_phone: user_phone,
                                         user_code: user_code,
                                         user_address: user_address,
+                                        user_comment: user_comment,
+
                                         //               user_zone: user_zone,
                                     },
                                     function (date) {
@@ -758,6 +772,7 @@
                                         user_phone: user_phone,
                                         user_code: user_code,
                                         user_address: user_address,
+                                        user_comment: user_comment,
                                         payment : 'paypal',
                                         //               user_zone: user_zone,
                                     },
