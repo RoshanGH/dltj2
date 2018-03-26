@@ -50,7 +50,9 @@ class ControllerProductMyproduct extends Controller {
                         'option_value_id' => $option_value['option_value_id'],
                         'name' => $option_value['name'],
                         'image' => $this->model_tool_image->resize($option_value['image'], 400, 400),
-                        'price' => $price,
+//                        'price' => $price,
+                        'price' => $option_value['price'],
+
                         'price_prefix' => $option_value['price_prefix'],
                         'key' => $key
                     );
@@ -117,7 +119,7 @@ class ControllerProductMyproduct extends Controller {
 
     public function save_order() {
         $this->logger = new \Log('log.log');
-        $this->logger->write($this->request->post);
+//        $this->logger->write($this->request->post);
 
 //        生成订单号
 //        $order_id = '60'.time().rand(1,9).rand(1.9);
@@ -136,10 +138,10 @@ class ControllerProductMyproduct extends Controller {
 //        $this->logger->write($post_data['price']);
         $total_price = $post_data['price'] * $post_data['number'];
         $post_data['total_price'] = $total_price;
-        $this->logger->write($total_price);
-        $this->logger->write($post_data);
+//        $this->logger->write($total_price);
+//        $this->logger->write($post_data);
         $order_id = $this->model_catalog_myproduct->save_order($post_data);
-        $this->logger->write($total_price);
+//        $this->logger->write($total_price);
         //order_product
         $product_info = $this->model_catalog_myproduct->get_product_info($post_data['product_id']);
         $product_name = $product_info['name'];
@@ -155,16 +157,16 @@ class ControllerProductMyproduct extends Controller {
             'price' => $post_data['price'],
         );
         //整理商品属性
-        $this->logger->write($order_product_data);
+//        $this->logger->write($order_product_data);
         $option_str = '';
         foreach ($post_data['options'] as $key => $val) {
             $ops[$key]['name'] = $this->model_catalog_myproduct->get_options_name($val)['name'];
             $ops[$key]['value'] = $this->model_catalog_myproduct->get_options_value($val)['value'];
             $option_str .= $ops[$key]['name'] . ":" . $ops[$key]['value'];
         }
-        $this->logger->write($option_str);
+//        $this->logger->write($option_str);
         $order_product_id = $this->model_catalog_myproduct->save_order_product($order_product_data);
-        $this->logger->write($order_product_id);
+//        $this->logger->write($order_product_id);
         foreach ($ops as $key => $val) {
             $this->model_catalog_myproduct->save_order_option($val['name'], $val['value'], $order_product_id, $order_id);
         }
@@ -175,7 +177,7 @@ class ControllerProductMyproduct extends Controller {
             'price' => $total_price,
             'option_str' => $option_str,
         );
-        $this->logger->write($return);
+//        $this->logger->write($return);
         header('Content-Type: text/json;charset=utf8');
         echo json_encode($return, true);
         exit();
