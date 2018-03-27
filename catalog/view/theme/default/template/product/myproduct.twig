@@ -166,13 +166,8 @@
                 <div class="parameter">
                     <div class="parameter-title"> {{ option.name }} </div>
                     <div id="combo-choose-{{ option.product_option_id }}">
-
-
                         {% for option_sub in option.product_option_value %}
-
-
                             {% if option_sub.key == '0' %}
-
                                 <div class="parameter-style choosed">
                                     {% if option_sub.image  %}
                                     <i style="display: block;width: 6.5rem;height: 6.5rem">
@@ -181,10 +176,10 @@
                                     {% endif %}
                                     <i style="display: block;width: 6.5rem;overflow: hidden;height: 0.9rem">
                                         {{ option_sub.name }}
-                                        <input type="hidden" value="{{ option_sub.option_value_id }}">
+                                        <input name="option_value_id" type="hidden" value="{{ option_sub.option_value_id }}">
+                                        <input name="option_price" type="hidden" value="{{ option_sub.price }}">
                                     </i>
                                 </div>
-
                             {% else %}
                                 <div class="parameter-style no-choosed">
                                     {% if option_sub.image  %}
@@ -194,7 +189,8 @@
                                     {% endif %}
                                     <i style="display: block;width: 6.5rem;overflow: hidden;height: 0.9rem">
                                         {{ option_sub.name }}
-                                        <input type="hidden" value="{{ option_sub.option_value_id }}">
+                                        <input name="option_value_id" type="hidden" value="{{ option_sub.option_value_id }}">
+                                        <input name="option_price" type="hidden" value="{{ option_sub.price }}">
                                     </i>
                                 </div>
                             {% endif %}
@@ -205,6 +201,7 @@
                     <div style="clear: both"></div>
                 </div>
             {% endfor %}
+            <input id="choose_price" type="hidden" value="">
 
 
         </div>
@@ -218,7 +215,7 @@
             <input type="hidden" name="item_name_1" value="{{ name }}">
             {#<input type="hidden" name="item_number_1" value="Product 16asdfasdf">#}
             {#<input type="hidden" name="amount_1" value="0.01">#}
-            <input type="hidden" name="amount_1" value="{{ price_num }}">
+            <input id="amount_1" type="hidden" name="amount_1" value="{{ price_num }}">
             {#<input type="hidden" name="quantity_1" value="2">#}
             <input type="hidden" name="currency_code" value="USD">
             {#<input type="hidden" name="first_name" value="">#}
@@ -606,18 +603,35 @@
                 li = radioWrap.getElementsByTagName("div");
         for (var i = 0; i < li.length; i++) {
             li[i].onclick = function () {
+                var result_price = 0 ;
                 for (var i = 0; i < li.length; i++) {
                     li[i].className = "parameter-style no-choosed";
                 }
                 this.className = "parameter-style choosed";
+                        $(".choosed input[name='option_price']").each(function () {
+                            result_price += parseInt($(this).val());
+        });
+                $("#choose_price").val(parseInt(result_price) + parseInt({{ price_num }}) );
+                $("#title-price").text(parseInt(result_price) + parseInt({{ price_num }}) );
+                $("#sum").val(parseInt(result_price) + parseInt({{ price_num }}) );
+                $("#order_price").text(parseInt(result_price) + parseInt({{ price_num }}) );
+                $("#amount_1").val(parseInt(result_price) + parseInt({{ price_num }}) );
+                $("#sl").val(1);
             }
         }
+
+
+
     })();
     {% endfor %}
+
+
+
 
     $(document).ready(function () {
 //加的效果
         $(".up").click(function () {
+            var price = $("#choose_price").val();
             var n = $(this).prev().val();
             var num = parseInt(n) + 1;
             $("#down1").show();
@@ -627,12 +641,14 @@
             }
             $(this).prev().val(num);
             $("#ssl").text(num);
-            $("#title-price").text(num *{{ price_num }});
-            $("#sum").val(num *{{ price_num }});
-            $("#order_price").text(num *{{ price_num }});
+            $("#title-price").text(num * price);
+            $("#sum").val(num * price);
+            $("#order_price").text(num * price);
+            $("#amount_1").val(num * price);
         });
 //减的效果
         $(".down").click(function () {
+            var price = $("#choose_price").val();
             var n = $(this).next().val();
             var num = parseInt(n) - 1;
             if (num == 1) {
@@ -644,9 +660,10 @@
             }
             $(this).next().val(num);
             $("#ssl").text(num);
-            $("#title-price").text(num *{{ price_num }});
-            $("#sum").val(num *{{ price_num }});
-            $("#order_price").text(num *{{ price_num }});
+            $("#title-price").text(num * price);
+            $("#sum").val(num * price);
+            $("#order_price").text(num * price);
+            $("#amount_1").val(num * price);
         });
     })
 </script>
@@ -669,13 +686,13 @@
             //var user_zone = $("#city-picker").val();
             var product_id = $("#product_id").val();
 
+            price = $("#choose_price").val();
 
-            price = {{ price_num }};
-//            total_price = $("#order_price").text();
+            total_price = $("#order_price").text();
             number = $("#sl").val();
 
 
-            $(".choosed input[type='hidden']").each(function () {
+            $(".choosed input[name='option_value_id']").each(function () {
                 options.push($(this).val());
             });
 
@@ -715,6 +732,7 @@
                                         product_id: product_id,
                                         options: options,
                                         price: price,
+                                        total_price:total_price,
                                         number: number,
                                         user_name: user_name,
                                         user_email: user_email,
@@ -769,6 +787,7 @@
                                         product_id: product_id,
                                         options: options,
                                         price: price,
+                                        total_price:total_price,
                                         number: number,
                                         user_name: user_name,
                                         user_email: user_email,
@@ -815,6 +834,20 @@
     });
 
 
+</script>
+<script>
+
+    $(document).ready(function () {
+        var result_price = 0;
+        $(".choosed input[name='option_price']").each(function () {
+            result_price += parseInt($(this).val());
+        });
+        $("#choose_price").val(parseInt(result_price) + parseInt({{ price_num }}) );
+        $("#title-price").text(parseInt(result_price) + parseInt({{ price_num }}) );
+        $("#sum").val(parseInt(result_price) + parseInt({{ price_num }}) );
+        $("#order_price").text(parseInt(result_price) + parseInt({{ price_num }}) );
+        $("#amount_1").val(parseInt(result_price) + parseInt({{ price_num }}) );
+    });
 </script>
 <script>
     $(document).ready(function () {

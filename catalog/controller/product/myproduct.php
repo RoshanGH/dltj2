@@ -44,6 +44,11 @@ class ControllerProductMyproduct extends Controller {
                     } else {
                         $price = false;
                     }
+                    if ($option_value['price_prefix'] =="-"){
+                        $option_price =  '-'. $option_value['price'];
+                    }else{
+                        $option_price =   $option_value['price'];
+                    }
 
                     $product_option_value_data[$key] = array(
                         'product_option_value_id' => $option_value['product_option_value_id'],
@@ -51,9 +56,8 @@ class ControllerProductMyproduct extends Controller {
                         'name' => $option_value['name'],
                         'image' => $this->model_tool_image->resize($option_value['image'], 400, 400),
 //                        'price' => $price,
-                        'price' => $option_value['price'],
-
-                        'price_prefix' => $option_value['price_prefix'],
+                        'price' => $option_price,
+//                        'price_prefix' => $option_value['price_prefix'],
                         'key' => $key
                     );
                 }
@@ -136,8 +140,7 @@ class ControllerProductMyproduct extends Controller {
         $this->load->model('catalog/myproduct');
         //order表
 //        $this->logger->write($post_data['price']);
-        $total_price = $post_data['price'] * $post_data['number'];
-        $post_data['total_price'] = $total_price;
+        $total_price = $post_data['total_price'];
 //        $this->logger->write($total_price);
 //        $this->logger->write($post_data);
         $order_id = $this->model_catalog_myproduct->save_order($post_data);
