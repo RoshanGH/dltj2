@@ -241,8 +241,52 @@
                             <div class="item-inner" style="margin-left: 0.4rem">
                                 <div class="item-title label">{{ user_name }}</div>
                                 <div class="item-input">
-                                    <input id="user_name" type="text" placeholder="Your name">
+                                    <input id="user_name" type="text" placeholder="Your Full Name">
                                     <input name="item_number_1" id="product_id" type="hidden" value="{{ product_id }}">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content" style="padding-left:0;margin-left: 0;">
+                            <div class="item-media"><i class="icon icon-form-email"></i></div>
+                            <div class="item-inner" style="margin-left: 0.4rem;border-bottom: 1px solid #eeeeee;">
+                                <div class="item-title label">City</div>
+                                <div class="item-input">
+                                    <input name="city" id="user_city" type="text" placeholder="City">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content" style="padding-left:0;margin-left: 0;">
+                            <div class="item-media"><i class="icon icon-form-email"></i></div>
+                            <div class="item-inner" style="margin-left: 0.4rem;border-bottom: 1px solid #eeeeee;">
+                                <div class="item-title label">State</div>
+                                <div class="item-input">
+                                    <input name="state" id="user_state" type="text" placeholder="State/Province/Region">
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content" style="padding-left:0;margin-left: 0">
+                            <div class="item-media"><i class="icon icon-form-code"></i></div>
+                            <div class="item-inner" style="margin-left: 0.4rem">
+                                <div class="item-title label">Zip code</div>
+                                <div class="item-input">
+                                    <input id="user_code" type="text" placeholder="Zip code" >
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content" style="padding-left:0;margin-left: 0">
+                            <div class="item-media"><i class="icon icon-form-code"></i></div>
+                            <div class="item-inner" style="margin-left: 0.4rem">
+                                <div class="item-title label">Country</div>
+                                <div class="item-input">
+                                    <input id="user_country" type="text" placeholder="Country" >
                                 </div>
                             </div>
                         </div>
@@ -265,17 +309,6 @@
                                 <div class="item-title label">{{ user_telephone }}</div>
                                 <div class="item-input">
                                     <input id="user_phone" type="text" placeholder="Telephone" class="">
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item-content" style="padding-left:0;margin-left: 0">
-                            <div class="item-media"><i class="icon icon-form-code"></i></div>
-                            <div class="item-inner" style="margin-left: 0.4rem">
-                                <div class="item-title label">{{ user_code }}</div>
-                                <div class="item-input">
-                                    <input id="user_code" type="text" placeholder="Code" class="">
                                 </div>
                             </div>
                         </div>
@@ -677,6 +710,9 @@
             var total_price;
             var number;
             var user_name = $("#user_name").val();
+            var user_city = $("#user_city").val();
+            var user_state = $("#user_state").val();
+            var user_country = $("#user_country").val();
             var user_email = $("#user_email").val();
             var user_phone = $("#user_phone").val();
             var user_code = $("#user_code").val();
@@ -737,6 +773,9 @@
                                         total_price:total_price,
                                         number: number,
                                         user_name: user_name,
+                                        user_city: user_city,
+                                        user_state: user_state,
+                                        user_country:user_country,
                                         user_email: user_email,
                                         user_phone: user_phone,
                                         user_code: user_code,
@@ -792,6 +831,9 @@
                                         total_price:total_price,
                                         number: number,
                                         user_name: user_name,
+                                        user_city: user_city,
+                                        user_state: user_state,
+                                        user_country:user_country,
                                         user_email: user_email,
                                         user_phone: user_phone,
                                         user_code: user_code,

@@ -143,6 +143,8 @@ class ControllerProductMyproduct extends Controller {
         $total_price = $post_data['total_price'];
 //        $this->logger->write($total_price);
 //        $this->logger->write($post_data);
+//        $post_data['all_address'] = '国家: ' . $post_data['user_country'] . ', 省: ' . $post_data['state'] . ', 市: ' . $post_data['user_city'] . '地址 : ' . $post_data['user_address'];
+        $post_data['all_address'] = '国家: ' . $post_data['user_country'] . ', 省: ' . $post_data['user_state'] . ', 市: ' . $post_data['user_city'] . ', 地址 : ' . $post_data['user_address'] . ', 邮编: '. $post_data['user_code'];
         $order_id = $this->model_catalog_myproduct->save_order($post_data);
 //        $this->logger->write($total_price);
         //order_product
