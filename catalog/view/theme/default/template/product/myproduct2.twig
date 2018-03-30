@@ -757,48 +757,48 @@
                                     });
                         }
                     },
-                    {
-                        text: 'PayPal',
-                        onClick: function () {
+                    {#{#}
+                        {#text: 'PayPal',#}
+                        {#onClick: function () {#}
 
-                            $.showPreloader();
-                            fbq('track', 'Purchase', {
-                                content_ids: [product_id],
-                                content_type: 'product',
-                                value: price,
-                                currency: 'USD'
-                            });
+                            {#$.showPreloader();#}
+                            {#fbq('track', 'Purchase', {#}
+                                {#content_ids: [product_id],#}
+                                {#content_type: 'product',#}
+                                {#value: price,#}
+                                {#currency: 'USD'#}
+                            {#});#}
 
-                            $.post("{{ order_url }}", {
-                                        product_id: product_id,
-                                        options: options,
-                                        price: price,
-                                        number: number,
-                                        user_name: user_name,
-                                        user_email: user_email,
-                                        user_phone: user_phone,
-                                        user_code: user_code,
-                                        user_address: user_address,
-                                        user_comment: user_comment,
-                                        payment : 'paypal',
-                                        //               user_zone: user_zone,
-                                    },
-                                    function (date) {
-                                        date = $.parseJSON(date);
-                                        if (date.status == 'success') {
-                                            $("#paypal-form-orderId").val(date.order_id);
-//                                            console.log($("#paypal-form-orderId").val());
+                            {#$.post("{{ order_url }}", {#}
+                                        {#product_id: product_id,#}
+                                        {#options: options,#}
+                                        {#price: price,#}
+                                        {#number: number,#}
+                                        {#user_name: user_name,#}
+                                        {#user_email: user_email,#}
+                                        {#user_phone: user_phone,#}
+                                        {#user_code: user_code,#}
+                                        {#user_address: user_address,#}
+                                        {#user_comment: user_comment,#}
+                                        {#payment : 'paypal',#}
+                                        {#//               user_zone: user_zone,#}
+                                    {#},#}
+                                    {#function (date) {#}
+                                        {#date = $.parseJSON(date);#}
+                                        {#if (date.status == 'success') {#}
+                                            {#$("#paypal-form-orderId").val(date.order_id);#}
+{#//                                            console.log($("#paypal-form-orderId").val());#}
 
-                                            document.getElementById('paypal-form').submit();
-//                                            $.hidePreloader();
-                                        } else {
-                                            $.toast("Your order failed, please order again");
-                                            return;
-                                        }
-                                    });
-//                            document.getElementById('paypal-form').submit();
-                        }
-                    }
+                                            {#document.getElementById('paypal-form').submit();#}
+{#//                                            $.hidePreloader();#}
+                                        {#} else {#}
+                                            {#$.toast("Your order failed, please order again");#}
+                                            {#return;#}
+                                        {#}#}
+                                    {#});#}
+{#//                            document.getElementById('paypal-form').submit();#}
+                        {#}#}
+                    {#}#}
                 ];
                 var buttons2 = [
                     {
