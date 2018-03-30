@@ -112,10 +112,10 @@ class ControllerProductMyproduct extends Controller {
 //        print_r($data);
 //        exit;
 //        $this->logger->write($data);
-        if ($product_info['ean']=='TWD') {
-            $myproduct = 'myproduct2';
-        }else if ($_GET['test']){
+        if ($_GET['test']) {
             $myproduct = 'myproduct_test';
+        }else if ($product_info['ean']=='TWD'){
+            $myproduct = 'myproduct2';
         }else{
             $myproduct = 'myproduct';
         }
