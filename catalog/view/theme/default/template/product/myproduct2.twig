@@ -681,8 +681,10 @@
             });
 
             $("#info input").each(function () {
-                if ($(this).val() == '') {
-                    to_4 = false;
+                if ($(this).attr('name') != 'comment') {
+                    if ($(this).val() == '') {
+                        to_4 = false;
+                    }
                 }
 //                info.push($(this).val());
             });
