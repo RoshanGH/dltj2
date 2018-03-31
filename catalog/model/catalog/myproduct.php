@@ -2,7 +2,7 @@
 class ModelCatalogMyproduct extends Model {
 
     public function save_order($data) {
-        $this->db->query("INSERT INTO " . DB_PREFIX . "order SET firstname = '" . $data['user_name'] . "' , payment_country = '". $data['user_country'] . "' , email ='" . $data['user_email'] . "' , telephone = '" . $data['user_phone'] ."' , payment_postcode = '" . $data['user_code'] . "', payment_zone ='" . $data['all_address'] ."',payment_city ='".$data['user_city']."',order_status_id = 1 ,total = '" .$data['total_price']."',store_name = '".$data['store_name']."',payment_method ='".$data['payment_method']."', comment = '". $this->db->escape($data['user_comment']) ."', date_added = '".$data['time']."'");
+        $this->db->query("INSERT INTO " . DB_PREFIX . "order SET firstname = '" . $data['user_name'] . "' , payment_country = '". $this->db->escape($data['user_country']) . "' , email ='" . $data['user_email'] . "' , telephone = '" . $data['user_phone'] ."' , payment_postcode = '" . $data['user_code'] . "', payment_zone ='" . $this->db->escape($data['all_address']) ."',payment_city ='".$this->db->escape($data['user_city'])."',order_status_id = 1 ,total = '" .$data['total_price']."',store_name = '".$data['store_name']."',payment_method ='".$data['payment_method']."', comment = '". $this->db->escape($data['user_comment']) ."', date_added = '".$data['time']."'");
 //        error_log(print_r($query,1),3,'/tmp/log.log');
         return $this->db->getLastId();
     }
