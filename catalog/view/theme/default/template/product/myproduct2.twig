@@ -713,9 +713,9 @@
                         onClick: function () {
                             $.showPreloader();
                             fbq('track', 'Purchase', {
-                                content_ids: [product_id],
+                                content_ids: ['{{ product_id }}'],
                                 content_type: 'product',
-                                value: price,
+                                value: '{{ price }}',
                                 currency: 'USD'
                             });
 
