@@ -107,6 +107,7 @@ class ControllerProductMyproduct extends Controller {
         $data['show_order_url'] = $show_order_url;
         $data['product_id'] = $product_id;
         $data['search_order_url'] = $search_order_url;
+        $data['ean'] = $product_info['ean'];
 //        echo '<pre>';
 //        print_r($product_info);
 //        print_r($data);
