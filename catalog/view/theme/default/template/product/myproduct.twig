@@ -753,65 +753,65 @@
                         text: 'Please Choose',
                         label: true
                     },
-                    {
-                        text: 'Cash on delivery',
-                        bold: true,
-//                        color: 'danger',
-                        onClick: function () {
-                            $.showPreloader();
-                            fbq('track', 'Purchase', {
-                                content_ids: ['{{ product_id }}'],
-                                content_type: 'product',
-                                value: '{{ price_num }}',
-                                currency: 'USD'
-                            });
+                    {#{#}
+                        {#text: 'Cash on delivery',#}
+                        {#bold: true,#}
+{#//                        color: 'danger',#}
+                        {#onClick: function () {#}
+                            {#$.showPreloader();#}
+                            {#fbq('track', 'Purchase', {#}
+                                {#content_ids: ['{{ product_id }}'],#}
+                                {#content_type: 'product',#}
+                                {#value: '{{ price_num }}',#}
+                                {#currency: 'USD'#}
+                            {#});#}
 
-                            $.post("{{ order_url }}", {
-                                        product_id: product_id,
-                                        options: options,
-                                        price: price,
-                                        total_price:total_price,
-                                        number: number,
-                                        user_name: user_name,
-                                        user_city: user_city,
-                                        user_state: user_state,
-                                        user_country:user_country,
-                                        user_email: user_email,
-                                        user_phone: user_phone,
-                                        user_code: user_code,
-                                        user_address: user_address,
-                                        user_comment: user_comment,
-                                        //               user_zone: user_zone,
-                                    },
-                                    function (date) {
-                                        date = $.parseJSON(date);
-                                        if (date.status == 'success') {
-                                            $("#end-order-id").text(date.order_id);
-                                            $("#end-order-price").text(date.price);
-                                            $("#end-order-time").text(date.time);
+                            {#$.post("{{ order_url }}", {#}
+                                        {#product_id: product_id,#}
+                                        {#options: options,#}
+                                        {#price: price,#}
+                                        {#total_price:total_price,#}
+                                        {#number: number,#}
+                                        {#user_name: user_name,#}
+                                        {#user_city: user_city,#}
+                                        {#user_state: user_state,#}
+                                        {#user_country:user_country,#}
+                                        {#user_email: user_email,#}
+                                        {#user_phone: user_phone,#}
+                                        {#user_code: user_code,#}
+                                        {#user_address: user_address,#}
+                                        {#user_comment: user_comment,#}
+                                        {#//               user_zone: user_zone,#}
+                                    {#},#}
+                                    {#function (date) {#}
+                                        {#date = $.parseJSON(date);#}
+                                        {#if (date.status == 'success') {#}
+                                            {#$("#end-order-id").text(date.order_id);#}
+                                            {#$("#end-order-price").text(date.price);#}
+                                            {#$("#end-order-time").text(date.time);#}
 
-                                            //show-order
-                                            $("#show-order-id").text(date.order_id);
-                                            $("#show-order-name").text(user_name + " " + user_phone);
-                                            $("#show-order-price").text("{{ price }}");
-                                            $("#show-order-address").text(user_address);
-                                            $("#show-order-code").text(user_code);
-                                            $("#show-order-meail").text(user_email);
-                                            $("#show-order-time").text($("#end-order-time").text());
-                                            $("#show-order-total").val(date.price);
+                                            {#//show-order#}
+                                            {#$("#show-order-id").text(date.order_id);#}
+                                            {#$("#show-order-name").text(user_name + " " + user_phone);#}
+                                            {#$("#show-order-price").text("{{ price }}");#}
+                                            {#$("#show-order-address").text(user_address);#}
+                                            {#$("#show-order-code").text(user_code);#}
+                                            {#$("#show-order-meail").text(user_email);#}
+                                            {#$("#show-order-time").text($("#end-order-time").text());#}
+                                            {#$("#show-order-total").val(date.price);#}
                                             {#$("#show-order-prouctname").text({{ name }});#}
-                                            $("#show-order-quantity").text(number);
-                                            $("#show-order-options").text(date.option_str);
-//                                            console.log(date);
+                                            {#$("#show-order-quantity").text(number);#}
+                                            {#$("#show-order-options").text(date.option_str);#}
+{#//                                            console.log(date);#}
 
-                                            $.hidePreloader();
-                                            $.router.load("#router4");
-                                        } else {
-                                            $.toast("Your order failed, please order again");
-                                        }
-                                    });
-                        }
-                    },
+                                            {#$.hidePreloader();#}
+                                            {#$.router.load("#router4");#}
+                                        {#} else {#}
+                                            {#$.toast("Your order failed, please order again");#}
+                                        {#}#}
+                                    {#});#}
+                        {#}#}
+                    {#},#}
                     {
                         text: 'PayPal',
                         onClick: function () {
