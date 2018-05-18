@@ -21,7 +21,7 @@ class ControllerProductMyproduct extends Controller {
         //图片
         $this->load->model('tool/image');
 
-        $data['popup'] ='http://farawaymall.xyz/image/' . $product_info['image'];
+        $data['popup'] ='http://bdbdbdb.online/image/' . $product_info['image'];
 
 
         $data['images'][]['popup'] = $data['popup'];
@@ -29,7 +29,7 @@ class ControllerProductMyproduct extends Controller {
         $results = $this->model_catalog_product->getProductImages($this->request->get['product_id']);
         foreach ($results as $result) {
             $data['images'][] = array(
-                'popup' =>'http://farawaymall.xyz/image/'. $result['image'],
+                'popup' =>'http://bdbdbdb.online/image/'. $result['image'],
 //                'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_additional_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_additional_height'))
             );
         }
