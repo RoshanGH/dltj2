@@ -1,9 +1,12 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'http://dltjstore.com/');
+//define('HTTP_SERVER', 'http://dltjstore.com/');
+//
+//// HTTPS
+//define('HTTPS_SERVER', 'http://dltjstore.com/');
+define('HTTP_SERVER', 'http://'.$_SERVER['HTTP_HOST'].'/');
+define('HTTPS_SERVER', 'http://'.$_SERVER['HTTP_HOST'].'/');
 
-// HTTPS
-define('HTTPS_SERVER', 'http://dltjstore.com/');
 
 // DIR
 define('DIR_APPLICATION', '/home/wwwroot/dltjstore.com/catalog/');
