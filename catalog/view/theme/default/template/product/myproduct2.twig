@@ -830,70 +830,16 @@
                     $.actions(groups);
 
 
-                } else {
-                    //            choose payment
+                } else if("{{ mpn }}" == "ALL") {
+
+
+                }else {
+                                        //            choose payment
                     var buttons1 = [
                         {
                             text: '請選擇',
                             label: true
                         },
-                        {#{#}
-                            {#text: '貨到付款',#}
-                            {#bold: true,#}
-{#//                        color: 'danger',#}
-                            {#onClick: function () {#}
-                                {#$.showPreloader();#}
-                                {#fbq('track', 'Purchase', {#}
-                                    {#content_ids: ['{{ product_id }}'],#}
-                                    {#content_type: 'product',#}
-                                    {#value: '{{ price_num }}',#}
-                                    {#currency: 'USD'#}
-                                {#});#}
-
-                                {#$.post("{{ order_url }}", {#}
-                                        {#product_id: product_id,#}
-                                        {#options: options,#}
-                                        {#price: price,#}
-                                        {#number: number,#}
-                                        {#user_name: user_name,#}
-                                        {#user_email: user_email,#}
-                                        {#user_phone: user_phone,#}
-                                        {#user_code: user_code,#}
-                                        {#user_address: user_address,#}
-                                        {#user_comment: user_comment,#}
-                                        {#total_price: total_price,#}
-
-                                        {#//               user_zone: user_zone,#}
-                                    {#},#}
-                                    {#function (date) {#}
-                                        {#date = $.parseJSON(date);#}
-                                        {#if (date.status == 'success') {#}
-                                            {#$("#end-order-id").text(date.order_id);#}
-                                            {#$("#end-order-price").text(date.price);#}
-                                            {#$("#end-order-time").text(date.time);#}
-
-                                            {#//show-order#}
-                                            {#$("#show-order-id").text(date.order_id);#}
-                                            {#$("#show-order-name").text(user_name + " " + user_phone);#}
-                                            {#$("#show-order-price").text("{{ price }}");#}
-                                            {#$("#show-order-address").text(user_address);#}
-                                            {#$("#show-order-code").text(user_code);#}
-                                            {#$("#show-order-meail").text(user_email);#}
-                                            {#$("#show-order-time").text($("#end-order-time").text());#}
-                                            {#$("#show-order-total").val(date.price);#}
-                                            {#$("#show-order-prouctname").text({{ name }});#}
-                                            {#$("#show-order-quantity").text(number);#}
-                                            {#$("#show-order-options").text(date.option_str);#}
-{#//                                            console.log(date);#}
-
-                                            {#$.hidePreloader();#}
-                                            {#$.router.load("#router4");#}
-                                        {#} else {#}
-                                            {#$.toast("提交失敗,請重試");#}
-                                        {#}#}
-                                    {#});#}
-                            {#}#}
-                        {#},#}
                         {
                             text: 'PayPal',
                             onClick: function () {
@@ -945,7 +891,6 @@
                     ];
                     var groups = [buttons1, buttons2];
                     $.actions(groups);
-
                 }
 
 
