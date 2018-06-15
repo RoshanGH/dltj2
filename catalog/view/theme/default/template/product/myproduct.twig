@@ -32,6 +32,7 @@
                 document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '{{ pixel }}'); // Insert your pixel ID here.
         fbq('track', 'PageView');
+        fbq('track', 'ViewContent');
     </script>
     <noscript><img height="1" width="1" style="display:none"
                    src="https://www.facebook.com/tr?id={{ pixel }}&ev=PageView&noscript=1"
@@ -247,6 +248,9 @@
                             </div>
                         </div>
                     </li>
+                    <script>
+                        $("user_name").focus(function(){alert(123)})
+                    </script>
                     <li>
                         <div class="item-content" style="padding-left:0;margin-left: 0;">
                             <div class="item-media"><i class="icon icon-form-email"></i></div>
@@ -818,9 +822,9 @@
 
                             $.showPreloader();
                             fbq('track', 'Purchase', {
-                                content_ids: [product_id],
+                                content_ids: [{{ product_id }}],
                                 content_type: 'product',
-                                value: price,
+                                value: {{ price }},
                                 currency: 'USD'
                             });
 
@@ -895,6 +899,9 @@
 </script>
 <script>
     $(document).ready(function () {
+        $("#user_name").focus(function(){
+            fbq('track', 'AddPaymentInfo');
+        });
         $("#search_order").click(function () {
 
             var search_email = $("#search_email").val();
