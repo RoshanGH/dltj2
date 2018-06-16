@@ -110,7 +110,7 @@
  .middle_message_two_tag{
      float: left;
      width: 0.8rem;
-     margin-top: 0.18rem;
+     /*margin-top: 0.18rem;*/
  }
 
  .comment{
