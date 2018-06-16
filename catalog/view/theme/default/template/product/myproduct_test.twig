@@ -32,6 +32,7 @@
                 document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '{{ pixel }}'); // Insert your pixel ID here.
         fbq('track', 'PageView');
+        fbq('track', 'ViewContent');
     </script>
     <noscript><img height="1" width="1" style="display:none"
                    src="https://www.facebook.com/tr?id={{ pixel }}&ev=PageView&noscript=1"
@@ -85,19 +86,23 @@
                         <div class="col-60 middle_message_font">{{ text_sales_promotion_content }}</div>
                     </div>
                 </div>
-                <div class="middle_message_two" style="">
-                    <div class="row">
-                        <div class="col-50 middle_message_two_font">
-                            <div class="middle_message_two_tag"><img class="image" src="{{ http }}/catalog/view/javascript/my/image/qietu-02-1.png"></div>
-                            {{ small_title_1 }}
-                        </div>
-                        <div class="col-50 middle_message_two_font">
-                            <div class="middle_message_two_tag"><img class="image" src="{{ http }}/catalog/view/javascript/my/image/qietu-02-1.png"></div>
-                            {{ small_title_2 }}
-                        </div>
+                <div class=" middle_message_two_font" style="">
+                    <div>
+                        <img class="middle_message_two_tag image" src="{{ http }}/catalog/view/javascript/my/image/qietu-02-1.png">
+                        <div>{{ small_title_1 }}</div>
+                    </div>
+                    <div>
+                        <img class="middle_message_two_tag image" src="{{ http }}/catalog/view/javascript/my/image/qietu-02-1.png">
+                        <div>{{ small_title_2 }}</div>
+                    </div>
+                    <div>
+                        <img class="middle_message_two_tag image" src="{{ http }}/catalog/view/javascript/my/image/qietu-02-1.png">
+                        <div>{{ small_title_3 }}</div>
                     </div>
                 </div>
             </div>
+
+
 
             <div class="space"></div>
             <!--活动描述   标识 end-->
@@ -169,7 +174,7 @@
                         {% for option_sub in option.product_option_value %}
                             {% if option_sub.key == '0' %}
                                 <div class="parameter-style choosed">
-                                    {% if option_sub.image  %}
+                                    {% if option_sub.image %}
                                         <i style="display: block;width: 6.5rem;height: 6.5rem">
                                             <img style="width: 100%;height: 100%" src="{{ option_sub.image }}">
                                         </i>
@@ -182,7 +187,7 @@
                                 </div>
                             {% else %}
                                 <div class="parameter-style no-choosed">
-                                    {% if option_sub.image  %}
+                                    {% if option_sub.image %}
                                         <i style="display: block;width: 6.5rem;height: 6.5rem">
                                             <img style="width: 100%;height: 100%" src="{{ option_sub.image }}">
                                         </i>
@@ -206,18 +211,18 @@
 
         </div>
         <div class="space"></div>
-            {#<form id="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post">#}
+        {#<form id="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post">#}
             <form id="paypal-form" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
             <input type="hidden" name="cmd" value="_cart">
             <input type="hidden" name="upload" value="1">
             {#<input type="hidden" name="business" value="sophia.yip77@gmail.com">#}
-            <input type="hidden" name="business" value="275509523_user@qq.com">
+            <input type="hidden" name="business" value="1417502518business@qq.com">
             <input type="hidden" name="item_name_1" value="{{ name }}">
             {#<input type="hidden" name="item_number_1" value="Product 16asdfasdf">#}
             {#<input type="hidden" name="amount_1" value="0.01">#}
             <input id="amount_1" type="hidden" name="amount_1" value="{{ price_num }}">
             {#<input type="hidden" name="quantity_1" value="2">#}
-            <input type="hidden" name="currency_code" value="USD">
+            <input type="hidden" name="currency_code" value="{{ ean }}">
             {#<input type="hidden" name="first_name" value="">#}
             {#<input type="hidden" name="last_name" value="">#}
             {#<input type="hidden" name="address1" value="123">#}
@@ -232,7 +237,6 @@
             <input type="hidden" name="cancel_return" value="{{ pay_cancel_return_url }}">
             {#<input type="hidden" name="paymentaction" value="authorization">#}
             <input id='paypal-form-orderId' type="hidden" name="custom" value="">
-            <input type="hidden" name="test" value="1">
             <div id="info" class="list-block" style="margin: 0rem">
                 <ul>
                     <!-- Text inputs -->
@@ -276,7 +280,7 @@
                             <div class="item-inner" style="margin-left: 0.4rem">
                                 <div class="item-title label">Zip code</div>
                                 <div class="item-input">
-                                    <input id="user_code" type="text" placeholder="Zip code" >
+                                    <input id="user_code" type="text" placeholder="Zip code">
                                 </div>
                             </div>
                         </div>
@@ -287,7 +291,7 @@
                             <div class="item-inner" style="margin-left: 0.4rem">
                                 <div class="item-title label">Country</div>
                                 <div class="item-input">
-                                    <input id="user_country" type="text" placeholder="Country" >
+                                    <input id="user_country" type="text" placeholder="Country">
                                 </div>
                             </div>
                         </div>
@@ -637,7 +641,7 @@
                 li = radioWrap.getElementsByTagName("div");
         for (var i = 0; i < li.length; i++) {
             li[i].onclick = function () {
-                var result_price = 0 ;
+                var result_price = 0;
                 for (var i = 0; i < li.length; i++) {
                     li[i].className = "parameter-style no-choosed";
                 }
@@ -645,15 +649,14 @@
                 $(".choosed input[name='option_price']").each(function () {
                     result_price += parseInt($(this).val());
                 });
-                $("#choose_price").val(parseInt(result_price) + parseInt({{ price_num }}) );
-                $("#title-price").text(parseInt(result_price) + parseInt({{ price_num }}) );
-                $("#sum").val(parseInt(result_price) + parseInt({{ price_num }}) );
-                $("#order_price").text(parseInt(result_price) + parseInt({{ price_num }}) );
-                $("#amount_1").val(parseInt(result_price) + parseInt({{ price_num }}) );
+                $("#choose_price").val(parseInt(result_price) + parseInt({{ price_num }}));
+                $("#title-price").text(parseInt(result_price) + parseInt({{ price_num }}));
+                $("#sum").val(parseInt(result_price) + parseInt({{ price_num }}));
+                $("#order_price").text(parseInt(result_price) + parseInt({{ price_num }}));
+                $("#amount_1").val(parseInt(result_price) + parseInt({{ price_num }}));
                 $("#sl").val(1);
             }
         }
-
 
 
     })();
@@ -754,74 +757,74 @@
                         text: 'Please Choose',
                         label: true
                     },
-                    {
-                        text: 'Cash on delivery',
-                        bold: true,
-//                        color: 'danger',
-                        onClick: function () {
-                            $.showPreloader();
-                            fbq('track', 'Purchase', {
-                                content_ids: [product_id],
-                                content_type: 'product',
-                                value: price,
-                                currency: 'USD'
-                            });
+                    {#{#}
+                    {#text: 'Cash on delivery',#}
+                    {#bold: true,#}
+                    {#//                        color: 'danger',#}
+                    {#onClick: function () {#}
+                    {#$.showPreloader();#}
+                    {#fbq('track', 'Purchase', {#}
+                    {#content_ids: ['{{ product_id }}'],#}
+                    {#content_type: 'product',#}
+                    {#value: '{{ price_num }}',#}
+                    {#currency: 'USD'#}
+                    {#});#}
 
-                            $.post("{{ order_url }}", {
-                                        product_id: product_id,
-                                        options: options,
-                                        price: price,
-                                        total_price:total_price,
-                                        number: number,
-                                        user_name: user_name,
-                                        user_city: user_city,
-                                        user_state: user_state,
-                                        user_country:user_country,
-                                        user_email: user_email,
-                                        user_phone: user_phone,
-                                        user_code: user_code,
-                                        user_address: user_address,
-                                        user_comment: user_comment,
-                                        //               user_zone: user_zone,
-                                    },
-                                    function (date) {
-                                        date = $.parseJSON(date);
-                                        if (date.status == 'success') {
-                                            $("#end-order-id").text(date.order_id);
-                                            $("#end-order-price").text(date.price);
-                                            $("#end-order-time").text(date.time);
+                    {#$.post("{{ order_url }}", {#}
+                    {#product_id: product_id,#}
+                    {#options: options,#}
+                    {#price: price,#}
+                    {#total_price:total_price,#}
+                    {#number: number,#}
+                    {#user_name: user_name,#}
+                    {#user_city: user_city,#}
+                    {#user_state: user_state,#}
+                    {#user_country:user_country,#}
+                    {#user_email: user_email,#}
+                    {#user_phone: user_phone,#}
+                    {#user_code: user_code,#}
+                    {#user_address: user_address,#}
+                    {#user_comment: user_comment,#}
+                    {#//               user_zone: user_zone,#}
+                    {#},#}
+                    {#function (date) {#}
+                    {#date = $.parseJSON(date);#}
+                    {#if (date.status == 'success') {#}
+                    {#$("#end-order-id").text(date.order_id);#}
+                    {#$("#end-order-price").text(date.price);#}
+                    {#$("#end-order-time").text(date.time);#}
 
-                                            //show-order
-                                            $("#show-order-id").text(date.order_id);
-                                            $("#show-order-name").text(user_name + " " + user_phone);
-                                            $("#show-order-price").text("{{ price }}");
-                                            $("#show-order-address").text(user_address);
-                                            $("#show-order-code").text(user_code);
-                                            $("#show-order-meail").text(user_email);
-                                            $("#show-order-time").text($("#end-order-time").text());
-                                            $("#show-order-total").val(date.price);
-                                            {#$("#show-order-prouctname").text({{ name }});#}
-                                            $("#show-order-quantity").text(number);
-                                            $("#show-order-options").text(date.option_str);
-//                                            console.log(date);
+                    {#//show-order#}
+                    {#$("#show-order-id").text(date.order_id);#}
+                    {#$("#show-order-name").text(user_name + " " + user_phone);#}
+                    {#$("#show-order-price").text("{{ price }}");#}
+                    {#$("#show-order-address").text(user_address);#}
+                    {#$("#show-order-code").text(user_code);#}
+                    {#$("#show-order-meail").text(user_email);#}
+                    {#$("#show-order-time").text($("#end-order-time").text());#}
+                    {#$("#show-order-total").val(date.price);#}
+                    {#$("#show-order-prouctname").text({{ name }});#}
+                    {#$("#show-order-quantity").text(number);#}
+                    {#$("#show-order-options").text(date.option_str);#}
+                    {#//                                            console.log(date);#}
 
-                                            $.hidePreloader();
-                                            $.router.load("#router4");
-                                        } else {
-                                            $.toast("Your order failed, please order again");
-                                        }
-                                    });
-                        }
-                    },
+                    {#$.hidePreloader();#}
+                    {#$.router.load("#router4");#}
+                    {#} else {#}
+                    {#$.toast("Your order failed, please order again");#}
+                    {#}#}
+                    {#});#}
+                    {#}#}
+                    {#},#}
                     {
                         text: 'PayPal',
                         onClick: function () {
 
                             $.showPreloader();
                             fbq('track', 'Purchase', {
-                                content_ids: [product_id],
+                                content_ids: [{{ product_id }}],
                                 content_type: 'product',
-                                value: price,
+                                value: {{ price_num }},
                                 currency: 'USD'
                             });
 
@@ -829,18 +832,18 @@
                                         product_id: product_id,
                                         options: options,
                                         price: price,
-                                        total_price:total_price,
+                                        total_price: total_price,
                                         number: number,
                                         user_name: user_name,
                                         user_city: user_city,
                                         user_state: user_state,
-                                        user_country:user_country,
+                                        user_country: user_country,
                                         user_email: user_email,
                                         user_phone: user_phone,
                                         user_code: user_code,
                                         user_address: user_address,
                                         user_comment: user_comment,
-                                        payment : 'paypal',
+                                        payment: 'paypal',
                                         //               user_zone: user_zone,
                                     },
                                     function (date) {
@@ -887,15 +890,18 @@
         $(".choosed input[name='option_price']").each(function () {
             result_price += parseInt($(this).val());
         });
-        $("#choose_price").val(parseInt(result_price) + parseInt({{ price_num }}) );
-        $("#title-price").text(parseInt(result_price) + parseInt({{ price_num }}) );
-        $("#sum").val(parseInt(result_price) + parseInt({{ price_num }}) );
-        $("#order_price").text(parseInt(result_price) + parseInt({{ price_num }}) );
-        $("#amount_1").val(parseInt(result_price) + parseInt({{ price_num }}) );
+        $("#choose_price").val(parseInt(result_price) + parseInt({{ price_num }}));
+        $("#title-price").text(parseInt(result_price) + parseInt({{ price_num }}));
+        $("#sum").val(parseInt(result_price) + parseInt({{ price_num }}));
+        $("#order_price").text(parseInt(result_price) + parseInt({{ price_num }}));
+        $("#amount_1").val(parseInt(result_price) + parseInt({{ price_num }}));
     });
 </script>
 <script>
     $(document).ready(function () {
+        $("#user_name").focus(function () {
+            fbq('track', 'AddPaymentInfo');
+        });
         $("#search_order").click(function () {
 
             var search_email = $("#search_email").val();

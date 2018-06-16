@@ -119,7 +119,7 @@ class ControllerProductMyproduct extends Controller {
 //        print_r($data);
 //        exit;
 //        $this->logger->write($data);
-        if ($_GET['test']) {
+        if ($product_id == 134) {
             $myproduct = 'myproduct_test';
         }else if ($product_info['ean']=='TWD' || $product_info['ean']=='HKD' || $product_info['ean']=='MOP'){
             $myproduct = 'myproduct2';
