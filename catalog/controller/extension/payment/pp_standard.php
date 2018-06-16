@@ -225,7 +225,7 @@ class ControllerExtensionPaymentPPStandard extends Controller {
                 $request .= '&' . $key . '=' . urlencode(html_entity_decode($value, ENT_QUOTES, 'UTF-8'));
             }
 
-            if ($_POST['payer_email'] == "275509523_payer@qq.com"){
+            if ($_POST['payer_email'] == "13462890088@qq.com"){
                 $curl = curl_init('https://www.sandbox.paypal.com/cgi-bin/webscr');
             }else{
                 $curl = curl_init('https://www.paypal.com/cgi-bin/webscr');
