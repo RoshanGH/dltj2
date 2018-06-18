@@ -23,6 +23,8 @@ class ControllerProductMyproduct extends Controller {
 
             $data['cod'] = true;
 
+        }else{
+            $data['paypal'] = true;
         }
 
         $this->load->model('catalog/product');
