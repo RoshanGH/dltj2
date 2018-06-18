@@ -111,7 +111,7 @@ class ControllerProductMyproduct extends Controller {
 
         $data['http'] = HTTP_SERVER;
         $data['price'] = $this->currency->format($this->tax->calculate($product_info['price'], $product_info['tax_class_id'], $this->config->get('config_tax')), $this->myCurrency);
-        $data['origin_price'] = $this->currency->format($this->tax->calculate($product_info['price'] + 100, $product_info['tax_class_id'], $this->config->get('config_tax')), $this->myCurrency);
+        $data['origin_price'] = $this->currency->format($this->tax->calculate($product_info['price'] * 1.4, $product_info['tax_class_id'], $this->config->get('config_tax')), $this->myCurrency);
         $data['price_num'] =sprintf("%.2f",$product_info['price']) ;
         $data['title'] = $product_info['meta_title'];
         $data['name'] = $product_info['name'];
