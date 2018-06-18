@@ -17,10 +17,20 @@ class ControllerProductMyproduct extends Controller {
         } else {
             $product_id = 0;
         }
+        if($product_id == 136){
+
+            $data['paypal'] = false;
+
+            $data['cod'] = true;
+
+        }
+
         $this->load->model('catalog/product');
 
         $product_info = $this->model_catalog_product->getProduct($product_id);
+
         $fb_pixel = $product_info['upc'];
+
         $this->myCurrency = $product_info['ean'];
 
         //图片
