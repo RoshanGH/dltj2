@@ -16,7 +16,7 @@
             if (f.fbq)return;
             n = f.fbq = function () {
                 n.callMethod ?
-                        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
             if (!f._fbq)f._fbq = n;
             n.push = n;
@@ -29,7 +29,7 @@
             s = b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t, s)
         }(window,
-                document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+            document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '{{ pixel }}'); // Insert your pixel ID here.
         fbq('track', 'PageView');
         fbq('track', 'ViewContent');
@@ -72,8 +72,16 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+
+            {% if paypal == true %}
+                <div style="width: 100%;background-color: white">
+
+                    <div style="width: 50%;margin: 0 auto">
+                        <img class="image" src="{{ http }}/catalog/view/javascript/my/image/paypal.jpeg">
+                    </div>
+                </div>
+            {% endif %}
 
             <div class="space"></div>
             <!--商品信息 end-->
@@ -83,7 +91,7 @@
                     <div class="row">
                         <div class="col-35 active" style="margin-top: 0.8rem">{{ text_sales_promotion }}</div>
 
-                        <div class="col-60 middle_message_font">{{ text_sales_promotion_content }}</div>
+                        {#<div class="col-60 middle_message_font">{{ text_sales_promotion_content }}</div>#}
                     </div>
                 </div>
                 <div class=" middle_message_two_font" style="">
@@ -99,9 +107,14 @@
                         <img class="middle_message_two_tag image" src="{{ http }}/catalog/view/javascript/my/image/qietu-02-1.png">
                         <div>{{ small_title_3 }}</div>
                     </div>
+                    {% if cod == true %}
+                        <div>
+                            <img class="middle_message_two_tag image" src="{{ http }}/catalog/view/javascript/my/image/qietu-02-1.png">
+                            <div>{{ small_title_4 }}</div>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
-
 
 
             <div class="space"></div>
@@ -119,7 +132,7 @@
                 <div style="font-size: 0.6rem;margin: 0 0.5rem;color:#FF464E;border: 2px solid #FF464E ">
                     --- Security ---
                     <br>
-                    •Free shipping& Cash on delivery
+                    •Free shipping
                     <br>
                     •The goods purchased are entitled to the right of unconditional return within 7 days.
                     <br>
@@ -381,7 +394,7 @@
                                             <!--<div class="number">-->
                                             <!--1-->
                                             <!--</div>-->
-                                            <input id="sl" name="quantity_1" class="quantity-input" style="" value="1">
+                                            <input id="sl" name="quantity_1" class="quantity-input" readonly="true" style="" value="1">
                                             <div class="up">
                                                 <img class="up1" src="{{ http }}/catalog/view/javascript/my/image/plus_button.png">
                                             </div>
@@ -638,7 +651,7 @@
     {% for option in options %}
     (function () {
         var radioWrap = document.getElementById("combo-choose-{{ option.product_option_id }}"),
-                li = radioWrap.getElementsByTagName("div");
+            li = radioWrap.getElementsByTagName("div");
         for (var i = 0; i < li.length; i++) {
             li[i].onclick = function () {
                 var result_price = 0;
@@ -757,65 +770,7 @@
                         text: 'Please Choose',
                         label: true
                     },
-                    {#{#}
-                    {#text: 'Cash on delivery',#}
-                    {#bold: true,#}
-                    {#//                        color: 'danger',#}
-                    {#onClick: function () {#}
-                    {#$.showPreloader();#}
-                    {#fbq('track', 'Purchase', {#}
-                    {#content_ids: ['{{ product_id }}'],#}
-                    {#content_type: 'product',#}
-                    {#value: '{{ price_num }}',#}
-                    {#currency: 'USD'#}
-                    {#});#}
-
-                    {#$.post("{{ order_url }}", {#}
-                    {#product_id: product_id,#}
-                    {#options: options,#}
-                    {#price: price,#}
-                    {#total_price:total_price,#}
-                    {#number: number,#}
-                    {#user_name: user_name,#}
-                    {#user_city: user_city,#}
-                    {#user_state: user_state,#}
-                    {#user_country:user_country,#}
-                    {#user_email: user_email,#}
-                    {#user_phone: user_phone,#}
-                    {#user_code: user_code,#}
-                    {#user_address: user_address,#}
-                    {#user_comment: user_comment,#}
-                    {#//               user_zone: user_zone,#}
-                    {#},#}
-                    {#function (date) {#}
-                    {#date = $.parseJSON(date);#}
-                    {#if (date.status == 'success') {#}
-                    {#$("#end-order-id").text(date.order_id);#}
-                    {#$("#end-order-price").text(date.price);#}
-                    {#$("#end-order-time").text(date.time);#}
-
-                    {#//show-order#}
-                    {#$("#show-order-id").text(date.order_id);#}
-                    {#$("#show-order-name").text(user_name + " " + user_phone);#}
-                    {#$("#show-order-price").text("{{ price }}");#}
-                    {#$("#show-order-address").text(user_address);#}
-                    {#$("#show-order-code").text(user_code);#}
-                    {#$("#show-order-meail").text(user_email);#}
-                    {#$("#show-order-time").text($("#end-order-time").text());#}
-                    {#$("#show-order-total").val(date.price);#}
-                    {#$("#show-order-prouctname").text({{ name }});#}
-                    {#$("#show-order-quantity").text(number);#}
-                    {#$("#show-order-options").text(date.option_str);#}
-                    {#//                                            console.log(date);#}
-
-                    {#$.hidePreloader();#}
-                    {#$.router.load("#router4");#}
-                    {#} else {#}
-                    {#$.toast("Your order failed, please order again");#}
-                    {#}#}
-                    {#});#}
-                    {#}#}
-                    {#},#}
+                    {% if paypal == true %}
                     {
                         text: 'PayPal',
                         onClick: function () {
@@ -829,39 +784,99 @@
                             });
 
                             $.post("{{ order_url }}", {
-                                        product_id: product_id,
-                                        options: options,
-                                        price: price,
-                                        total_price: total_price,
-                                        number: number,
-                                        user_name: user_name,
-                                        user_city: user_city,
-                                        user_state: user_state,
-                                        user_country: user_country,
-                                        user_email: user_email,
-                                        user_phone: user_phone,
-                                        user_code: user_code,
-                                        user_address: user_address,
-                                        user_comment: user_comment,
-                                        payment: 'paypal',
-                                        //               user_zone: user_zone,
-                                    },
-                                    function (date) {
-                                        date = $.parseJSON(date);
-                                        if (date.status == 'success') {
-                                            $("#paypal-form-orderId").val(date.order_id);
+                                    product_id: product_id,
+                                    options: options,
+                                    price: price,
+                                    total_price: total_price,
+                                    number: number,
+                                    user_name: user_name,
+                                    user_city: user_city,
+                                    user_state: user_state,
+                                    user_country: user_country,
+                                    user_email: user_email,
+                                    user_phone: user_phone,
+                                    user_code: user_code,
+                                    user_address: user_address,
+                                    user_comment: user_comment,
+                                    payment: 'paypal',
+                                    //               user_zone: user_zone,
+                                },
+                                function (date) {
+                                    date = $.parseJSON(date);
+                                    if (date.status == 'success') {
+                                        $("#paypal-form-orderId").val(date.order_id);
 //                                            console.log($("#paypal-form-orderId").val());
 
-                                            document.getElementById('paypal-form').submit();
+                                        document.getElementById('paypal-form').submit();
 //                                            $.hidePreloader();
-                                        } else {
-                                            $.toast("Your order failed, please order again");
-                                            return;
-                                        }
-                                    });
-//                            document.getElementById('paypal-form').submit();
+                                    } else {
+                                        $.toast("Your order failed, please order again");
+                                        return;
+                                    }
+                                });
                         }
-                    }
+                    },
+                    {% endif %}
+                    {% if cod == true %}
+                    {
+                        text: 'Cash on delivery',
+                        bold: true,
+//                        color: 'danger',
+                        onClick: function () {
+                            $.showPreloader();
+                            fbq('track', 'Purchase', {
+                                content_ids: ['{{ product_id }}'],
+                                content_type: 'product',
+                                value: '{{ price_num }}',
+                                currency: 'USD'
+                            });
+
+                            $.post("{{ order_url }}", {
+                                    product_id: product_id,
+                                    options: options,
+                                    price: price,
+                                    number: number,
+                                    user_name: user_name,
+                                    user_email: user_email,
+                                    user_phone: user_phone,
+                                    user_code: user_code,
+                                    user_address: user_address,
+                                    user_comment: user_comment,
+                                    total_price: total_price,
+
+                                    //               user_zone: user_zone,
+                                },
+                                function (date) {
+                                    date = $.parseJSON(date);
+                                    if (date.status == 'success') {
+                                        $("#end-order-id").text(date.order_id);
+                                        $("#end-order-price").text(date.price);
+                                        $("#end-order-time").text(date.time);
+
+                                        //show-order
+                                        $("#show-order-id").text(date.order_id);
+                                        $("#show-order-name").text(user_name + " " + user_phone);
+                                        $("#show-order-price").text("{{ price }}");
+                                        $("#show-order-address").text(user_address);
+                                        $("#show-order-code").text(user_code);
+                                        $("#show-order-meail").text(user_email);
+                                        $("#show-order-time").text($("#end-order-time").text());
+                                        $("#show-order-total").val(date.price);
+                                        {#$("#show-order-prouctname").text({{ name }});#}
+                                        $("#show-order-quantity").text(number);
+                                        $("#show-order-options").text(date.option_str);
+//                                            console.log(date);
+
+                                        $.hidePreloader();
+                                        $.router.load("#router4");
+                                    } else {
+                                        $.toast("Your order failed, please order again");
+                                    }
+                                });
+                        }
+                    },
+
+                    {% endif %}
                 ];
                 var buttons2 = [
                     {
@@ -910,21 +925,21 @@
             if (reg.test(search_email)) {
                 $.showPreloader();
                 $.post("{{ search_order_url }}", {
-                            search_email: search_email,
-                        },
-                        function (date) {
-                            console.log(date);
-                            date = $.parseJSON(date);
-                            if (date.status == 'success') {
-                                $.hidePreloader();
-                                $(search_order_content).html(date.content)
+                        search_email: search_email,
+                    },
+                    function (date) {
+                        console.log(date);
+                        date = $.parseJSON(date);
+                        if (date.status == 'success') {
+                            $.hidePreloader();
+                            $(search_order_content).html(date.content)
 
-                            } else {
-                                $.toast("False");
-                                $.hidePreloader();
+                        } else {
+                            $.toast("False");
+                            $.hidePreloader();
 
-                            }
-                        });
+                        }
+                    });
             } else {
 //                $.toast("请填写正确的邮箱地址");
                 $.toast("Please fill in the correct email address");
@@ -938,3 +953,4 @@
 
 </body>
 </html>
+
